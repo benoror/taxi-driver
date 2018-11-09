@@ -6,6 +6,7 @@ var res = parser.parse('IF(1=2, "a", "b")'); // It returns `Object {error: null,
 console.log(res);
 
 function getTax(payload) {
+  return 0.16;
 }
 
 module.exports = getTax

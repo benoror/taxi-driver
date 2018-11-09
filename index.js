@@ -6,7 +6,12 @@ var res = parser.parse('IF(1=2, "a", "b")'); // It returns `Object {error: null,
 console.log(res);
 
 function getTax(payload) {
-  return 0.167;
+  if(payload.taxType === 'IVA') {
+    return 0.16;
+  }
+  if(payload.taxType === 'RET_IVA') {
+    return 0.167;
+  }
 }
 
 module.exports = getTax

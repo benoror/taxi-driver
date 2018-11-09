@@ -14,5 +14,8 @@
   "repository": {
     "url": "https://github.com/benoror/taxi-driver.git",
     "type": "git"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0"
   }
 }

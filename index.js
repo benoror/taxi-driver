@@ -3,21 +3,13 @@ var rules = require('./rules');
 var FormulaParser = require('hot-formula-parser').Parser;
 var parser = new FormulaParser();
 
-var res = parser.parse('IF(1=2, "a", "b")'); // It returns `Object {error: null, result: 14}`
-
-function getTax(payload) {
-  var value;
-
-  if(!_.has(payload, 'country')) {
-    return { error: 'Country not found or not specified', value };
+function getTax(country, payload) {
+  if(!rules[country]) {
+    return { error: `Tax rules for country ${country} not found` };
   }
 
-  if(!rules[payload.country]) {
-    return { error: `Tax rules for country ${payload.country} not found`, value };
-  }
-
-  const rule = matchRules(_.omit(payload, 'country'), payload.country);
-  value = parser.parse(rule.formula);
+  const rule = matchRules(payload, country);
+  const value = parser.parse(rule.formula);
 
   return value;
 }

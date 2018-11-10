@@ -1,5 +1,5 @@
 module.exports = {
-  'MEX': [
+  'mx': [
     {
       taxType: 'IVA',
       formula: `IF(AND(category = 'DRUG', area = 'PHARMACY'), 0, 0.16)`
@@ -13,7 +13,7 @@ module.exports = {
       formula: '0.1'
     },
   ],
-  'KSA': [
+  'sa': [
     {
       taxType: 'VAT',
       category: 'DRUG',
@@ -39,6 +39,6 @@ module.exports = {
       formula: '??????'
     },
   ],
-  'ARG': [
+  'ar': [
   ],
 };

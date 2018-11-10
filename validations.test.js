@@ -2,26 +2,27 @@ const getTax = require('./index');
 
 describe('Validations', () => {
   test('No country for old men', () => {
-    const o = {
-      country: undefined
-    };
-
-    expect(getTax(o)).toEqual(
+    expect(getTax('neverland', {})).toEqual(
       expect.objectContaining({
         error: expect.any(String)
       })
     );
   });
 
-  test('Neverland', () => {
+  test('Not specific tax rules', () => {
     const o = {
-      country: 'NEVERLAND'
+      taxType: 'IVA',
+      category: 'ALCOHOL'
     };
 
-    expect(getTax(o)).toEqual(
+    expect(getTax('mx', o)).toEqual(
       expect.objectContaining({
         error: expect.any(String)
       })
     );
   });
+
+  // test('Double deathmatch', () => {
+  // ToDo: Mock db.json
+  // });
 });

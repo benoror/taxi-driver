@@ -14,7 +14,7 @@ function getTax(countryCode, payload) {
                   .value();
 
   if(_.isEmpty(rules)) {
-    return { error: `Tax rules for country ${country} not found` };
+    return { error: `Tax rules for country ${countryCode} not found` };
   }
 
   const rule = findRule(rules, payload);

@@ -4,14 +4,15 @@ describe('KSA VAT', () => {
   describe('DRUG', () => {
     test('TAXYES >2000', () => {
       const o = {
-        country: 'KSA',
         taxType: 'VAT',
         category: 'DRUG',
-        partnerTaxType: 'TAXYES',
-        subTotal: 2001
+        bpTaxType: 'TAXYES',
+        vars: {
+          subTotal: 2001
+        }
       };
 
-      expect(getTax(o)).toEqual(
+      expect(getTax('sa', o)).toEqual(
         expect.objectContaining({
           result: 0.02
         })
@@ -19,6 +20,34 @@ describe('KSA VAT', () => {
     });
 
     test('TAXYES <=2000', () => {
+      const o = {
+        taxType: 'VAT',
+        category: 'DRUG',
+        bpTaxType: 'TAXYES',
+        vars: {
+          subTotal: 2000
+        }
+      };
+
+      expect(getTax('sa', o)).toEqual(
+        expect.objectContaining({
+          result: 0.05
+        })
+      );
+    });
+
+    test.only('!TAXYES', () => {
+      const o = {
+        taxType: 'VAT',
+        category: 'DRUG',
+        bpTaxType: '!TAXYES'
+      };
+
+      expect(getTax('sa', o)).toEqual(
+        expect.objectContaining({
+          result: 0.0
+        })
+      );
     });
   });
 });

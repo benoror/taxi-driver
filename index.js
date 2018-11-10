@@ -19,6 +19,10 @@ function getTax(countryCode, payload) {
 
   const rule = findRule(rules, payload);
 
+  if(!!payload.vars) {
+    _.forEach(payload.vars, (v, k) => parser.setVariable(k, v));
+  }
+
   return parser.parse(rule.formula);
 }
 

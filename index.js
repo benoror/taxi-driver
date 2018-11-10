@@ -1,44 +1,51 @@
-var _ = require('lodash');
-var rules = require('./rules');
-var FormulaParser = require('hot-formula-parser').Parser;
-var parser = new FormulaParser();
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+const adapter = new FileSync('./db.json');
+const db = low(adapter);
+const _ = require('lodash');
+const FormulaParser = require('hot-formula-parser').Parser;
+const parser = new FormulaParser();
 
-function getTax(country, payload) {
-  if(!rules[country]) {
+const columns = ['taxType', 'bpTaxType', 'category', 'area'];
+
+function getTax(countryCode, payload) {
+  const rules = db.get('taxRules')
+                  .filter({ countryCode })
+                  .value();
+
+  if(_.isEmpty(rules)) {
     return { error: `Tax rules for country ${country} not found` };
   }
 
-  const rule = matchRules(payload, country);
-  const value = parser.parse(rule.formula);
+  const rule = findRule(rules, payload);
 
-  return value;
+  return parser.parse(rule.formula);
 }
 
-function matchRules(payload, country) {
-  const countryRules = rules[country];
-  const keys = _.keys(payload);
+function findRule(rules, payload) {
+  const result = _.reduce(columns, (res, col) => {
+    return _.filter(res, (rule) => {
+      if(!!rule[col]) {
+        return rule[col] === payload[col];
+      } else {
+        if(!!payload[col]) {
+          return false;
+        } else {
+          return rule[col] === payload[col];
+        }
+      }
+    });
+  }, rules);
 
-  // Find the rules with max number of key matching
-  // ToDo: Detect when 2+ rules match?
-  const maxMatch = _.reduce(keys, (res, key) => {
-    // ToDo: Refactor to use _.isMatch or _.matches ?
-    const matches = _.filter(countryRules, (rule) => (rule[key] === payload[key]));
-    if(res.max < matches.length) {
-      // Fixme: Take first match only?
-      return {max: matches.length, pos: _.indexOf(countryRules, matches[0])}
-    }
-    return res;
-  }, { max: 0, pos: null });
+  if(_.isEmpty(result)) {
+    return { error: `No tax rules found for ${JSON.stringify(payload)}` };
+  }
 
-  const finalMatch = countryRules[maxMatch.pos];
+  if(result.length > 1) {
+    return { error: `More than one rule found for ${JSON.stringify(payload)}` };
+  }
 
-  // ToDo: Optimize and set variables in prev. iteration?
-  _.forEach(keys, (key) => {
-    parser.setVariable(key, payload[key]);
-  });
-
-  return finalMatch;
+  return result[0];
 }
-
 
 module.exports = getTax

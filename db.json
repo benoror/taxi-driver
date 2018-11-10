@@ -1,0 +1,31 @@
+{
+  "countries": [
+    { "code": "mx", "name": "Mexico" },
+    { "code": "ar", "name": "Argentina" },
+    { "code": "sa", "name": "Saudi Arabia" }
+  ],
+  "taxRules": [
+    {
+      "countryCode": "mx",
+      "taxType": "IVA",
+      "formula": "0.16"
+    },
+    {
+      "countryCode": "mx",
+      "taxType": "IVA",
+      "category": "DRUG",
+      "area": "PHARMACY",
+      "formula": "0.0"
+    },
+    {
+      "countryCode": "mx",
+      "taxType": "RET_IVA",
+      "formula": "0.167"
+    },
+    {
+      "countryCode": "mx",
+      "taxType": "RET_ISR",
+      "formula": "0.1"
+    }
+  ]
+}

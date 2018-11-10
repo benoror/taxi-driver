@@ -4,9 +4,7 @@ describe('Mexico', () => {
   describe('IVA', () => {
     test('Normal', () => {
       const o = {
-        taxType: 'IVA',
-        category: '',
-        area: '',
+        taxType: 'IVA'
       };
 
       expect(getTax('mx', o)).toEqual(

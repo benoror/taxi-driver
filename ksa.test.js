@@ -36,7 +36,7 @@ describe('KSA VAT', () => {
       );
     });
 
-    test.only('!TAXYES', () => {
+    test('!TAXYES', () => {
       const o = {
         taxType: 'VAT',
         category: 'DRUG',

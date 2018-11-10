@@ -8,7 +8,11 @@ describe('MEXICO', () => {
       taxType: 'IVA'
     };
 
-    expect(getTax(o)).toBe(0.16);
+    expect(getTax(o)).toEqual(
+      expect.objectContaining({
+        value: 0.16
+      })
+    );
   });
 
   test('RET_IVA', () => {
@@ -17,7 +21,11 @@ describe('MEXICO', () => {
       taxType: 'RET_IVA'
     };
 
-    expect(getTax(o)).toBe(0.167);
+    expect(getTax(o)).toEqual(
+      expect.objectContaining({
+        value: 0.167
+      })
+    );
   });
 });
 

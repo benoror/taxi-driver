@@ -2,7 +2,7 @@ const getTax = require('./index');
 
 describe('MEXICO', () => {
   describe('IVA', () => {
-    test('IVA NORMAL', () => {
+    test('NORMAL', () => {
       const o = {
         country: 'MEX',
         taxType: 'IVA',
@@ -17,7 +17,7 @@ describe('MEXICO', () => {
       );
     });
 
-    test('IVA DRUG PHARMACY', () => {
+    test('DRUG PHARMACY', () => {
       const o = {
         country: 'MEX',
         taxType: 'IVA',

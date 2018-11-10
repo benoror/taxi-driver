@@ -16,7 +16,8 @@ function getTax(payload) {
     return { error: `Tax rules for country ${payload.country} not found`, value };
   }
 
-  value = matchRules(_.omit(payload, 'country'), payload.country);
+  const rule = matchRules(_.omit(payload, 'country'), payload.country);
+  value = parser.parse(rule.formula);
 
   return value;
 }
@@ -37,14 +38,14 @@ function matchRules(payload, country) {
     return res;
   }, { max: 0, pos: null });
 
-  const match = countryRules[maxMatch.pos];
+  const finalMatch = countryRules[maxMatch.pos];
 
   // ToDo: Optimize and set variables in prev. iteration?
   _.forEach(keys, (key) => {
     parser.setVariable(key, payload[key]);
   });
 
-  return parser.parse(match.value);
+  return finalMatch;
 }
 
 

@@ -5,12 +5,14 @@ describe('MEXICO', () => {
     test('IVA NORMAL', () => {
       const o = {
         country: 'MEX',
-        taxType: 'IVA'
+        taxType: 'IVA',
+        category: '',
+        area: '',
       };
 
       expect(getTax(o)).toEqual(
         expect.objectContaining({
-          value: 0.16
+          result: 0.16
         })
       );
     });
@@ -25,7 +27,7 @@ describe('MEXICO', () => {
 
       expect(getTax(o)).toEqual(
         expect.objectContaining({
-          value: 0
+          result: 0
         })
       );
     });
@@ -39,7 +41,7 @@ describe('MEXICO', () => {
 
     expect(getTax(o)).toEqual(
       expect.objectContaining({
-        value: 0.167
+        result: 0.167
       })
     );
   });
@@ -52,7 +54,7 @@ describe('MEXICO', () => {
 
     expect(getTax(o)).toEqual(
       expect.objectContaining({
-        value: 0.1
+        result: 0.1
       })
     );
   });

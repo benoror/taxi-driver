@@ -16,31 +16,35 @@ function getTax(payload) {
     return { error: `Tax rules for country ${payload.country} not found`, value };
   }
 
-  value = matchRules(payload);
+  value = matchRules(_.omit(payload, 'country'), payload.country);
 
   return value;
 }
 
-function matchRules(payload) {
-  const countryRules = rules[payload.country];
-  const keys = _.keys(_.omit(payload, 'country'));
+function matchRules(payload, country) {
+  const countryRules = rules[country];
+  const keys = _.keys(payload);
 
-  const match = _.reduce(keys, (accum, key) => {
-    return _.filter(accum, (rule) => {
-      return rule[key] === payload[key];
-    });
-  }, countryRules);
+  // Find the rules with max number of key matching
+  // ToDo: Detect when 2+ rules match?
+  const maxMatch = _.reduce(keys, (res, key) => {
+    // ToDo: Refactor to use _.isMatch or _.matches ?
+    const matches = _.filter(countryRules, (rule) => (rule[key] === payload[key]));
+    if(res.max < matches.length) {
+      // Fixme: Take first match only?
+      return {max: matches.length, pos: _.indexOf(countryRules, matches[0])}
+    }
+    return res;
+  }, { max: 0, pos: null });
 
-  if(match.length > 1) {
-    return { error: `Two or more rules match`, match };
-  }
+  const match = countryRules[maxMatch.pos];
 
   // ToDo: Optimize and set variables in prev. iteration?
   _.forEach(keys, (key) => {
     parser.setVariable(key, payload[key]);
   });
 
-  return parser.parse(match[0].value);
+  return parser.parse(match.value);
 }
 
 

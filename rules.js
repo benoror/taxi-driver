@@ -6,11 +6,11 @@ module.exports = {
     },
     {
       taxType: 'RET_IVA',
-      value: 0.167
+      value: '0.167'
     },
     {
       taxType: 'RET_ISR',
-      value: 0.1
+      value: '0.1'
     },
   ],
   'KSA': [
@@ -24,7 +24,7 @@ module.exports = {
       taxType: 'VAT',
       category: 'DRUG',
       partnerTaxType: '!TAXYES',
-      value: 0
+      value: '0'
     },
     {
       taxType: 'VAT',

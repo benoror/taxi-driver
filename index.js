@@ -7,10 +7,10 @@ console.log(res);
 
 function getTax(payload) {
   if(payload.taxType === 'IVA') {
-    return 0.16;
+    return {value: 0.16};
   }
   if(payload.taxType === 'RET_IVA') {
-    return 0.167;
+    return {value: 0.167};
   }
 }
 

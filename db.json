@@ -54,6 +54,18 @@
       "category": "!DRUG",
       "bpTaxType": "!TAXYES",
       "formula": "0"
+    },
+    {
+      "countryCode": "ar",
+      "category": "ALQUILERES_RURAL",
+      "bpTaxType": "INSCRIPTO",
+      "formula": "IF(subTotal > 7120, 0.06, 0)"
+    },
+    {
+      "countryCode": "ar",
+      "category": "ALQUILERES_RURAL",
+      "bpTaxType": "NO_INSCRIPTO",
+      "formula": "IF(subTotal > 7120, 0.25, 0)"
     }
   ]
 }

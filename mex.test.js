@@ -1,4 +1,4 @@
-const getTax = require('./index');
+const { salesTax } = require('./getTax');
 
 describe('Mexico', () => {
   describe('IVA', () => {
@@ -7,7 +7,7 @@ describe('Mexico', () => {
         taxType: 'IVA'
       };
 
-      expect(getTax('mx', o)).toEqual(
+      expect(salesTax('mx', o)).toEqual(
         expect.objectContaining({
           result: 0.16
         })
@@ -21,7 +21,7 @@ describe('Mexico', () => {
         area: 'PHARMACY'
       };
 
-      expect(getTax('mx', o)).toEqual(
+      expect(salesTax('mx', o)).toEqual(
         expect.objectContaining({
           result: 0
         })
@@ -34,7 +34,7 @@ describe('Mexico', () => {
       taxType: 'RET_IVA'
     };
 
-    expect(getTax('mx', o)).toEqual(
+    expect(salesTax('mx', o)).toEqual(
       expect.objectContaining({
         result: 0.167
       })
@@ -46,7 +46,7 @@ describe('Mexico', () => {
       taxType: 'RET_ISR'
     };
 
-    expect(getTax('mx', o)).toEqual(
+    expect(salesTax('mx', o)).toEqual(
       expect.objectContaining({
         result: 0.1
       })

@@ -1,8 +1,8 @@
-const getTax = require('./index');
+const { salesTax } = require('./getTax');
 
 describe('Validations', () => {
   test('No country for old men', () => {
-    expect(getTax('neverland', {})).toEqual(
+    expect(salesTax('neverland', {})).toEqual(
       expect.objectContaining({
         error: expect.any(String)
       })
@@ -15,7 +15,7 @@ describe('Validations', () => {
       category: 'ALCOHOL'
     };
 
-    expect(getTax('mx', o)).toEqual(
+    expect(salesTax('mx', o)).toEqual(
       expect.objectContaining({
         error: expect.any(String)
       })

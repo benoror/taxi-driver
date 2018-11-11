@@ -50,5 +50,41 @@ describe('KSA VAT', () => {
       );
     });
   });
+
+  describe('Not DRUG', () => {
+    test('TAXYES >5000', () => {
+      const o = {
+        taxType: 'VAT',
+        category: '!DRUG',
+        bpTaxType: 'TAXYES',
+        vars: {
+          subTotal: 5001
+        }
+      };
+
+      expect(getTax('sa', o)).toEqual(
+        expect.objectContaining({
+          result: 0.05
+        })
+      );
+    });
+
+    test('TAXYES <=5000', () => {
+      const o = {
+        taxType: 'VAT',
+        category: '!DRUG',
+        bpTaxType: 'TAXYES',
+        vars: {
+          subTotal: 5000
+        }
+      };
+
+      expect(getTax('sa', o)).toEqual(
+        expect.objectContaining({
+          result: 0.04
+        })
+      );
+    });
+  });
 });
 

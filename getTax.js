@@ -18,6 +18,7 @@ const salesTax = (countryCode, payload) => {
     _.forEach(payload.vars, (v, k) => parser.setVariable(k, v));
   }
 
+  console.log(parser.parse(rule.formula));
   return parser.parse(rule.formula);
 }
 

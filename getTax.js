@@ -1,14 +1,9 @@
-const low = require('lowdb');
-const FileSync = require('lowdb/adapters/FileSync');
-const adapter = new FileSync('./db.json');
-const db = low(adapter);
 const _ = require('lodash');
-const FormulaParser = require('hot-formula-parser').Parser;
-const parser = new FormulaParser();
+const db = require('./db');
+var FormulaParser = require('hot-formula-parser').Parser;
+var parser = new FormulaParser();
 
-const columns = ['taxType', 'bpTaxType', 'category', 'area'];
-
-function getTax(countryCode, payload) {
+const salesTax = (countryCode, payload) => {
   const rules = db.get('taxRules')
                   .filter({ countryCode })
                   .value();
@@ -27,6 +22,8 @@ function getTax(countryCode, payload) {
 }
 
 function findRule(rules, payload) {
+  const columns = db.get('meta.taxRulesColumns').value();
+
   const result = _.reduce(columns, (res, col) => {
     return _.filter(res, (rule) => {
       if(!!rule[col]) {
@@ -52,4 +49,4 @@ function findRule(rules, payload) {
   return result[0];
 }
 
-module.exports = getTax
+exports.salesTax = salesTax;

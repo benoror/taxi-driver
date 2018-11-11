@@ -1,4 +1,7 @@
 {
+  "meta": {
+    "taxRulesColumns": ["taxType", "bpTaxType", "category", "area"]
+  },
   "countries": [
     { "code": "mx", "name": "Mexico" },
     { "code": "ar", "name": "Argentina" },

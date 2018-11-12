@@ -3,6 +3,8 @@ Taxi Driver - A Flexible International Tax Engine Microservice
 
 Built with [Micro](https://github.com/zeit/micro) & [Lowdb ⚡️](https://github.com/typicode/lowdb)
 
+[![Build Status](https://travis-ci.org/benoror/taxi-driver.svg?branch=master)](https://travis-ci.org/benoror/taxi-driver)
+
 ![taxi driver](https://user-images.githubusercontent.com/119117/48316345-df182200-e5a7-11e8-94ff-bab2f79694f0.jpg)
 
 ## Usage

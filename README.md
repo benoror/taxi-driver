@@ -5,7 +5,32 @@ Taxi Driver - A Flexible International Tax Engine Microservice
 
 ## Usage
 
-WIP
+Postman collection: https://web.postman.co/collections/27932-1280fe65-8858-4d0f-bde4-4c3b79d6b5b3?workspace=61c65267-c247-4243-8558-65eaee551abe
+
+#### `GET /countries`
+
+#### `GET /rules`
+
+#### `POST /getSalesTax`
+
+```javascript
+{
+  country: "sa",
+  query: {
+    taxType: "VAT",
+    bpTaxType: "TAXYES",
+    category: "DRUG",
+    area: undefined,
+    vars: {
+      subTotal: 5000
+    }
+  }
+}
+```
+
+## GUI
+
+https://github.com/benoror/taxi-driver-ui
 
 ## Inspired by
 

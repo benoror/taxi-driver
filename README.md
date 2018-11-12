@@ -1,6 +1,8 @@
 # taxi-driver
 Taxi Driver - A Flexible International Tax Engine Microservice
 
+Built with [Micro](https://github.com/zeit/micro) & [Lowdb ⚡️](https://github.com/typicode/lowdb)
+
 ![taxi driver](https://user-images.githubusercontent.com/119117/48316345-df182200-e5a7-11e8-94ff-bab2f79694f0.jpg)
 
 ## Usage
@@ -34,7 +36,17 @@ https://github.com/benoror/taxi-driver-ui
 
 ## Development
 
-`yarn run dev`
+```
+yarn run dev
+```
+
+## Tests
+
+Run [Jest](https://jestjs.io/) tests with:
+
+```
+yarn test
+```
 
 ## Inspired by
 

@@ -32,6 +32,10 @@ Postman collection: https://web.postman.co/collections/27932-1280fe65-8858-4d0f-
 
 https://github.com/benoror/taxi-driver-ui
 
+## Development
+
+`yarn run dev`
+
 ## Inspired by
 
 - https://github.com/commerceguys/tax

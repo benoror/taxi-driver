@@ -10,7 +10,7 @@ const countries = (req, res) => send(res, 200, {
   countries: db.get('countries').value()
 });
 const rules = (req, res) => send(res, 200, {
-  rules: db.get('rules').value()
+  rules: db.get('taxRules').value()
 });
 const getSalesTax = async (req, res) => {
   const payload = await json(req);

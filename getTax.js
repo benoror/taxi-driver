@@ -9,7 +9,7 @@ const salesTax = (countryCode, query) => {
                   .value();
 
   if(_.isEmpty(rules)) {
-    return { error: `Tax rules for country ${countryCode} not found` };
+    throw new Error(`Tax rules for country ${countryCode} not found` );
   }
 
   const rule = findRule(rules, query);
@@ -40,11 +40,11 @@ function findRule(rules, query) {
   }, rules);
 
   if(_.isEmpty(result)) {
-    return { error: `No tax rules found for ${JSON.stringify(query)}` };
+    throw new Error(`No tax rules found for ${JSON.stringify(query)}` );
   }
 
   if(result.length > 1) {
-    return { error: `More than one rule found for ${JSON.stringify(query)}` };
+    throw new Error(`More than one rule found for ${JSON.stringify(query)}` );
   }
 
   return result[0];

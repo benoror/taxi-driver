@@ -2,11 +2,7 @@ const { salesTax } = require('./getTax');
 
 describe('Validations', () => {
   test('No country for old men', () => {
-    expect(salesTax('neverland', {})).toEqual(
-      expect.objectContaining({
-        error: expect.any(String)
-      })
-    );
+    expect(() => salesTax('neverland', {})).toThrowError();
   });
 
   test('Not specific tax rules', () => {
@@ -15,11 +11,7 @@ describe('Validations', () => {
       category: 'ALCOHOL'
     };
 
-    expect(salesTax('mx', o)).toEqual(
-      expect.objectContaining({
-        error: expect.any(String)
-      })
-    );
+    expect(() => salesTax('mx', o)).toThrowError();
   });
 
   // test('Double deathmatch', () => {

@@ -5,6 +5,7 @@ describe('Mexico', () => {
     test('Normal', () => {
       const q = {
         txType: "sales",
+        docType: "invoice",
         taxType: 'IVA'
       };
 
@@ -18,6 +19,7 @@ describe('Mexico', () => {
     test('Pharmacy Drug', () => {
       const q = {
         txType: "sales",
+        docType: "invoice",
         taxType: 'IVA',
         category: 'DRUG',
         area: 'PHARMACY'
@@ -34,6 +36,7 @@ describe('Mexico', () => {
   test('RET_IVA', () => {
     const q = {
       txType: "income",
+      docType: "invoice",
       taxType: 'RET_IVA'
     };
 
@@ -47,6 +50,7 @@ describe('Mexico', () => {
   test('RET_ISR', () => {
     const q = {
       txType: "income",
+      docType: "invoice",
       taxType: 'RET_ISR'
     };
 

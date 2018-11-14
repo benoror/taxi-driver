@@ -5,6 +5,7 @@ describe('KSA VAT', () => {
     test('TAXYES >2000', () => {
       const q = {
         txType: "sales",
+        docType: "invoice",
         taxType: 'VAT',
         category: 'DRUG',
         bpTaxType: 'TAXYES',
@@ -23,6 +24,7 @@ describe('KSA VAT', () => {
     test('TAXYES <=2000', () => {
       const q = {
         txType: "sales",
+        docType: "invoice",
         taxType: 'VAT',
         category: 'DRUG',
         bpTaxType: 'TAXYES',
@@ -41,6 +43,7 @@ describe('KSA VAT', () => {
     test('!TAXYES', () => {
       const q = {
         txType: "sales",
+        docType: "invoice",
         taxType: 'VAT',
         category: 'DRUG',
         bpTaxType: '!TAXYES'
@@ -58,6 +61,7 @@ describe('KSA VAT', () => {
     test('TAXYES >5000', () => {
       const q = {
         txType: "sales",
+        docType: "invoice",
         taxType: 'VAT',
         category: '!DRUG',
         bpTaxType: 'TAXYES',
@@ -76,6 +80,7 @@ describe('KSA VAT', () => {
     test('TAXYES <=5000', () => {
       const q = {
         txType: "sales",
+        docType: "invoice",
         taxType: 'VAT',
         category: '!DRUG',
         bpTaxType: 'TAXYES',

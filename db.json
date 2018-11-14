@@ -2,6 +2,7 @@
   "meta": {
     "taxRulesColumns": [
       "txType",
+      "docType",
       "taxType",
       "bpTaxType",
       "category",
@@ -18,12 +19,14 @@
       "countryCode": "mx",
       "validUntil": "2999-04-23T18:25:43.511Z",
       "txType": "sales",
+      "docType": "invoice",
       "taxType": "IVA",
       "formula": "0.16"
     },
     {
       "countryCode": "mx",
       "txType": "sales",
+      "docType": "invoice",
       "taxType": "IVA",
       "category": "DRUG",
       "area": "PHARMACY",
@@ -32,18 +35,21 @@
     {
       "countryCode": "mx",
       "txType": "income",
+      "docType": "invoice",
       "taxType": "RET_IVA",
       "formula": "0.167"
     },
     {
       "countryCode": "mx",
       "txType": "income",
+      "docType": "invoice",
       "taxType": "RET_ISR",
       "formula": "0.1"
     },
     {
       "countryCode": "sa",
       "txType": "sales",
+      "docType": "invoice",
       "taxType": "VAT",
       "category": "DRUG",
       "bpTaxType": "TAXYES",
@@ -52,6 +58,7 @@
     {
       "countryCode": "sa",
       "txType": "sales",
+      "docType": "invoice",
       "taxType": "VAT",
       "category": "DRUG",
       "bpTaxType": "!TAXYES",
@@ -60,6 +67,7 @@
     {
       "countryCode": "sa",
       "txType": "sales",
+      "docType": "invoice",
       "taxType": "VAT",
       "category": "!DRUG",
       "bpTaxType": "TAXYES",
@@ -68,6 +76,7 @@
     {
       "countryCode": "sa",
       "txType": "sales",
+      "docType": "invoice",
       "taxType": "VAT",
       "category": "!DRUG",
       "bpTaxType": "!TAXYES",
@@ -76,6 +85,7 @@
     {
       "countryCode": "ar",
       "txType": "sales",
+      "docType": "invoice",
       "category": "ALQUILERES_RURAL",
       "bpTaxType": "INSCRIPTO",
       "formula": "IF(subTotal > 7120, 0.06, 0)"
@@ -83,6 +93,7 @@
     {
       "countryCode": "ar",
       "txType": "sales",
+      "docType": "invoice",
       "category": "ALQUILERES_RURAL",
       "bpTaxType": "NO_INSCRIPTO",
       "formula": "IF(subTotal > 7120, 0.25, 0)"

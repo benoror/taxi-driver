@@ -5,6 +5,7 @@ describe('Argentina', () => {
     test('>7120', () => {
       const q = {
         txType: "sales",
+        docType: "invoice",
         category: 'ALQUILERES_RURAL',
         bpTaxType: 'INSCRIPTO',
         vars: {
@@ -22,6 +23,7 @@ describe('Argentina', () => {
     test('<=7120', () => {
       const q = {
         txType: "sales",
+        docType: "invoice",
         category: 'ALQUILERES_RURAL',
         bpTaxType: 'INSCRIPTO',
         vars: {
@@ -41,6 +43,7 @@ describe('Argentina', () => {
     test('>7120', () => {
       const q = {
         txType: "sales",
+        docType: "invoice",
         category: 'ALQUILERES_RURAL',
         bpTaxType: 'NO_INSCRIPTO',
         vars: {
@@ -58,6 +61,7 @@ describe('Argentina', () => {
     test('<=7120', () => {
       const q = {
         txType: "sales",
+        docType: "invoice",
         category: 'ALQUILERES_RURAL',
         bpTaxType: 'NO_INSCRIPTO',
         vars: {

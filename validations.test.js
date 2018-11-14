@@ -14,7 +14,11 @@ describe('Validations', () => {
     expect(() => salesTax('mx', o)).toThrowError();
   });
 
-  // test('Double deathmatch', () => {
-  // ToDo: Mock db.json
-  // });
+  test('Double deathmatch', () => {
+    const o = {
+      taxType: 'VAT'
+    };
+
+    expect(() => salesTax('sa', o)).toThrowError();
+  });
 });

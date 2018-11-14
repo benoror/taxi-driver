@@ -14,12 +14,7 @@ const salesTax = (countryCode, query) => {
 
   const rule = findRule(rules, query);
 
-  if(!!query.vars) {
-    _.forEach(query.vars, (v, k) => parser.setVariable(k, v));
-  }
-
-  console.log(parser.parse(rule.formula));
-  return parser.parse(rule.formula);
+  return applyRule(rule, query);
 }
 
 function findRule(rules, query) {
@@ -48,6 +43,15 @@ function findRule(rules, query) {
   }
 
   return result[0];
+}
+
+function applyRule(rule, query) {
+//2012-04-23T18:25:43.511Z
+  if(!!query.vars) {
+    _.forEach(query.vars, (v, k) => parser.setVariable(k, v));
+  }
+
+  return parser.parse(rule.formula);
 }
 
 exports.salesTax = salesTax;

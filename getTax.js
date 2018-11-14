@@ -4,7 +4,7 @@ const db = require('./db');
 const FormulaParser = require('hot-formula-parser').Parser;
 const parser = new FormulaParser();
 
-const salesTax = (countryCode, query) => {
+const getTax = (countryCode, query) => {
   const rules = db.get('taxRules')
                   .filter({ countryCode })
                   .value();
@@ -58,4 +58,4 @@ const applyRule = (rule, query) => {
   return parser.parse(rule.formula);
 }
 
-module.exports = { salesTax, findRule, applyRule };
+module.exports = { getTax, findRule, applyRule };

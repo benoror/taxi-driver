@@ -1,13 +1,14 @@
-const { salesTax } = require('../../getTax');
+const { getTax } = require('../../getTax');
 
 describe('Mexico', () => {
   describe('IVA', () => {
     test('Normal', () => {
       const q = {
+        txType: "sales",
         taxType: 'IVA'
       };
 
-      expect(salesTax('mx', q)).toEqual(
+      expect(getTax('mx', q)).toEqual(
         expect.objectContaining({
           result: 0.16
         })
@@ -16,12 +17,13 @@ describe('Mexico', () => {
 
     test('Pharmacy Drug', () => {
       const q = {
+        txType: "sales",
         taxType: 'IVA',
         category: 'DRUG',
         area: 'PHARMACY'
       };
 
-      expect(salesTax('mx', q)).toEqual(
+      expect(getTax('mx', q)).toEqual(
         expect.objectContaining({
           result: 0
         })
@@ -31,10 +33,11 @@ describe('Mexico', () => {
 
   test('RET_IVA', () => {
     const q = {
+      txType: "income",
       taxType: 'RET_IVA'
     };
 
-    expect(salesTax('mx', q)).toEqual(
+    expect(getTax('mx', q)).toEqual(
       expect.objectContaining({
         result: 0.167
       })
@@ -43,10 +46,11 @@ describe('Mexico', () => {
 
   test('RET_ISR', () => {
     const q = {
+      txType: "income",
       taxType: 'RET_ISR'
     };
 
-    expect(salesTax('mx', q)).toEqual(
+    expect(getTax('mx', q)).toEqual(
       expect.objectContaining({
         result: 0.1
       })

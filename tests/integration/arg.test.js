@@ -1,9 +1,9 @@
-const { salesTax } = require('./getTax');
+const { salesTax } = require('../../getTax');
 
 describe('Argentina', () => {
   describe('Inscripto', () => {
     test('>7120', () => {
-      const o = {
+      const q = {
         category: 'ALQUILERES_RURAL',
         bpTaxType: 'INSCRIPTO',
         vars: {
@@ -11,7 +11,7 @@ describe('Argentina', () => {
         }
       };
 
-      expect(salesTax('ar', o)).toEqual(
+      expect(salesTax('ar', q)).toEqual(
         expect.objectContaining({
           result: 0.06
         })
@@ -19,7 +19,7 @@ describe('Argentina', () => {
     });
     salesTax
     test('<=7120', () => {
-      const o = {
+      const q = {
         category: 'ALQUILERES_RURAL',
         bpTaxType: 'INSCRIPTO',
         vars: {
@@ -27,7 +27,7 @@ describe('Argentina', () => {
         }
       };
 
-      expect(salesTax('ar', o)).toEqual(
+      expect(salesTax('ar', q)).toEqual(
         expect.objectContaining({
           result: 0
         })
@@ -37,7 +37,7 @@ describe('Argentina', () => {
 
   describe('No Inscripto', () => {
     test('>7120', () => {
-      const o = {
+      const q = {
         category: 'ALQUILERES_RURAL',
         bpTaxType: 'NO_INSCRIPTO',
         vars: {
@@ -45,7 +45,7 @@ describe('Argentina', () => {
         }
       };
 
-      expect(salesTax('ar', o)).toEqual(
+      expect(salesTax('ar', q)).toEqual(
         expect.objectContaining({
           result: 0.25
         })
@@ -53,7 +53,7 @@ describe('Argentina', () => {
     });
 
     test('<=7120', () => {
-      const o = {
+      const q = {
         category: 'ALQUILERES_RURAL',
         bpTaxType: 'NO_INSCRIPTO',
         vars: {
@@ -61,7 +61,7 @@ describe('Argentina', () => {
         }
       };
 
-      expect(salesTax('ar', o)).toEqual(
+      expect(salesTax('ar', q)).toEqual(
         expect.objectContaining({
           result: 0
         })

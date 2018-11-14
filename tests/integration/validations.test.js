@@ -1,4 +1,4 @@
-const { salesTax } = require('./getTax');
+const { salesTax } = require('../../getTax');
 
 describe('Validations', () => {
   test('No country for old men', () => {
@@ -6,19 +6,19 @@ describe('Validations', () => {
   });
 
   test('Not specific tax rules', () => {
-    const o = {
+    const q = {
       taxType: 'IVA',
       category: 'ALCOHOL'
     };
 
-    expect(() => salesTax('mx', o)).toThrowError();
+    expect(() => salesTax('mx', q)).toThrowError();
   });
 
   test('Double deathmatch', () => {
-    const o = {
+    const q = {
       taxType: 'VAT'
     };
 
-    expect(() => salesTax('sa', o)).toThrowError();
+    expect(() => salesTax('sa', q)).toThrowError();
   });
 });

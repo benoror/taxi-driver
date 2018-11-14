@@ -1,9 +1,9 @@
-const { salesTax } = require('./getTax');
+const { salesTax } = require('../../getTax');
 
 describe('KSA VAT', () => {
   describe('DRUG', () => {
     test('TAXYES >2000', () => {
-      const o = {
+      const q = {
         taxType: 'VAT',
         category: 'DRUG',
         bpTaxType: 'TAXYES',
@@ -12,7 +12,7 @@ describe('KSA VAT', () => {
         }
       };
 
-      expect(salesTax('sa', o)).toEqual(
+      expect(salesTax('sa', q)).toEqual(
         expect.objectContaining({
           result: 0.02
         })
@@ -20,7 +20,7 @@ describe('KSA VAT', () => {
     });
 
     test('TAXYES <=2000', () => {
-      const o = {
+      const q = {
         taxType: 'VAT',
         category: 'DRUG',
         bpTaxType: 'TAXYES',
@@ -29,7 +29,7 @@ describe('KSA VAT', () => {
         }
       };
 
-      expect(salesTax('sa', o)).toEqual(
+      expect(salesTax('sa', q)).toEqual(
         expect.objectContaining({
           result: 0.05
         })
@@ -37,13 +37,13 @@ describe('KSA VAT', () => {
     });
 
     test('!TAXYES', () => {
-      const o = {
+      const q = {
         taxType: 'VAT',
         category: 'DRUG',
         bpTaxType: '!TAXYES'
       };
 
-      expect(salesTax('sa', o)).toEqual(
+      expect(salesTax('sa', q)).toEqual(
         expect.objectContaining({
           result: 0.0
         })
@@ -53,7 +53,7 @@ describe('KSA VAT', () => {
 
   describe('Not DRUG', () => {
     test('TAXYES >5000', () => {
-      const o = {
+      const q = {
         taxType: 'VAT',
         category: '!DRUG',
         bpTaxType: 'TAXYES',
@@ -62,7 +62,7 @@ describe('KSA VAT', () => {
         }
       };
 
-      expect(salesTax('sa', o)).toEqual(
+      expect(salesTax('sa', q)).toEqual(
         expect.objectContaining({
           result: 0.05
         })
@@ -70,7 +70,7 @@ describe('KSA VAT', () => {
     });
 
     test('TAXYES <=5000', () => {
-      const o = {
+      const q = {
         taxType: 'VAT',
         category: '!DRUG',
         bpTaxType: 'TAXYES',
@@ -79,7 +79,7 @@ describe('KSA VAT', () => {
         }
       };
 
-      expect(salesTax('sa', o)).toEqual(
+      expect(salesTax('sa', q)).toEqual(
         expect.objectContaining({
           result: 0.04
         })

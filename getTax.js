@@ -17,7 +17,7 @@ const salesTax = (countryCode, query) => {
   return applyRule(rule, query);
 }
 
-function findRule(rules, query) {
+const findRule = (rules, query) => {
   const columns = db.get('meta.taxRulesColumns').value();
 
   const result = _.reduce(columns, (res, col) => {
@@ -45,8 +45,7 @@ function findRule(rules, query) {
   return result[0];
 }
 
-function applyRule(rule, query) {
-//2012-04-23T18:25:43.511Z
+const applyRule = (rule, query) => {
   if(!!query.vars) {
     _.forEach(query.vars, (v, k) => parser.setVariable(k, v));
   }
@@ -54,4 +53,4 @@ function applyRule(rule, query) {
   return parser.parse(rule.formula);
 }
 
-exports.salesTax = salesTax;
+module.exports = { salesTax, findRule, applyRule };

@@ -9,6 +9,7 @@
   ],
   "taxRules": [
     {
+      "validUntil": "2999-04-23T18:25:43.511Z",
       "countryCode": "mx",
       "taxType": "IVA",
       "formula": "0.16"

@@ -1,7 +1,8 @@
 const _ = require('lodash');
+const moment = require('moment');
 const db = require('./db');
-var FormulaParser = require('hot-formula-parser').Parser;
-var parser = new FormulaParser();
+const FormulaParser = require('hot-formula-parser').Parser;
+const parser = new FormulaParser();
 
 const salesTax = (countryCode, query) => {
   const rules = db.get('taxRules')
@@ -46,6 +47,10 @@ const findRule = (rules, query) => {
 }
 
 const applyRule = (rule, query) => {
+  if(!!rule.validUntil && moment(rule.validUntil) < moment()) {
+    throw new Error(`Rule date invalid: ${JSON.stringify(rule.validUntil)}` );
+  }
+
   if(!!query.vars) {
     _.forEach(query.vars, (v, k) => parser.setVariable(k, v));
   }

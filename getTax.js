@@ -19,9 +19,9 @@ const getTax = (countryCode, query) => {
 }
 
 const findRule = (rules, query) => {
-  const columns = db.get('meta.taxRulesColumns').value();
+  const params = db.get('meta.taxRulesParams').value();
 
-  const result = _.reduce(columns, (res, col) => {
+  const result = _.reduce(params, (res, col) => {
     return _.filter(res, (rule) => {
       if(!!rule[col]) {
         return rule[col] === query[col];

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "taxRulesColumns": [
+    "taxRulesParams": [
       "txType",
       "docType",
       "taxType",

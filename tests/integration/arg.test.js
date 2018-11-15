@@ -5,7 +5,7 @@ describe('Argentina', () => {
     test('>7120', () => {
       const q = {
         txType: "sales",
-        docType: "invoice",
+        docType: "payment",
         category: 'ALQUILERES_RURAL',
         bpTaxType: 'INSCRIPTO',
         vars: {
@@ -15,7 +15,7 @@ describe('Argentina', () => {
 
       expect(getTax('ar', q)).toEqual(
         expect.objectContaining({
-          result: 0.06
+          result: 0
         })
       );
     });
@@ -23,7 +23,7 @@ describe('Argentina', () => {
     test('<=7120', () => {
       const q = {
         txType: "sales",
-        docType: "invoice",
+        docType: "payment",
         category: 'ALQUILERES_RURAL',
         bpTaxType: 'INSCRIPTO',
         vars: {
@@ -33,7 +33,7 @@ describe('Argentina', () => {
 
       expect(getTax('ar', q)).toEqual(
         expect.objectContaining({
-          result: 0
+          result: 150
         })
       );
     });
@@ -43,7 +43,7 @@ describe('Argentina', () => {
     test('>7120', () => {
       const q = {
         txType: "sales",
-        docType: "invoice",
+        docType: "payment",
         category: 'ALQUILERES_RURAL',
         bpTaxType: 'NO_INSCRIPTO',
         vars: {
@@ -53,7 +53,7 @@ describe('Argentina', () => {
 
       expect(getTax('ar', q)).toEqual(
         expect.objectContaining({
-          result: 0.25
+          result: 0
         })
       );
     });
@@ -61,7 +61,7 @@ describe('Argentina', () => {
     test('<=7120', () => {
       const q = {
         txType: "sales",
-        docType: "invoice",
+        docType: "payment",
         category: 'ALQUILERES_RURAL',
         bpTaxType: 'NO_INSCRIPTO',
         vars: {
@@ -71,7 +71,7 @@ describe('Argentina', () => {
 
       expect(getTax('ar', q)).toEqual(
         expect.objectContaining({
-          result: 0
+          result: 150
         })
       );
     });

@@ -85,18 +85,18 @@
     {
       "countryCode": "ar",
       "txType": "sales",
-      "docType": "invoice",
+      "docType": "payment",
       "category": "ALQUILERES_RURAL",
       "bpTaxType": "INSCRIPTO",
-      "formula": "IF(subTotal > 7120, 0.06, 0)"
+      "formula": "IF((subTotal * IF(subTotal > 7120, 0.06, 0)) < 150, 150, 0)"
     },
     {
       "countryCode": "ar",
       "txType": "sales",
-      "docType": "invoice",
+      "docType": "payment",
       "category": "ALQUILERES_RURAL",
       "bpTaxType": "NO_INSCRIPTO",
-      "formula": "IF(subTotal > 7120, 0.25, 0)"
+      "formula": "IF((subTotal * IF(subTotal > 7120, 0.25, 0)) < 150, 150, 0)"
     }
   ]
 }

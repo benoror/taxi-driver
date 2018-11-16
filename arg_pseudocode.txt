@@ -1,0 +1,26 @@
+IF(( (M_Product_Category='ALQUILERES_RURAL' AND C_BPartnerTypeTAX = "Inscripto" ) ) ) {
+
+  IF(M_Product_Total > 10700 ) {
+    ('RetAII', 'Escala');
+    IF( (M_Product_Total * 'RetAII') < 150 )
+      ('C_Tax', 150);
+  } ELSE {
+    ('RetAII', 0.06);
+    IF( (M_Product_Total * 'RetAII') < 150 )
+      ('C_Tax', 150);
+  }
+
+} ELSE IF(( (M_Product_Category='ALQUILERES_RURAL' AND C_BPartnerTypeTAX = “No_Inscripto" ) ) ) {
+
+  IF(M_Product_Total > 10700 ) {
+    ('RetAII', 0.28);
+  } ELSE {
+    ('RetAII', 0.25);
+  }
+
+  IF( (M_Product_Total * 'RetAII') < 150 )
+    ('C_Tax', 150);
+  ELSE
+    ('C_Tax', (M_Product_Total * 'RetAII') );
+
+}

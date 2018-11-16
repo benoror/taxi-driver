@@ -52,7 +52,11 @@ const applyRule = (rule, query) => {
   }
 
   if(!!query.vars) {
-    _.forEach(query.vars, (v, k) => parser.setVariable(k, v));
+    _.forEach(query.vars, (v, k) => parser.setVariable(k, parser.parse(v).result));
+  }
+
+  if(!!rule.vars) {
+    _.forEach(rule.vars, (v, k) => parser.setVariable(k, parser.parse(v).result));
   }
 
   return parser.parse(rule.formula);

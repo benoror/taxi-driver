@@ -40,32 +40,32 @@ describe('Argentina', () => {
   });
 
   describe('No Inscripto', () => {
-    test('>7120', () => {
+    test('>10700', () => {
       const q = {
         txType: "sales",
         docType: "payment",
         category: 'ALQUILERES_RURAL',
         bpTaxType: 'NO_INSCRIPTO',
         vars: {
-          subTotal: 7121
+          subTotal: '10701'
         }
       };
 
       expect(getTax('ar', q)).toEqual(
         expect.objectContaining({
-          result: 0
+          result: 2996.28
         })
       );
     });
 
-    test('<=7120', () => {
+    test('<=10700', () => {
       const q = {
         txType: "sales",
         docType: "payment",
         category: 'ALQUILERES_RURAL',
         bpTaxType: 'NO_INSCRIPTO',
         vars: {
-          subTotal: 7120
+          subTotal: '600'
         }
       };
 

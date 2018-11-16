@@ -96,7 +96,10 @@
       "docType": "payment",
       "category": "ALQUILERES_RURAL",
       "bpTaxType": "NO_INSCRIPTO",
-      "formula": "IF((subTotal * IF(subTotal > 7120, 0.25, 0)) < 150, 150, 0)"
+      "vars": {
+        "retAll": "IF(subTotal > 10700, 0.28, 0.25)"
+      },
+      "formula": "IF((subTotal * retAll) <= 150, 150, (subTotal * retAll))"
     }
   ]
 }

@@ -6,7 +6,8 @@
       "taxType",
       "bpTaxType",
       "category",
-      "area"
+      "area",
+      "region"
     ]
   },
   "countries": [
@@ -45,6 +46,22 @@
       "docType": "invoice",
       "taxType": "RET_ISR",
       "formula": "0.1"
+    },
+    {
+      "countryCode": "mx",
+      "txType": "income",
+      "taxType": "PAYROLL",
+      "category": "NOMINA",
+      "region": "NL",
+      "formula": "0.02"
+    },
+    {
+      "countryCode": "mx",
+      "txType": "income",
+      "taxType": "PAYROLL",
+      "category": "NOMINA",
+      "region": "DF",
+      "formula": "0.03"
     },
     {
       "countryCode": "sa",

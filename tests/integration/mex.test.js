@@ -33,32 +33,66 @@ describe('Mexico', () => {
     });
   });
 
-  test('RET_IVA', () => {
-    const q = {
-      txType: "income",
-      docType: "invoice",
-      taxType: 'RET_IVA'
-    };
+  describe('RET', () => {
+    test('RET_IVA', () => {
+      const q = {
+        txType: "income",
+        docType: "invoice",
+        taxType: 'RET_IVA'
+      };
 
-    expect(getTax('mx', q)).toEqual(
-      expect.objectContaining({
-        result: 0.167
-      })
-    );
+      expect(getTax('mx', q)).toEqual(
+        expect.objectContaining({
+          result: 0.167
+        })
+      );
+    });
+
+    test('RET_ISR', () => {
+      const q = {
+        txType: "income",
+        docType: "invoice",
+        taxType: 'RET_ISR'
+      };
+
+      expect(getTax('mx', q)).toEqual(
+        expect.objectContaining({
+          result: 0.1
+        })
+      );
+    });
   });
 
-  test('RET_ISR', () => {
-    const q = {
-      txType: "income",
-      docType: "invoice",
-      taxType: 'RET_ISR'
-    };
+  describe('PAYROLL', () => {
+    test('N.L.', () => {
+      const q = {
+        txType: "income",
+        taxType: 'PAYROLL',
+        category: 'NOMINA',
+        region: 'NL'
+      };
 
-    expect(getTax('mx', q)).toEqual(
-      expect.objectContaining({
-        result: 0.1
-      })
-    );
+      expect(getTax('mx', q)).toEqual(
+        expect.objectContaining({
+          result: 0.02
+        })
+      );
+    });
+
+    test('D.F.', () => {
+      const q = {
+        txType: "income",
+        taxType: 'PAYROLL',
+        category: 'NOMINA',
+        region: 'DF'
+      };
+
+      expect(getTax('mx', q)).toEqual(
+        expect.objectContaining({
+          result: 0.03
+        })
+      );
+    });
   });
 });
 

@@ -97,9 +97,10 @@
       "category": "ALQUILERES_RURAL",
       "bpTaxType": "NO_INSCRIPTO",
       "vars": {
-        "retAll": "IF(subTotal > 10700, 0.28, 0.25)"
+        "retAll": "IF(subTotal > 10700, 0.28, 0.25)",
+        "taxable": "subTotal * retAll"
       },
-      "formula": "IF((subTotal * retAll) <= 150, 150, (subTotal * retAll))"
+      "formula": "IF(taxable <= 150, 150, taxable)"
     }
   ]
 }

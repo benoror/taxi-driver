@@ -88,7 +88,12 @@
       "docType": "payment",
       "category": "ALQUILERES_RURAL",
       "bpTaxType": "INSCRIPTO",
-      "formula": "IF((subTotal * IF(subTotal > 7120, 0.06, 0)) < 150, 150, 0)"
+      "vars": {
+        "escala": "IF(AND(subTotal>0,subTotal<=5000), 0.05, IF(subTotal<=10000,0.09,IF(subTotal<=15000,0.12,IF(subTotal<=20000,0.15,IF(subTotal<=30000,0.19,IF(subTotal<=40000,0.23,IF(subTotal<=60000,0.27,0.31)))))))",
+        "retAll": "IF(subTotal > 10700, escala, 0.06)",
+        "taxable": "subTotal * retAll"
+      },
+      "formula": "IF(taxable <= 150, 150, taxable)"
     },
     {
       "countryCode": "ar",

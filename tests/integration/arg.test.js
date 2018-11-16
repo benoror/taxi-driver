@@ -2,38 +2,38 @@ const { getTax } = require('../../getTax');
 
 describe('Argentina', () => {
   describe('Inscripto', () => {
-    test('>7120', () => {
+    test('>10700', () => {
       const q = {
         txType: "sales",
         docType: "payment",
         category: 'ALQUILERES_RURAL',
         bpTaxType: 'INSCRIPTO',
         vars: {
-          subTotal: 7121
+          subTotal: '10701'
         }
       };
 
       expect(getTax('ar', q)).toEqual(
         expect.objectContaining({
-          result: 0
+          result: 1284.12
         })
       );
     });
-    getTax
-    test('<=7120', () => {
+
+    test('<=10700', () => {
       const q = {
         txType: "sales",
         docType: "payment",
         category: 'ALQUILERES_RURAL',
         bpTaxType: 'INSCRIPTO',
         vars: {
-          subTotal: 7120
+          subTotal: '10700'
         }
       };
 
       expect(getTax('ar', q)).toEqual(
         expect.objectContaining({
-          result: 150
+          result: 642
         })
       );
     });

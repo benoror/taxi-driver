@@ -10,7 +10,7 @@ describe('KSA VAT', () => {
         category: 'DRUG',
         bpTaxType: 'TAXYES',
         vars: {
-          subTotal: '2001'
+          productTotal: '2001'
         }
       };
 
@@ -29,7 +29,7 @@ describe('KSA VAT', () => {
         category: 'DRUG',
         bpTaxType: 'TAXYES',
         vars: {
-          subTotal: '2000'
+          productTotal: '2000'
         }
       };
 
@@ -66,7 +66,7 @@ describe('KSA VAT', () => {
         category: '!DRUG',
         bpTaxType: 'TAXYES',
         vars: {
-          subTotal: '5001'
+          productTotal: '5001'
         }
       };
 
@@ -85,7 +85,7 @@ describe('KSA VAT', () => {
         category: '!DRUG',
         bpTaxType: 'TAXYES',
         vars: {
-          subTotal: '5000'
+          productTotal: '5000'
         }
       };
 

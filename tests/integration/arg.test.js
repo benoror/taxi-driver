@@ -9,7 +9,7 @@ describe('Argentina', () => {
         category: 'ALQUILERES_RURAL',
         bpTaxType: 'INSCRIPTO',
         vars: {
-          subTotal: '10701'
+          productTotal: '10701'
         }
       };
 
@@ -27,7 +27,7 @@ describe('Argentina', () => {
         category: 'ALQUILERES_RURAL',
         bpTaxType: 'INSCRIPTO',
         vars: {
-          subTotal: '10700'
+          productTotal: '10700'
         }
       };
 
@@ -47,7 +47,7 @@ describe('Argentina', () => {
         category: 'ALQUILERES_RURAL',
         bpTaxType: 'NO_INSCRIPTO',
         vars: {
-          subTotal: '10701'
+          productTotal: '10701'
         }
       };
 
@@ -65,7 +65,7 @@ describe('Argentina', () => {
         category: 'ALQUILERES_RURAL',
         bpTaxType: 'NO_INSCRIPTO',
         vars: {
-          subTotal: '600'
+          productTotal: '600'
         }
       };
 

@@ -6,7 +6,7 @@ describe('Mexico', () => {
       const q = {
         txType: "sales",
         docType: "invoice",
-        taxType: 'IVA'
+        taxName: 'IVA'
       };
 
       expect(getTax('mx', q)).toEqual(
@@ -20,7 +20,7 @@ describe('Mexico', () => {
       const q = {
         txType: "sales",
         docType: "invoice",
-        taxType: 'IVA',
+        taxName: 'IVA',
         category: 'DRUG',
         area: 'PHARMACY'
       };
@@ -38,7 +38,7 @@ describe('Mexico', () => {
       const q = {
         txType: "income",
         docType: "invoice",
-        taxType: 'RET_IVA'
+        taxName: 'RET_IVA'
       };
 
       expect(getTax('mx', q)).toEqual(
@@ -52,7 +52,7 @@ describe('Mexico', () => {
       const q = {
         txType: "income",
         docType: "invoice",
-        taxType: 'RET_ISR'
+        taxName: 'RET_ISR'
       };
 
       expect(getTax('mx', q)).toEqual(
@@ -67,7 +67,7 @@ describe('Mexico', () => {
     test('N.L.', () => {
       const q = {
         txType: "income",
-        taxType: 'PAYROLL',
+        taxName: 'PAYROLL',
         category: 'NOMINA',
         region: 'NL'
       };
@@ -82,7 +82,7 @@ describe('Mexico', () => {
     test('D.F.', () => {
       const q = {
         txType: "income",
-        taxType: 'PAYROLL',
+        taxName: 'PAYROLL',
         category: 'NOMINA',
         region: 'DF'
       };

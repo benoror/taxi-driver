@@ -3,40 +3,79 @@ Taxi Driver - A Flexible International Tax Engine Microservice
 
 Built with [Micro](https://github.com/zeit/micro) & [Lowdb ⚡️](https://github.com/typicode/lowdb)
 
-[![Build Status](https://travis-ci.org/benoror/taxi-driver.svg?branch=master)](https://travis-ci.org/benoror/taxi-driver)
+[![Build Status](https://travis-ci.org/ecaresoft/taxi-driver.svg?branch=master)](https://travis-ci.org/ecaresoft/taxi-driver)
 
 ![taxi driver](https://user-images.githubusercontent.com/119117/48316345-df182200-e5a7-11e8-94ff-bab2f79694f0.jpg)
 
 ## Usage
 
-Postman collection: https://web.postman.co/collections/27932-1280fe65-8858-4d0f-bde4-4c3b79d6b5b3?workspace=61c65267-c247-4243-8558-65eaee551abe
+### Supported Countries
 
-#### `GET /countries`
+- [x] 🇲🇽México
+- [x] 🇦🇷Argentina
+- [x] 🇸🇦Saudi Arabia
 
-#### `GET /rules`
+*Specification tests can be found at [tests/integration](https://github.com/ecaresoft/taxi-driver/tree/master/tests/integration)
 
-#### `POST /getSalesTax`
+### Rules
+
+Rules are defined in a LowDB located at [db.json#L18](https://github.com/ecaresoft/taxi-driver/blob/master/db.json#L18)
+
+`Parameters` (defined at [db.json#L3](https://github.com/ecaresoft/taxi-driver/blob/master/db.json#L3)) are used to "exact match" a rule while querying the app via the API.
+
+### Query
+
+A query includes any number of allowed `parameters`, plus an optional `vars` object.
+
+Example:
 
 ```javascript
 {
   country: "sa",
   query: {
-    taxType: "VAT",
-    bpTaxType: "TAXYES",
-    category: "DRUG",
+    txType: "sales",
+    docType: "invoice",
+    taxName: 'VAT',
+    category: 'DRUG',
+    bpTaxType: 'TAXYES',
     area: undefined,
     vars: {
-      subTotal: 5000
+      productTotal: 5000
     }
   }
 }
 ```
 
+### Matching
+
+The query above will match to the following rule:
+
+```json
+    {
+      "countryCode": "sa",
+      "txType": "sales",
+      "docType": "invoice",
+      "taxName": "VAT",
+      "category": "DRUG",
+      "bpTaxType": "TAXYES",
+      "formula": "IF(productTotal > 2000, 0.02, 0.05)"
+    },
+a
+```
+
+### Formulas & Variables
+
+`vars` object is used both in a query and rules, to store variable dependant values (such as sub-totals), and other formulas to be evaluated.
+
+*Both `vars` and `formula` have to be `String`'s, since are always evaluated using [handsontable/formula-parser](https://github.com/handsontable/formula-parser)
+
 ## GUI
 
-https://github.com/benoror/taxi-driver-ui
+https://github.com/ecaresoft/taxi-driver-ui
 
 ## Development
+
+Easy development using [zeit/micro-dev](https://github.com/zeit/micro-dev):
 
 ```
 yarn run dev
@@ -44,10 +83,32 @@ yarn run dev
 
 ## Tests
 
-Run [Jest](https://jestjs.io/) tests with:
+[Jest](https://jestjs.io/) is used for both [unit](https://github.com/ecaresoft/taxi-driver/tree/master/tests/unit) & [integration](https://github.com/ecaresoft/taxi-driver/tree/master/tests/integration) tests. Run with:
 
 ```
 yarn test
+```
+
+### API
+
+Postman collection: https://web.postman.co/collections/27932-1280fe65-8858-4d0f-bde4-4c3b79d6b5b3?workspace=61c65267-c247-4243-8558-65eaee551abe
+
+#### `GET /countries`
+
+#### `GET /rules`
+
+#### `POST /tax`
+
+Example:
+
+```javascript
+{
+  country: "sa",
+  query: {
+      //...
+    }
+  }
+}
 ```
 
 ## Inspired by

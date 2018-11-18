@@ -21,29 +21,25 @@ const getTax = (countryCode, query) => {
 const findRule = (rules, query) => {
   const params = db.get('meta.taxRulesParams').value();
 
-  const result = _.reduce(params, (res, col) => {
-    return _.filter(res, (rule) => {
-      if(!!rule[col]) {
-        return rule[col] === query[col];
+  const matches = _.reduce(params, (match, param) => {
+    return _.filter(match, (rule) => {
+      if(rule[param] === undefined) {
+        return query[param] === undefined;
       } else {
-        if(!!query[col]) {
-          return false;
-        } else {
-          return rule[col] === query[col];
-        }
+        return query[param] === rule[param];
       }
     });
   }, rules);
 
-  if(_.isEmpty(result)) {
+  if(_.isEmpty(matches)) {
     throw new Error(`No tax rules found for ${JSON.stringify(query)}` );
   }
 
-  if(result.length > 1) {
+  if(matches.length > 1) {
     throw new Error(`More than one rule found for ${JSON.stringify(query)}` );
   }
 
-  return result[0];
+  return matches[0];
 }
 
 const applyRule = (rule, query) => {

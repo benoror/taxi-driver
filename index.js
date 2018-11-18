@@ -3,7 +3,7 @@ const cors = require('micro-cors')();
 const { router, get, post } = require('microrouter');
 
 const db = require('./db');
-const { salesTax } = require('./getTax');
+const { getTax } = require('./getTax');
 
 const home = (req, res) => send(res, 200, 'You talkin\' to me?');
 const countries = (req, res) => send(res, 200, {
@@ -12,16 +12,16 @@ const countries = (req, res) => send(res, 200, {
 const rules = (req, res) => send(res, 200, {
   rules: db.get('taxRules').value()
 });
-const getSalesTax = async (req, res) => {
+const tax = async (req, res) => {
   const payload = await json(req);
 
-  return send(res, 200, salesTax(payload.country, payload.query));
+  return send(res, 200, getTax(payload.country, payload.query));
 };
 
 module.exports = cors(router(
   get('/', home),
   get('/countries', countries),
   get('/rules', rules),
-  post('/getSalesTax', getSalesTax),
+  post('/tax', getTax),
 ));
 

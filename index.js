@@ -22,6 +22,6 @@ module.exports = cors(router(
   get('/', home),
   get('/countries', countries),
   get('/rules', rules),
-  post('/tax', getTax),
+  post('/tax', tax),
 ));
 

@@ -111,6 +111,15 @@ Example:
 }
 ```
 
+Response:
+
+```javascript
+{
+  error: null,
+  result: 0.05
+}
+```
+
 ## Inspired by
 
 - https://github.com/commerceguys/tax

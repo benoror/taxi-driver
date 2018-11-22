@@ -34,7 +34,7 @@ const getRules = (query) => {
     throw new Error(`More than ${query.taxes.length} rule found for ${JSON.stringify(query)}` );
   }
 
-  return taxMatches[0];
+  return taxMatches;
 }
 
 const findByCountry = (rules, country) => {
@@ -60,20 +60,29 @@ const findByTaxes = (rules, taxes) => {
     .value()
 }
 
-const applyRules = (rule, query) => {
-  if(!!rule.validUntil && moment(rule.validUntil) < moment()) {
-    throw new Error(`Rule date invalid: ${JSON.stringify(rule.validUntil)}` );
-  }
+const applyRules = (rules, query) => {
+  return _.map(rules, (rule) => {
+    if(!!rule.validUntil && moment(rule.validUntil) < moment()) {
+      throw new Error(`Rule date invalid: ${JSON.stringify(rule.validUntil)}` );
+    }
 
-  if(!!query.vars) {
-    _.forEach(query.vars, (v, k) => parser.setVariable(k, parser.parse(v).result));
-  }
+    if(!!query.vars) {
+      _.forEach(query.vars, (v, k) => parser.setVariable(k, parser.parse(v).result));
+    }
 
-  if(!!rule.vars) {
-    _.forEach(rule.vars, (v, k) => parser.setVariable(k, parser.parse(v).result));
-  }
+    if(!!rule.vars) {
+      _.forEach(rule.vars, (v, k) => parser.setVariable(k, parser.parse(v).result));
+    }
 
-  return parser.parse(rule.formula);
+    const parseResult = parser.parse(rule.formula);
+
+    return {
+      error: parseResult.error,
+      name: rule.taxName,
+      rate: parseResult.result,
+      factor: parseResult.result,
+    }
+  });
 }
 
 module.exports = { getTaxes, getRules, findByCountry, findByParams, applyRules };

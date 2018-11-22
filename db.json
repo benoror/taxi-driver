@@ -63,6 +63,28 @@
       "formula": "0.03"
     },
     {
+      "country": "mx",
+      "taxName": "IVA",
+      "region": "AGS",
+      "docType": "ARI",
+      "txType": "sales",
+      "bpType": "signed",
+      "area": "PHARMACY",
+      "category": "DRUG",
+      "formula": "0.16"
+    },
+    {
+      "country": "mx",
+      "taxName": "IEPS",
+      "region": "AGS",
+      "docType": "ARI",
+      "txType": "sales",
+      "bpType": "signed",
+      "area": "PHARMACY",
+      "category": "DRUG",
+      "formula": "0.05"
+    },
+    {
       "country": "sa",
       "taxName": "VAT",
       "txType": "sales",

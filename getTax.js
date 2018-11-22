@@ -5,13 +5,13 @@ const FormulaParser = require('hot-formula-parser').Parser;
 const parser = new FormulaParser();
 
 const getTax = (query) => {
-  const rules = rulesByCountry(db.get('taxRules'), query.country);
-  const rule = findRule(rules, query);
+  const rules = findByCountry(db.get('taxRules'), query.country);
+  const rule = matchRule(rules, query);
 
   return applyRule(rule, query);
 }
 
-const rulesByCountry = (allRules, country) => {
+const findByCountry = (allRules, country) => {
   const rules = allRules.filter({ country: _.toLower(country) }).value();
 
   if(_.isEmpty(rules)) {
@@ -21,18 +21,9 @@ const rulesByCountry = (allRules, country) => {
   return rules;
 }
 
-const findRule = (rules, query) => {
+const matchRule = (rules, query) => {
   const params = db.get('meta.taxRulesParams').value();
-
-  const matches = _.reduce(params, (match, param) => {
-    return _.filter(match, (rule) => {
-      if(rule[param] === undefined) {
-        return query[param] === undefined;
-      } else {
-        return _.toLower(query[param]) === _.toLower(rule[param]);
-      }
-    });
-  }, rules);
+  const matches = findByParams(rules, query, params);
 
   if(_.isEmpty(matches)) {
     throw new Error(`No tax rules found for ${JSON.stringify(query)}` );
@@ -43,6 +34,18 @@ const findRule = (rules, query) => {
   }
 
   return matches[0];
+}
+
+const findByParams = (rules, query, params) => {
+  return _.reduce(params, (match, param) => {
+    return _.filter(match, (rule) => {
+      if(rule[param] === undefined) {
+        return query[param] === undefined;
+      } else {
+        return _.toLower(query[param]) === _.toLower(rule[param]);
+      }
+    });
+  }, rules);
 }
 
 const applyRule = (rule, query) => {
@@ -61,4 +64,4 @@ const applyRule = (rule, query) => {
   return parser.parse(rule.formula);
 }
 
-module.exports = { getTax, findRule, applyRule };
+module.exports = { getTax, findByCountry, matchRule, findByParams, applyRule };

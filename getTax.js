@@ -23,17 +23,18 @@ const findByCountry = (allRules, country) => {
 
 const matchRule = (rules, query) => {
   const params = db.get('meta.taxRulesParams').value();
-  const matches = findByParams(rules, query, params);
+  const paramsMatches = findByParams(rules, query, params);
+  const taxMatches = findByTaxes(paramsMatches, query.taxes);
 
-  if(_.isEmpty(matches)) {
+  if(_.isEmpty(taxMatches)) {
     throw new Error(`No tax rules found for ${JSON.stringify(query)}` );
   }
 
-  if(matches.length > 1) {
+  if(taxMatches.length > 1) {
     throw new Error(`More than one rule found for ${JSON.stringify(query)}` );
   }
 
-  return matches[0];
+  return taxMatches[0];
 }
 
 const findByParams = (rules, query, params) => {
@@ -44,6 +45,14 @@ const findByParams = (rules, query, params) => {
       } else {
         return _.toLower(query[param]) === _.toLower(rule[param]);
       }
+    });
+  }, rules);
+}
+
+const findByTaxes = (rules, taxes) => {
+  return _.reduce(taxes, (match, tax) => {
+    return _.filter(match, (rule) => {
+      return _.toLower(rule.taxName) === _.toLower(tax);
     });
   }, rules);
 }

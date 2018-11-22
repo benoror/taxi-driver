@@ -34,13 +34,13 @@ Example:
   country: "sa",
   txType: "sales",
   docType: "invoice",
-  taxName: 'VAT',
   category: 'DRUG',
   bpTaxType: 'TAXYES',
   area: undefined,
   vars: {
     productTotal: 5000
-  }
+  },
+  taxes: ['VAT'],
 }
 ```
 
@@ -65,7 +65,7 @@ a
 
 `vars` object is used both in a query and rules, to store variable dependant values (such as sub-totals), and other formulas to be evaluated.
 
-*Both `vars` and `formula` have to be `String`'s, since are always evaluated using [handsontable/formula-parser](https://github.com/handsontable/formula-parser)
+\*Both `vars` and `formula` have to be `String`'s, since are always evaluated using [handsontable/formula-parser](https://github.com/handsontable/formula-parser)
 
 ## GUI
 
@@ -102,7 +102,11 @@ Example:
 ```javascript
 {
   country: "sa",
-  // ...
+  // ... params
+  vars: {
+    // ...
+  },
+  taxes: [ /* ... */ ]
 }
 ```
 

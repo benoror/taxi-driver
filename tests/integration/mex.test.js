@@ -100,5 +100,33 @@ describe('Mexico', () => {
       );
     });
   });
+
+  describe('Multi Taxes', () => {
+    test('All-in-one', () => {
+      const q = {
+        country: "MX",
+        region: 'AGS',
+        docType: 'ARI',
+        txType: "sales",
+        bpType: "signed",
+        area: 'PHARMACY',
+        category: 'DRUG',
+        taxes: ['IVA', 'IEPS'],
+      };
+
+      expect(getTax(q)).toEqual({
+        error: null,
+        taxes: [{
+          name: 'IVA',
+          rate: 0.16,
+          factor: 0.16
+        }, {
+          name: 'IVA',
+          rate: 0.05,
+          factor: 0.05
+        }]
+      });
+    });
+  });
 });
 

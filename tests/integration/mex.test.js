@@ -4,7 +4,7 @@ describe('Mexico', () => {
   describe('IVA', () => {
     test('Normal', () => {
       const q = {
-        country: "mx",
+        country: "MX",
         txType: "sales",
         docType: "invoice",
         taxName: 'IVA'
@@ -19,7 +19,7 @@ describe('Mexico', () => {
 
     test('Pharmacy Drug', () => {
       const q = {
-        country: "mx",
+        country: "MX",
         txType: "sales",
         docType: "invoice",
         taxName: 'IVA',
@@ -38,7 +38,7 @@ describe('Mexico', () => {
   describe('RET', () => {
     test('RET_IVA', () => {
       const q = {
-        country: "mx",
+        country: "MX",
         txType: "income",
         docType: "invoice",
         taxName: 'RET_IVA'
@@ -53,7 +53,7 @@ describe('Mexico', () => {
 
     test('RET_ISR', () => {
       const q = {
-        country: "mx",
+        country: "MX",
         txType: "income",
         docType: "invoice",
         taxName: 'RET_ISR'
@@ -70,7 +70,7 @@ describe('Mexico', () => {
   describe('PAYROLL', () => {
     test('N.L.', () => {
       const q = {
-        country: "mx",
+        country: "MX",
         txType: "income",
         taxName: 'PAYROLL',
         category: 'NOMINA',
@@ -86,7 +86,7 @@ describe('Mexico', () => {
 
     test('D.F.', () => {
       const q = {
-        country: "mx",
+        country: "MX",
         txType: "income",
         taxName: 'PAYROLL',
         category: 'NOMINA',

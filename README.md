@@ -25,7 +25,7 @@ Rules are defined in a LowDB located at [db.json#L18](https://github.com/ecareso
 
 ### Query
 
-A query includes any number of allowed `parameters`, plus an optional `vars` object.
+A query includes any number of allowed `parameters` (case insensitive), plus an optional `vars` object.
 
 Example:
 

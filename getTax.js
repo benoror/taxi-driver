@@ -12,10 +12,10 @@ const getTax = (query) => {
 }
 
 const rulesByCountry = (allRules, country) => {
-  const rules = allRules.filter({ country }).value();
+  const rules = allRules.filter({ country: _.toLower(country) }).value();
 
   if(_.isEmpty(rules)) {
-    throw new Error(`Tax rules for country ${query.country} not found` );
+    throw new Error(`Tax rules for country ${query.country} not found`);
   }
 
   return rules;
@@ -29,7 +29,7 @@ const findRule = (rules, query) => {
       if(rule[param] === undefined) {
         return query[param] === undefined;
       } else {
-        return query[param] === rule[param];
+        return _.toLower(query[param]) === _.toLower(rule[param]);
       }
     });
   }, rules);

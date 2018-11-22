@@ -7,7 +7,7 @@ describe('Argentina', () => {
         country: "ar",
         txType: "sales",
         docType: "payment",
-        category: 'ALQUILERES_RURAL',
+        category: 'ALQUILERES_rural',
         bpTaxType: 'INSCRIPTO',
         vars: {
           productTotal: '10701'
@@ -26,7 +26,7 @@ describe('Argentina', () => {
         country: "ar",
         txType: "sales",
         docType: "payment",
-        category: 'ALQUILERES_RURAL',
+        category: 'ALQUILERES_rural',
         bpTaxType: 'INSCRIPTO',
         vars: {
           productTotal: '19999'
@@ -45,7 +45,7 @@ describe('Argentina', () => {
         country: "ar",
         txType: "sales",
         docType: "payment",
-        category: 'ALQUILERES_RURAL',
+        category: 'ALQUILERES_rural',
         bpTaxType: 'INSCRIPTO',
         vars: {
           productTotal: '60000'
@@ -64,7 +64,7 @@ describe('Argentina', () => {
         country: "ar",
         txType: "sales",
         docType: "payment",
-        category: 'ALQUILERES_RURAL',
+        category: 'ALQUILERES_rural',
         bpTaxType: 'INSCRIPTO',
         vars: {
           productTotal: '10700'
@@ -85,7 +85,7 @@ describe('Argentina', () => {
         country: "ar",
         txType: "sales",
         docType: "payment",
-        category: 'ALQUILERES_RURAL',
+        category: 'ALQUILERES_rural',
         bpTaxType: 'NO_INSCRIPTO',
         vars: {
           productTotal: '10701'
@@ -104,7 +104,7 @@ describe('Argentina', () => {
         country: "ar",
         txType: "sales",
         docType: "payment",
-        category: 'ALQUILERES_RURAL',
+        category: 'ALQUILERES_rural',
         bpTaxType: 'NO_INSCRIPTO',
         vars: {
           productTotal: '600'

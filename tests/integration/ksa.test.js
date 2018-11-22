@@ -9,7 +9,7 @@ describe('KSA VAT', () => {
         docType: "invoice",
         taxName: 'VAT',
         category: 'DRUG',
-        bpTaxType: 'TAXYES',
+        bpType: 'TAXYES',
         vars: {
           productTotal: '2001'
         }
@@ -29,7 +29,7 @@ describe('KSA VAT', () => {
         docType: "invoice",
         taxName: 'VAT',
         category: 'DRUG',
-        bpTaxType: 'TAXYES',
+        bpType: 'TAXYES',
         vars: {
           productTotal: '2000'
         }
@@ -49,7 +49,7 @@ describe('KSA VAT', () => {
         docType: "invoice",
         taxName: 'VAT',
         category: 'DRUG',
-        bpTaxType: '!TAXYES'
+        bpType: '!TAXYES'
       };
 
       expect(getTax(q)).toEqual(
@@ -68,7 +68,7 @@ describe('KSA VAT', () => {
         docType: "invoice",
         taxName: 'VAT',
         category: '!DRUG',
-        bpTaxType: 'TAXYES',
+        bpType: 'TAXYES',
         vars: {
           productTotal: '5001'
         }
@@ -88,7 +88,7 @@ describe('KSA VAT', () => {
         docType: "invoice",
         taxName: 'VAT',
         category: '!DRUG',
-        bpTaxType: 'TAXYES',
+        bpType: 'TAXYES',
         vars: {
           productTotal: '5000'
         }

@@ -71,10 +71,10 @@ describe('Mexico', () => {
     test('N.L.', () => {
       const q = {
         country: "MX",
+        region: 'NL',
         txType: "income",
         taxName: 'PAYROLL',
-        category: 'NOMINA',
-        region: 'NL'
+        category: 'NOMINA'
       };
 
       expect(getTax(q)).toEqual(
@@ -87,10 +87,10 @@ describe('Mexico', () => {
     test('D.F.', () => {
       const q = {
         country: "MX",
+        region: 'DF',
         txType: "income",
         taxName: 'PAYROLL',
         category: 'NOMINA',
-        region: 'DF'
       };
 
       expect(getTax(q)).toEqual(

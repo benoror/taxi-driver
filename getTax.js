@@ -5,36 +5,40 @@ const FormulaParser = require('hot-formula-parser').Parser;
 const parser = new FormulaParser();
 
 const getTax = (query) => {
-  const rules = findByCountry(db.get('taxRules'), query.country);
-  const rule = matchRule(rules, query);
+  const rule = getRule(query);
 
   return applyRule(rule, query);
 }
 
-const findByCountry = (allRules, country) => {
-  const rules = allRules.filter({ country: _.toLower(country) }).value();
+const getRule = (query) => {
+  const country = query.country;
+  const rules = db.get('taxRules');
+  const params = db.get('meta.taxRulesParams');
+  const countryRules = findByCountry(rules, country);
+  const paramsMatches = findByParams(countryRules, query, params.value());
+  const taxMatches = findByTaxes(paramsMatches, query.taxes);
 
   if(_.isEmpty(rules)) {
     throw new Error(`Tax rules for country ${query.country} not found`);
   }
 
-  return rules;
-}
-
-const matchRule = (rules, query) => {
-  const params = db.get('meta.taxRulesParams').value();
-  const paramsMatches = findByParams(rules, query, params);
-  const taxMatches = findByTaxes(paramsMatches, query.taxes);
-
-  if(_.isEmpty(taxMatches)) {
-    throw new Error(`No tax rules found for ${JSON.stringify(query)}` );
+  if(_.isEmpty(paramsMatches)) {
+    throw new Error(`No tax rules found for params: ${JSON.stringify(query)}` );
   }
 
-  if(taxMatches.length > 1) {
-    throw new Error(`More than one rule found for ${JSON.stringify(query)}` );
+  if(_.isEmpty(taxMatches)) {
+    throw new Error(`No tax rules found for taxes: ${JSON.stringify(query.taxes)}` );
+  }
+
+  if(taxMatches.length > query.taxes.length) {
+    throw new Error(`More than ${query.taxes.length} rule found for ${JSON.stringify(query)}` );
   }
 
   return taxMatches[0];
+}
+
+const findByCountry = (rules, country) => {
+  return rules.filter({ country: _.toLower(country) }).value();
 }
 
 const findByParams = (rules, query, params) => {
@@ -50,11 +54,10 @@ const findByParams = (rules, query, params) => {
 }
 
 const findByTaxes = (rules, taxes) => {
-  return _.reduce(taxes, (match, tax) => {
-    return _.filter(match, (rule) => {
-      return _.toLower(rule.taxName) === _.toLower(tax);
-    });
-  }, rules);
+  return _(rules)
+    .keyBy((rule) => _.toLower(rule.taxName))
+    .at(_.map(taxes, (tax) => _.toLower(tax)))
+    .value()
 }
 
 const applyRule = (rule, query) => {
@@ -73,4 +76,4 @@ const applyRule = (rule, query) => {
   return parser.parse(rule.formula);
 }
 
-module.exports = { getTax, findByCountry, matchRule, findByParams, applyRule };
+module.exports = { getTax, getRule, findByCountry, findByParams, applyRule };

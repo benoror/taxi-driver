@@ -1,4 +1,4 @@
-const { applyRule } = require('../../getTax');
+const { applyRules } = require('../../getTax');
 
 describe('Applying rules', () => {
 
@@ -10,7 +10,7 @@ describe('Applying rules', () => {
     const q = {
       taxType: 'IVA'
     };
-    expect(applyRule(r, q)). toEqual(
+    expect(applyRules(r, q)). toEqual(
       expect.objectContaining({
         result: 1
       })
@@ -24,7 +24,7 @@ describe('Applying rules', () => {
     const q = {
       taxType: 'IVA'
     };
-    expect(() => applyRule(r, q)).toThrowError();
+    expect(() => applyRules(r, q)).toThrowError();
   });
 
 });

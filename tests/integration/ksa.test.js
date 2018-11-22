@@ -1,4 +1,4 @@
-const { getTax } = require('../../getTax');
+const { getTaxes } = require('../../getTax');
 
 describe('KSA VAT', () => {
   describe('DRUG', () => {
@@ -15,7 +15,7 @@ describe('KSA VAT', () => {
         }
       };
 
-      expect(getTax(q)).toEqual(
+      expect(getTaxes(q)).toEqual(
         expect.objectContaining({
           result: 0.02
         })
@@ -35,7 +35,7 @@ describe('KSA VAT', () => {
         }
       };
 
-      expect(getTax(q)).toEqual(
+      expect(getTaxes(q)).toEqual(
         expect.objectContaining({
           result: 0.05
         })
@@ -52,7 +52,7 @@ describe('KSA VAT', () => {
         bpType: '!TAXYES'
       };
 
-      expect(getTax(q)).toEqual(
+      expect(getTaxes(q)).toEqual(
         expect.objectContaining({
           result: 0.0
         })
@@ -74,7 +74,7 @@ describe('KSA VAT', () => {
         }
       };
 
-      expect(getTax(q)).toEqual(
+      expect(getTaxes(q)).toEqual(
         expect.objectContaining({
           result: 0.05
         })
@@ -94,7 +94,7 @@ describe('KSA VAT', () => {
         }
       };
 
-      expect(getTax(q)).toEqual(
+      expect(getTaxes(q)).toEqual(
         expect.objectContaining({
           result: 0.04
         })

@@ -1,4 +1,4 @@
-const { getTax } = require('../../getTax');
+const { getTaxes } = require('../../getTax');
 
 describe('Mexico', () => {
   describe('IVA', () => {
@@ -10,7 +10,7 @@ describe('Mexico', () => {
         taxes: ["IVA"],
       };
 
-      expect(getTax(q)).toEqual(
+      expect(getTaxes(q)).toEqual(
         expect.objectContaining({
           result: 0.16
         })
@@ -27,7 +27,7 @@ describe('Mexico', () => {
         taxes: ["IVA"],
       };
 
-      expect(getTax(q)).toEqual(
+      expect(getTaxes(q)).toEqual(
         expect.objectContaining({
           result: 0
         })
@@ -44,7 +44,7 @@ describe('Mexico', () => {
         taxes: ["RET_IVA"],
       };
 
-      expect(getTax(q)).toEqual(
+      expect(getTaxes(q)).toEqual(
         expect.objectContaining({
           result: 0.167
         })
@@ -59,7 +59,7 @@ describe('Mexico', () => {
         taxes: ["RET_ISR"],
       };
 
-      expect(getTax(q)).toEqual(
+      expect(getTaxes(q)).toEqual(
         expect.objectContaining({
           result: 0.1
         })
@@ -77,7 +77,7 @@ describe('Mexico', () => {
         taxes: ["PAYROLL"],
       };
 
-      expect(getTax(q)).toEqual(
+      expect(getTaxes(q)).toEqual(
         expect.objectContaining({
           result: 0.02
         })
@@ -93,7 +93,7 @@ describe('Mexico', () => {
         taxes: ["PAYROLL"],
       };
 
-      expect(getTax(q)).toEqual(
+      expect(getTaxes(q)).toEqual(
         expect.objectContaining({
           result: 0.03
         })
@@ -114,7 +114,7 @@ describe('Mexico', () => {
         taxes: ['IVA', 'IEPS'],
       };
 
-      expect(getTax(q)).toEqual({
+      expect(getTaxes(q)).toEqual({
         error: null,
         taxes: [{
           name: 'IVA',

@@ -1,8 +1,8 @@
-const { getTax } = require('../../getTax');
+const { getTaxes } = require('../../getTax');
 
 describe('Validations', () => {
   test('No country for old men', () => {
-    expect(() => getTax('neverland', {})).toThrowError();
+    expect(() => getTaxes('neverland', {})).toThrowError();
   });
 
   test('Not specific tax rules', () => {
@@ -11,7 +11,7 @@ describe('Validations', () => {
       category: 'ALCOHOL'
     };
 
-    expect(() => getTax('mx', q)).toThrowError();
+    expect(() => getTaxes('mx', q)).toThrowError();
   });
 
   test('Double deathmatch', () => {
@@ -19,6 +19,6 @@ describe('Validations', () => {
       taxType: 'VAT'
     };
 
-    expect(() => getTax('sa', q)).toThrowError();
+    expect(() => getTaxes('sa', q)).toThrowError();
   });
 });

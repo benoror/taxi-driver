@@ -4,13 +4,13 @@ const db = require('./db');
 const FormulaParser = require('hot-formula-parser').Parser;
 const parser = new FormulaParser();
 
-const getTax = (query) => {
-  const rule = getRule(query);
+const getTaxes = (query) => {
+  const rules = getRules(query);
 
-  return applyRule(rule, query);
+  return applyRules(rules, query);
 }
 
-const getRule = (query) => {
+const getRules = (query) => {
   const country = query.country;
   const rules = db.get('taxRules');
   const params = db.get('meta.taxRulesParams');
@@ -60,7 +60,7 @@ const findByTaxes = (rules, taxes) => {
     .value()
 }
 
-const applyRule = (rule, query) => {
+const applyRules = (rule, query) => {
   if(!!rule.validUntil && moment(rule.validUntil) < moment()) {
     throw new Error(`Rule date invalid: ${JSON.stringify(rule.validUntil)}` );
   }
@@ -76,4 +76,4 @@ const applyRule = (rule, query) => {
   return parser.parse(rule.formula);
 }
 
-module.exports = { getTax, getRule, findByCountry, findByParams, applyRule };
+module.exports = { getTaxes, getRules, findByCountry, findByParams, applyRules };

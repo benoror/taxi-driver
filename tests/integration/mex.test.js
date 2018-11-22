@@ -7,7 +7,7 @@ describe('Mexico', () => {
         country: "MX",
         txType: "sales",
         docType: "invoice",
-        taxName: 'IVA'
+        taxes: ["IVA"],
       };
 
       expect(getTax(q)).toEqual(
@@ -22,9 +22,9 @@ describe('Mexico', () => {
         country: "MX",
         txType: "sales",
         docType: "invoice",
-        taxName: 'IVA',
         category: 'DRUG',
-        area: 'PHARMACY'
+        area: 'PHARMACY',
+        taxes: ["IVA"],
       };
 
       expect(getTax(q)).toEqual(
@@ -41,7 +41,7 @@ describe('Mexico', () => {
         country: "MX",
         txType: "income",
         docType: "invoice",
-        taxName: 'RET_IVA'
+        taxes: ["RET_IVA"],
       };
 
       expect(getTax(q)).toEqual(
@@ -56,7 +56,7 @@ describe('Mexico', () => {
         country: "MX",
         txType: "income",
         docType: "invoice",
-        taxName: 'RET_ISR'
+        taxes: ["RET_ISR"],
       };
 
       expect(getTax(q)).toEqual(
@@ -73,8 +73,8 @@ describe('Mexico', () => {
         country: "MX",
         region: 'NL',
         txType: "income",
-        taxName: 'PAYROLL',
-        category: 'NOMINA'
+        category: 'NOMINA',
+        taxes: ["PAYROLL"],
       };
 
       expect(getTax(q)).toEqual(
@@ -89,8 +89,8 @@ describe('Mexico', () => {
         country: "MX",
         region: 'DF',
         txType: "income",
-        taxName: 'PAYROLL',
         category: 'NOMINA',
+        taxes: ["PAYROLL"],
       };
 
       expect(getTax(q)).toEqual(

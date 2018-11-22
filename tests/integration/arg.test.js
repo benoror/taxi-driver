@@ -11,7 +11,8 @@ describe('Argentina', () => {
         bpType: 'INSCRIPTO',
         vars: {
           productTotal: '10701'
-        }
+        },
+        taxes: ["IVA"],
       };
 
       expect(getTax(q)).toEqual(
@@ -30,7 +31,8 @@ describe('Argentina', () => {
         bpType: 'INSCRIPTO',
         vars: {
           productTotal: '19999'
-        }
+        },
+        taxes: ["IVA"],
       };
 
       expect(getTax(q)).toEqual(
@@ -49,7 +51,8 @@ describe('Argentina', () => {
         bpType: 'INSCRIPTO',
         vars: {
           productTotal: '60000'
-        }
+        },
+        taxes: ["IVA"],
       };
 
       expect(getTax(q)).toEqual(
@@ -68,7 +71,8 @@ describe('Argentina', () => {
         bpType: 'INSCRIPTO',
         vars: {
           productTotal: '10700'
-        }
+        },
+        taxes: ["IVA"],
       };
 
       expect(getTax(q)).toEqual(
@@ -89,7 +93,8 @@ describe('Argentina', () => {
         bpType: 'NO_INSCRIPTO',
         vars: {
           productTotal: '10701'
-        }
+        },
+        taxes: ["IVA"],
       };
 
       expect(getTax(q)).toEqual(
@@ -108,7 +113,8 @@ describe('Argentina', () => {
         bpType: 'NO_INSCRIPTO',
         vars: {
           productTotal: '600'
-        }
+        },
+        taxes: ["IVA"],
       };
 
       expect(getTax(q)).toEqual(

@@ -17,7 +17,7 @@
   ],
   "taxRules": [
     {
-      "countryCode": "mx",
+      "country": "mx",
       "validUntil": "2999-04-23T18:25:43.511Z",
       "txType": "sales",
       "docType": "invoice",
@@ -25,7 +25,7 @@
       "formula": "0.16"
     },
     {
-      "countryCode": "mx",
+      "country": "mx",
       "txType": "sales",
       "docType": "invoice",
       "taxName": "IVA",
@@ -34,21 +34,21 @@
       "formula": "0.0"
     },
     {
-      "countryCode": "mx",
+      "country": "mx",
       "txType": "income",
       "docType": "invoice",
       "taxName": "RET_IVA",
       "formula": "0.167"
     },
     {
-      "countryCode": "mx",
+      "country": "mx",
       "txType": "income",
       "docType": "invoice",
       "taxName": "RET_ISR",
       "formula": "0.1"
     },
     {
-      "countryCode": "mx",
+      "country": "mx",
       "txType": "income",
       "taxName": "PAYROLL",
       "category": "NOMINA",
@@ -56,7 +56,7 @@
       "formula": "0.02"
     },
     {
-      "countryCode": "mx",
+      "country": "mx",
       "txType": "income",
       "taxName": "PAYROLL",
       "category": "NOMINA",
@@ -64,7 +64,7 @@
       "formula": "0.03"
     },
     {
-      "countryCode": "sa",
+      "country": "sa",
       "txType": "sales",
       "docType": "invoice",
       "taxName": "VAT",
@@ -73,7 +73,7 @@
       "formula": "IF(productTotal > 2000, 0.02, 0.05)"
     },
     {
-      "countryCode": "sa",
+      "country": "sa",
       "txType": "sales",
       "docType": "invoice",
       "taxName": "VAT",
@@ -82,7 +82,7 @@
       "formula": "0"
     },
     {
-      "countryCode": "sa",
+      "country": "sa",
       "txType": "sales",
       "docType": "invoice",
       "taxName": "VAT",
@@ -91,7 +91,7 @@
       "formula": "IF(productTotal > 5000, 0.05, 0.04)"
     },
     {
-      "countryCode": "sa",
+      "country": "sa",
       "txType": "sales",
       "docType": "invoice",
       "taxName": "VAT",
@@ -100,7 +100,7 @@
       "formula": "0"
     },
     {
-      "countryCode": "ar",
+      "country": "ar",
       "txType": "sales",
       "docType": "payment",
       "category": "ALQUILERES_RURAL",
@@ -113,7 +113,7 @@
       "formula": "IF(taxable <= 150, 150, taxable)"
     },
     {
-      "countryCode": "ar",
+      "country": "ar",
       "txType": "sales",
       "docType": "payment",
       "category": "ALQUILERES_RURAL",

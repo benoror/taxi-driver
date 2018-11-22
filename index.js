@@ -13,9 +13,9 @@ const rules = (req, res) => send(res, 200, {
   rules: db.get('taxRules').value()
 });
 const tax = async (req, res) => {
-  const payload = await json(req);
+  const query = await json(req);
 
-  return send(res, 200, getTax(payload.country, payload.query));
+  return send(res, 200, getTax(query));
 };
 
 module.exports = cors(router(

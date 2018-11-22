@@ -4,6 +4,7 @@ describe('KSA VAT', () => {
   describe('DRUG', () => {
     test('TAXYES >2000', () => {
       const q = {
+        country: "sa",
         txType: "sales",
         docType: "invoice",
         taxName: 'VAT',
@@ -14,7 +15,7 @@ describe('KSA VAT', () => {
         }
       };
 
-      expect(getTax('sa', q)).toEqual(
+      expect(getTax(q)).toEqual(
         expect.objectContaining({
           result: 0.02
         })
@@ -23,6 +24,7 @@ describe('KSA VAT', () => {
 
     test('TAXYES <=2000', () => {
       const q = {
+        country: "sa",
         txType: "sales",
         docType: "invoice",
         taxName: 'VAT',
@@ -33,7 +35,7 @@ describe('KSA VAT', () => {
         }
       };
 
-      expect(getTax('sa', q)).toEqual(
+      expect(getTax(q)).toEqual(
         expect.objectContaining({
           result: 0.05
         })
@@ -42,6 +44,7 @@ describe('KSA VAT', () => {
 
     test('!TAXYES', () => {
       const q = {
+        country: "sa",
         txType: "sales",
         docType: "invoice",
         taxName: 'VAT',
@@ -49,7 +52,7 @@ describe('KSA VAT', () => {
         bpTaxType: '!TAXYES'
       };
 
-      expect(getTax('sa', q)).toEqual(
+      expect(getTax(q)).toEqual(
         expect.objectContaining({
           result: 0.0
         })
@@ -60,6 +63,7 @@ describe('KSA VAT', () => {
   describe('Not DRUG', () => {
     test('TAXYES >5000', () => {
       const q = {
+        country: "sa",
         txType: "sales",
         docType: "invoice",
         taxName: 'VAT',
@@ -70,7 +74,7 @@ describe('KSA VAT', () => {
         }
       };
 
-      expect(getTax('sa', q)).toEqual(
+      expect(getTax(q)).toEqual(
         expect.objectContaining({
           result: 0.05
         })
@@ -79,6 +83,7 @@ describe('KSA VAT', () => {
 
     test('TAXYES <=5000', () => {
       const q = {
+        country: "sa",
         txType: "sales",
         docType: "invoice",
         taxName: 'VAT',
@@ -89,7 +94,7 @@ describe('KSA VAT', () => {
         }
       };
 
-      expect(getTax('sa', q)).toEqual(
+      expect(getTax(q)).toEqual(
         expect.objectContaining({
           result: 0.04
         })

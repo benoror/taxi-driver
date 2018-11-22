@@ -15,7 +15,7 @@ Built with [Micro](https://github.com/zeit/micro) & [Lowdb ⚡️](https://githu
 - [x] 🇦🇷Argentina
 - [x] 🇸🇦Saudi Arabia
 
-*Specification tests can be found at [tests/integration](https://github.com/ecaresoft/taxi-driver/tree/master/tests/integration)
+\*Specification tests can be found at [tests/integration](https://github.com/ecaresoft/taxi-driver/tree/master/tests/integration)
 
 ### Rules
 
@@ -32,16 +32,14 @@ Example:
 ```javascript
 {
   country: "sa",
-  query: {
-    txType: "sales",
-    docType: "invoice",
-    taxName: 'VAT',
-    category: 'DRUG',
-    bpTaxType: 'TAXYES',
-    area: undefined,
-    vars: {
-      productTotal: 5000
-    }
+  txType: "sales",
+  docType: "invoice",
+  taxName: 'VAT',
+  category: 'DRUG',
+  bpTaxType: 'TAXYES',
+  area: undefined,
+  vars: {
+    productTotal: 5000
   }
 }
 ```
@@ -104,10 +102,7 @@ Example:
 ```javascript
 {
   country: "sa",
-  query: {
-      //...
-    }
-  }
+  // ...
 }
 ```
 

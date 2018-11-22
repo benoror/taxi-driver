@@ -4,12 +4,13 @@ describe('Mexico', () => {
   describe('IVA', () => {
     test('Normal', () => {
       const q = {
+        country: "mx",
         txType: "sales",
         docType: "invoice",
         taxName: 'IVA'
       };
 
-      expect(getTax('mx', q)).toEqual(
+      expect(getTax(q)).toEqual(
         expect.objectContaining({
           result: 0.16
         })
@@ -18,6 +19,7 @@ describe('Mexico', () => {
 
     test('Pharmacy Drug', () => {
       const q = {
+        country: "mx",
         txType: "sales",
         docType: "invoice",
         taxName: 'IVA',
@@ -25,7 +27,7 @@ describe('Mexico', () => {
         area: 'PHARMACY'
       };
 
-      expect(getTax('mx', q)).toEqual(
+      expect(getTax(q)).toEqual(
         expect.objectContaining({
           result: 0
         })
@@ -36,12 +38,13 @@ describe('Mexico', () => {
   describe('RET', () => {
     test('RET_IVA', () => {
       const q = {
+        country: "mx",
         txType: "income",
         docType: "invoice",
         taxName: 'RET_IVA'
       };
 
-      expect(getTax('mx', q)).toEqual(
+      expect(getTax(q)).toEqual(
         expect.objectContaining({
           result: 0.167
         })
@@ -50,12 +53,13 @@ describe('Mexico', () => {
 
     test('RET_ISR', () => {
       const q = {
+        country: "mx",
         txType: "income",
         docType: "invoice",
         taxName: 'RET_ISR'
       };
 
-      expect(getTax('mx', q)).toEqual(
+      expect(getTax(q)).toEqual(
         expect.objectContaining({
           result: 0.1
         })
@@ -66,13 +70,14 @@ describe('Mexico', () => {
   describe('PAYROLL', () => {
     test('N.L.', () => {
       const q = {
+        country: "mx",
         txType: "income",
         taxName: 'PAYROLL',
         category: 'NOMINA',
         region: 'NL'
       };
 
-      expect(getTax('mx', q)).toEqual(
+      expect(getTax(q)).toEqual(
         expect.objectContaining({
           result: 0.02
         })
@@ -81,13 +86,14 @@ describe('Mexico', () => {
 
     test('D.F.', () => {
       const q = {
+        country: "mx",
         txType: "income",
         taxName: 'PAYROLL',
         category: 'NOMINA',
         region: 'DF'
       };
 
-      expect(getTax('mx', q)).toEqual(
+      expect(getTax(q)).toEqual(
         expect.objectContaining({
           result: 0.03
         })

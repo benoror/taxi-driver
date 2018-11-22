@@ -4,18 +4,21 @@ const db = require('./db');
 const FormulaParser = require('hot-formula-parser').Parser;
 const parser = new FormulaParser();
 
-const getTax = (countryCode, query) => {
-  const rules = db.get('taxRules')
-                  .filter({ countryCode })
-                  .value();
-
-  if(_.isEmpty(rules)) {
-    throw new Error(`Tax rules for country ${countryCode} not found` );
-  }
-
+const getTax = (query) => {
+  const rules = rulesByCountry(db.get('taxRules'), query.country);
   const rule = findRule(rules, query);
 
   return applyRule(rule, query);
+}
+
+const rulesByCountry = (allRules, country) => {
+  const rules = allRules.filter({ country }).value();
+
+  if(_.isEmpty(rules)) {
+    throw new Error(`Tax rules for country ${query.country} not found` );
+  }
+
+  return rules;
 }
 
 const findRule = (rules, query) => {

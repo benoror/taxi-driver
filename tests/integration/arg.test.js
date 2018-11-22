@@ -4,6 +4,7 @@ describe('Argentina', () => {
   describe('Inscripto', () => {
     test('>10700 <=15000', () => {
       const q = {
+        country: "ar",
         txType: "sales",
         docType: "payment",
         category: 'ALQUILERES_RURAL',
@@ -13,7 +14,7 @@ describe('Argentina', () => {
         }
       };
 
-      expect(getTax('ar', q)).toEqual(
+      expect(getTax(q)).toEqual(
         expect.objectContaining({
           result: 10701*0.12 // 1284.12
         })
@@ -22,6 +23,7 @@ describe('Argentina', () => {
 
     test('>15000 <=20000', () => {
       const q = {
+        country: "ar",
         txType: "sales",
         docType: "payment",
         category: 'ALQUILERES_RURAL',
@@ -31,7 +33,7 @@ describe('Argentina', () => {
         }
       };
 
-      expect(getTax('ar', q)).toEqual(
+      expect(getTax(q)).toEqual(
         expect.objectContaining({
           result: 19999*0.15 // 2,999.85
         })
@@ -40,6 +42,7 @@ describe('Argentina', () => {
 
     test('>40000 <=60000', () => {
       const q = {
+        country: "ar",
         txType: "sales",
         docType: "payment",
         category: 'ALQUILERES_RURAL',
@@ -49,7 +52,7 @@ describe('Argentina', () => {
         }
       };
 
-      expect(getTax('ar', q)).toEqual(
+      expect(getTax(q)).toEqual(
         expect.objectContaining({
           result: 60000*0.27 // 16,200
         })
@@ -58,6 +61,7 @@ describe('Argentina', () => {
 
     test('<=10700', () => {
       const q = {
+        country: "ar",
         txType: "sales",
         docType: "payment",
         category: 'ALQUILERES_RURAL',
@@ -67,7 +71,7 @@ describe('Argentina', () => {
         }
       };
 
-      expect(getTax('ar', q)).toEqual(
+      expect(getTax(q)).toEqual(
         expect.objectContaining({
           result: 10700*0.06 // 642
         })
@@ -78,6 +82,7 @@ describe('Argentina', () => {
   describe('No Inscripto', () => {
     test('>10700', () => {
       const q = {
+        country: "ar",
         txType: "sales",
         docType: "payment",
         category: 'ALQUILERES_RURAL',
@@ -87,7 +92,7 @@ describe('Argentina', () => {
         }
       };
 
-      expect(getTax('ar', q)).toEqual(
+      expect(getTax(q)).toEqual(
         expect.objectContaining({
           result: 10701*0.28 // 2996.28
         })
@@ -96,6 +101,7 @@ describe('Argentina', () => {
 
     test('<=10700', () => {
       const q = {
+        country: "ar",
         txType: "sales",
         docType: "payment",
         category: 'ALQUILERES_RURAL',
@@ -105,7 +111,7 @@ describe('Argentina', () => {
         }
       };
 
-      expect(getTax('ar', q)).toEqual(
+      expect(getTax(q)).toEqual(
         expect.objectContaining({
           result: 150
         })

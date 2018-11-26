@@ -54,10 +54,11 @@ const findByParams = (rules, query, params) => {
 }
 
 const findByTaxes = (rules, taxes) => {
-  return _(rules)
-    .keyBy((rule) => _.toLower(rule.taxName))
-    .at(_.map(taxes, (tax) => _.toLower(tax)))
-    .value()
+  return _.filter(rules, (rule) => {
+    return _.reduce(taxes, (contains, tax) => {
+      return _.toLower(rule.taxName) === _.toLower(tax) ? true : contains;
+    }, false);
+  });
 }
 
 const applyRules = (rules, query) => {

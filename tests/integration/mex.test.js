@@ -7,7 +7,7 @@ describe('Mexico', () => {
         country: "MX",
         txType: "sales",
         docType: "invoice",
-        taxes: ["IVA"],
+        taxes: [{ name: "IVA" }],
       };
 
       expect(getTaxes(q)).toEqual([{
@@ -25,7 +25,7 @@ describe('Mexico', () => {
         docType: "invoice",
         category: 'DRUG',
         area: 'PHARMACY',
-        taxes: ["IVA"],
+        taxes: [{ name: "IVA" }],
       };
 
       expect(getTaxes(q)).toEqual([{
@@ -43,7 +43,7 @@ describe('Mexico', () => {
         country: "MX",
         txType: "income",
         docType: "invoice",
-        taxes: ["RET_IVA"],
+        taxes: [{ name: "RET_IVA" }],
       };
 
       expect(getTaxes(q)).toEqual([{
@@ -59,7 +59,7 @@ describe('Mexico', () => {
         country: "MX",
         txType: "income",
         docType: "invoice",
-        taxes: ["RET_ISR"],
+        taxes: [{ name: "RET_ISR" }],
       };
 
       expect(getTaxes(q)).toEqual([{
@@ -78,7 +78,7 @@ describe('Mexico', () => {
         region: 'NL',
         txType: "income",
         category: 'NOMINA',
-        taxes: ["PAYROLL"],
+        taxes: [{ name: "PAYROLL" }],
       };
 
       expect(getTaxes(q)).toEqual([{
@@ -95,7 +95,7 @@ describe('Mexico', () => {
         region: 'DF',
         txType: "income",
         category: 'NOMINA',
-        taxes: ["PAYROLL"],
+        taxes: [{ name: "PAYROLL" }],
       };
 
       expect(getTaxes(q)).toEqual([{
@@ -108,7 +108,7 @@ describe('Mexico', () => {
   });
 
   describe('Multi Taxes', () => {
-    test('All-in-one', () => {
+    test('With dependant whitholding (RET_ISR)', () => {
       const q = {
         country: "MX",
         region: 'AGS',
@@ -117,7 +117,44 @@ describe('Mexico', () => {
         bpType: "signed",
         area: 'PHARMACY',
         category: 'DRUG',
-        taxes: ['IVA', 'IEPS'],
+        taxes: [
+          { name: 'IVA' },
+          { name: 'ISR' },
+          { name: 'RET_ISR', dep: 'IVA' },
+        ],
+      };
+
+      expect(getTaxes(q)).toEqual([{
+          error: null,
+          name: 'IVA',
+          rate: 0.16,
+          factor: 0.16
+        }, {
+          error: null,
+          name: 'ISR',
+          rate: 0.10,
+          factor: 0.10
+        }, {
+          error: null,
+          name: 'RET_ISR',
+          rate: 0.05,
+          factor: 0.008
+        }]);
+    });
+
+    test('Based on vars (IEPS)', () => {
+      const q = {
+        country: "MX",
+        region: 'AGS',
+        docType: 'ARI',
+        txType: "sales",
+        bpType: "signed",
+        area: 'PHARMACY',
+        category: 'DRUG',
+        taxes: [
+          { name: 'IVA' },
+          { name: 'IEPS' },
+        ],
       };
 
       expect(getTaxes(q)).toEqual([{

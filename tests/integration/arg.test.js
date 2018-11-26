@@ -12,7 +12,7 @@ describe('Argentina', () => {
         vars: {
           productTotal: '10701'
         },
-        taxes: ["IVA"],
+        taxes: [{ name: "IVA" }],
       };
 
       expect(getTaxes(q)).toEqual([{
@@ -33,7 +33,7 @@ describe('Argentina', () => {
         vars: {
           productTotal: '19999'
         },
-        taxes: ["IVA"],
+        taxes: [{ name: "IVA" }],
       };
 
       expect(getTaxes(q)).toEqual([{
@@ -54,7 +54,7 @@ describe('Argentina', () => {
         vars: {
           productTotal: '60000'
         },
-        taxes: ["IVA"],
+        taxes: [{ name: "IVA" }],
       };
 
       expect(getTaxes(q)).toEqual([{
@@ -75,7 +75,7 @@ describe('Argentina', () => {
         vars: {
           productTotal: '10700'
         },
-        taxes: ["IVA"],
+        taxes: [{ name: "IVA" }],
       };
 
       expect(getTaxes(q)).toEqual([{
@@ -98,7 +98,7 @@ describe('Argentina', () => {
         vars: {
           productTotal: '10701'
         },
-        taxes: ["IVA"],
+        taxes: [{ name: "IVA" }],
       };
 
       expect(getTaxes(q)).toEqual([{
@@ -119,7 +119,7 @@ describe('Argentina', () => {
         vars: {
           productTotal: '600'
         },
-        taxes: ["IVA"],
+        taxes: [{ name: "IVA" }],
       };
 
       expect(getTaxes(q)).toEqual([{

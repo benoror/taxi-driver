@@ -5,14 +5,15 @@ describe('Applying rules', () => {
   test('Valid date', () => {
     const r = [{
       "validUntil": "2999-04-23T18:25:43.511Z",
-      "formula": "1"
+      "formula": "1",
+      "taxName": "IVA"
     }];
     const q = {
-      taxType: 'IVA'
+      taxes: [{ name: 'IVA' }]
     };
     expect(applyRules(r, q)). toEqual([{
       error: null,
-      factor: 1,
+      name: 'IVA',
       rate: 1,
     }]);
   });

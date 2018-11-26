@@ -6,8 +6,9 @@ const parser = new FormulaParser();
 
 const getTaxes = (query) => {
   const rules = getRules(query);
+  const results = applyRules(rules, query);
 
-  return applyRules(rules, query);
+  return calculateFactors(results, query);
 }
 
 const getRules = (query) => {
@@ -56,7 +57,7 @@ const findByParams = (rules, query, params) => {
 const findByTaxes = (rules, taxes) => {
   return _.filter(rules, (rule) => {
     return _.reduce(taxes, (contains, tax) => {
-      return _.toLower(rule.taxName) === _.toLower(tax) ? true : contains;
+      return _.toLower(rule.taxName) === _.toLower(tax.name) ? true : contains;
     }, false);
   });
 }
@@ -81,8 +82,20 @@ const applyRules = (rules, query) => {
       error: parseResult.error,
       name: rule.taxName,
       rate: parseResult.result,
-      factor: parseResult.result,
     }
+  });
+}
+
+const calculateFactors = (results, query) => {
+  return _.map(results, (result) => {
+    let factor = result.rate;
+    const tax = _.find(query.taxes, { name: result.name });
+
+    if(!!tax.dep) {
+      factor *= _.find(results, { name: tax.dep }).rate;
+    }
+
+    return { ...result, factor };
   });
 }
 

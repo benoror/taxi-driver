@@ -75,6 +75,28 @@
     },
     {
       "country": "mx",
+      "taxName": "ISR",
+      "region": "AGS",
+      "docType": "ARI",
+      "txType": "sales",
+      "bpType": "signed",
+      "area": "PHARMACY",
+      "category": "DRUG",
+      "formula": "0.10"
+    },
+    {
+      "country": "mx",
+      "taxName": "RET_ISR",
+      "region": "AGS",
+      "docType": "ARI",
+      "txType": "sales",
+      "bpType": "signed",
+      "area": "PHARMACY",
+      "category": "DRUG",
+      "formula": "0.05"
+    },
+    {
+      "country": "mx",
       "taxName": "IEPS",
       "region": "AGS",
       "docType": "ARI",

@@ -10,12 +10,14 @@ describe('Mexico', () => {
         taxes: [{ name: "IVA" }],
       };
 
-      expect(getTaxes(q)).toEqual([{
-        error: null,
-        name: "IVA",
-        rate: 0.16,
-        factor: 0.16,
-      }]);
+      expect(getTaxes(q)).toEqual({
+        taxes: [{
+          error: null,
+          name: "IVA",
+          rate: 0.16,
+          factor: 0.16,
+        }]
+      });
     });
 
     test('Pharmacy Drug', () => {
@@ -28,12 +30,14 @@ describe('Mexico', () => {
         taxes: [{ name: "IVA" }],
       };
 
-      expect(getTaxes(q)).toEqual([{
-        error: null,
-        name: "IVA",
-        rate: 0,
-        factor: 0,
-      }]);
+      expect(getTaxes(q)).toEqual({
+        taxes: [{
+          error: null,
+          name: "IVA",
+          rate: 0,
+          factor: 0,
+        }]
+      });
     });
   });
 
@@ -46,12 +50,14 @@ describe('Mexico', () => {
         taxes: [{ name: "RET_IVA" }],
       };
 
-      expect(getTaxes(q)).toEqual([{
-        error: null,
-        name: "RET_IVA",
-        rate: 0.167,
-        factor: 0.167,
-      }]);
+      expect(getTaxes(q)).toEqual({
+        taxes: [{
+          error: null,
+          name: "RET_IVA",
+          rate: 0.167,
+          factor: 0.167,
+        }]
+      });
     });
 
     test('RET_ISR', () => {
@@ -62,12 +68,14 @@ describe('Mexico', () => {
         taxes: [{ name: "RET_ISR" }],
       };
 
-      expect(getTaxes(q)).toEqual([{
-        error: null,
-        name: "RET_ISR",
-        rate: 0.1,
-        factor: 0.1,
-      }]);
+      expect(getTaxes(q)).toEqual({
+        taxes: [{
+          error: null,
+          name: "RET_ISR",
+          rate: 0.1,
+          factor: 0.1,
+        }]
+      });
     });
   });
 
@@ -81,12 +89,14 @@ describe('Mexico', () => {
         taxes: [{ name: "PAYROLL" }],
       };
 
-      expect(getTaxes(q)).toEqual([{
-        error: null,
-        name: "PAYROLL",
-        rate: 0.02,
-        factor: 0.02,
-      }]);
+      expect(getTaxes(q)).toEqual({
+        taxes: [{
+          error: null,
+          name: "PAYROLL",
+          rate: 0.02,
+          factor: 0.02,
+        }]
+      });
     });
 
     test('D.F.', () => {
@@ -98,12 +108,14 @@ describe('Mexico', () => {
         taxes: [{ name: "PAYROLL" }],
       };
 
-      expect(getTaxes(q)).toEqual([{
-        error: null,
-        name: "PAYROLL",
-        rate: 0.03,
-        factor: 0.03,
-      }]);
+      expect(getTaxes(q)).toEqual({
+        taxes: [{
+          error: null,
+          name: "PAYROLL",
+          rate: 0.03,
+          factor: 0.03,
+        }]
+      });
     });
   });
 
@@ -127,7 +139,8 @@ describe('Mexico', () => {
         ],
       };
 
-      expect(getTaxes(q)).toEqual([{
+      expect(getTaxes(q)).toEqual({
+        taxes: [{
           error: null,
           name: 'IVA',
           rate: 0.16,
@@ -145,7 +158,8 @@ describe('Mexico', () => {
           rate: 0.05,
           factor: 0.008,
           amount: 8,
-        }]);
+        }]
+      });
     });
 
     test.skip('Based on vars (IEPS)', () => {
@@ -163,7 +177,8 @@ describe('Mexico', () => {
         ],
       };
 
-      expect(getTaxes(q)).toEqual([{
+      expect(getTaxes(q)).toEqual({
+        taxes: [{
           error: null,
           name: 'IVA',
           rate: 0.16,
@@ -173,7 +188,8 @@ describe('Mexico', () => {
           name: 'IEPS',
           rate: 0.05,
           factor: 0.05
-        }]);
+        }]
+      });
     });
   });
 });

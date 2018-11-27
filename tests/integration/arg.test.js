@@ -15,12 +15,14 @@ describe('Argentina', () => {
         taxes: [{ name: "IVA" }],
       };
 
-      expect(getTaxes(q)).toEqual([{
-        error: null,
-        name: "IVA",
-        rate: 10701*0.12, // 1284.12,
-        factor: 10701*0.12 // 1284.12,
-      }]);
+      expect(getTaxes(q)).toEqual({
+        taxes: [{
+          error: null,
+          name: "IVA",
+          rate: 10701*0.12, // 1284.12,
+          factor: 10701*0.12 // 1284.12,
+        }]
+      });
     });
 
     test('>15000 <=20000', () => {
@@ -36,12 +38,14 @@ describe('Argentina', () => {
         taxes: [{ name: "IVA" }],
       };
 
-      expect(getTaxes(q)).toEqual([{
-        error: null,
-        name: "IVA",
-        rate: 19999*0.15, // 2,999.85,
-        factor: 19999*0.15 // 2,999.85,
-      }]);
+      expect(getTaxes(q)).toEqual({
+        taxes: [{
+          error: null,
+          name: "IVA",
+          rate: 19999*0.15, // 2,999.85,
+          factor: 19999*0.15 // 2,999.85,
+        }]
+      });
     });
 
     test('>40000 <=60000', () => {
@@ -57,12 +61,14 @@ describe('Argentina', () => {
         taxes: [{ name: "IVA" }],
       };
 
-      expect(getTaxes(q)).toEqual([{
-        error: null,
-        name: "IVA",
-        rate: 60000*0.27, // 16,200,
-        factor: 60000*0.27 // 16,200,
-      }]);
+      expect(getTaxes(q)).toEqual({
+        taxes: [{
+          error: null,
+          name: "IVA",
+          rate: 60000*0.27, // 16,200,
+          factor: 60000*0.27 // 16,200,
+        }]
+      });
     });
 
     test('<=10700', () => {
@@ -78,12 +84,14 @@ describe('Argentina', () => {
         taxes: [{ name: "IVA" }],
       };
 
-      expect(getTaxes(q)).toEqual([{
-        error: null,
-        name: "IVA",
-        rate: 10700*0.06, // 642,
-        factor: 10700*0.06 // 642,
-      }]);
+      expect(getTaxes(q)).toEqual({
+        taxes: [{
+          error: null,
+          name: "IVA",
+          rate: 10700*0.06, // 642,
+          factor: 10700*0.06 // 642,
+        }]
+      });
     });
   });
 
@@ -101,12 +109,14 @@ describe('Argentina', () => {
         taxes: [{ name: "IVA" }],
       };
 
-      expect(getTaxes(q)).toEqual([{
-        error: null,
-        name: "IVA",
-        rate: 10701*0.28, // 2996.28,
-        factor: 10701*0.28 // 2996.28,
-      }]);
+      expect(getTaxes(q)).toEqual({
+        taxes: [{
+          error: null,
+          name: "IVA",
+          rate: 10701*0.28, // 2996.28,
+          factor: 10701*0.28 // 2996.28,
+        }]
+      });
     });
 
     test('<=10700', () => {
@@ -122,12 +132,14 @@ describe('Argentina', () => {
         taxes: [{ name: "IVA" }],
       };
 
-      expect(getTaxes(q)).toEqual([{
-        error: null,
-        name: "IVA",
-        rate: 150,
-        factor: 150,
-      }]);
+      expect(getTaxes(q)).toEqual({
+        taxes: [{
+          error: null,
+          name: "IVA",
+          rate: 150,
+          factor: 150,
+        }]
+      });
     });
   });
 });

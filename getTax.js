@@ -8,8 +8,9 @@ const getTaxes = (query) => {
   const rules = getRules(query);
   const results = applyRules(rules, query);
   const factorsResults = calculateFactors(results, rules);
+  const amountsResults = calculateAmounts(factorsResults, query)
 
-  return calculateAmounts(factorsResults, query)
+  return calculateTotals(amountsResults, query);
 }
 
 const getRules = (query) => {
@@ -111,6 +112,25 @@ const calculateAmounts = (results, query) => {
       return result;
     }
   });
+}
+
+const calculateTotals = (results, query) => {
+  if(!!query.vars && !!query.vars.subTotal) {
+    const subTotal = query.vars.subTotal;
+    const taxTotal = _.reduce(results, (sum, result) => {
+      return sum + result.amount;
+    }, 0);
+    const grandTotal = subTotal + taxTotal;
+
+    return {
+      subTotal,
+      taxTotal,
+      grandTotal,
+      taxes: results
+    };
+  } else {
+    return { taxes: results };
+  }
 }
 
 module.exports = { getTaxes, getRules, findByCountry, findByParams, applyRules };

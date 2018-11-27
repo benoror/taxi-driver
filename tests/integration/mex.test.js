@@ -123,7 +123,7 @@ describe('Mexico', () => {
         taxes: [
           { name: 'IVA' },
           { name: 'ISR' },
-          { name: 'RET_IVA', dep: 'IVA' },
+          { name: 'RET_IVA' },
         ],
       };
 

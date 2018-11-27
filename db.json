@@ -35,6 +35,7 @@
     {
       "country": "mx",
       "taxName": "RET_IVA",
+      "dep": "IVA",
       "txType": "income",
       "docType": "invoice",
       "formula": "0.167"
@@ -42,6 +43,7 @@
     {
       "country": "mx",
       "taxName": "RET_ISR",
+      "dep": "ISR",
       "txType": "income",
       "docType": "invoice",
       "formula": "0.1"
@@ -87,6 +89,7 @@
     {
       "country": "mx",
       "taxName": "RET_IVA",
+      "dep": "IVA",
       "region": "AGS",
       "docType": "ARI",
       "txType": "sales",

@@ -7,7 +7,7 @@ const parser = new FormulaParser();
 const getTaxes = (query) => {
   const rules = getRules(query);
   const results = applyRules(rules, query);
-  const factorsResults = calculateFactors(results, query);
+  const factorsResults = calculateFactors(results, rules);
 
   return calculateAmounts(factorsResults, query)
 }
@@ -87,13 +87,14 @@ const applyRules = (rules, query) => {
   });
 }
 
-const calculateFactors = (results, query) => {
+const calculateFactors = (results, rules) => {
   return _.map(results, (result) => {
     let factor = result.rate;
-    const tax = _.find(query.taxes, { name: result.name });
+    const taxRule = _.find(rules, { taxName: result.name });
+    const depTax = _.find(results, { name: taxRule.dep });
 
-    if(!!tax.dep) {
-      factor *= _.find(results, { name: tax.dep }).rate;
+    if(!!depTax) {
+      factor *= _.find(results, { name: taxRule.dep }).rate;
     }
 
     return { ...result, factor };

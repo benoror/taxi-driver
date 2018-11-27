@@ -10,7 +10,7 @@ describe('Argentina', () => {
         category: 'ALQUILERES_rural',
         bpType: 'INSCRIPTO',
         vars: {
-          productTotal: '10701'
+          subTotal: '10701'
         },
         taxes: ["IVA"],
       };

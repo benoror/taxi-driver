@@ -5,7 +5,7 @@ describe('Applying rules', () => {
   test('Valid date', () => {
     const r = [{
       "validUntil": "2999-04-23T18:25:43.511Z",
-      "formula": "1",
+      "rate": "1",
       "taxName": "IVA"
     }];
     const q = {

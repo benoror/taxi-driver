@@ -78,7 +78,7 @@ const applyRules = (rules, query) => {
       _.forEach(rule.vars, (v, k) => parser.setVariable(k, parser.parse(v).result));
     }
 
-    const parseResult = parser.parse(rule.formula);
+    const parseResult = parser.parse(rule.rate);
 
     return {
       error: parseResult.error,

@@ -12,10 +12,9 @@ describe('Mexico', () => {
 
       expect(getTaxes(q)).toEqual({
         taxes: [{
-          error: null,
           name: "IVA",
-          rate: 0.16,
-          factor: 0.16,
+          rate: { error: null, result: 0.16 },
+          factor: { error: null, result: 0.16 },
         }]
       });
     });
@@ -32,10 +31,9 @@ describe('Mexico', () => {
 
       expect(getTaxes(q)).toEqual({
         taxes: [{
-          error: null,
           name: "IVA",
-          rate: 0,
-          factor: 0,
+          rate: { error: null, result: 0 },
+          factor: { error: null, result: 0 },
         }]
       });
     });
@@ -52,10 +50,9 @@ describe('Mexico', () => {
 
       expect(getTaxes(q)).toEqual({
         taxes: [{
-          error: null,
           name: "RET_IVA",
-          rate: 0.167,
-          factor: 0.167,
+          rate: { error: null, result: 0.167 },
+          factor: { error: null, result: 0.167 },
         }]
       });
     });
@@ -70,10 +67,9 @@ describe('Mexico', () => {
 
       expect(getTaxes(q)).toEqual({
         taxes: [{
-          error: null,
           name: "RET_ISR",
-          rate: 0.1,
-          factor: 0.1,
+          rate: { error: null, result: 0.1 },
+          factor: { error: null, result: 0.1 },
         }]
       });
     });
@@ -91,10 +87,9 @@ describe('Mexico', () => {
 
       expect(getTaxes(q)).toEqual({
         taxes: [{
-          error: null,
           name: "PAYROLL",
-          rate: 0.02,
-          factor: 0.02,
+          rate: { error: null, result: 0.02 },
+          factor: { error: null, result: 0.02 },
         }]
       });
     });
@@ -110,10 +105,9 @@ describe('Mexico', () => {
 
       expect(getTaxes(q)).toEqual({
         taxes: [{
-          error: null,
           name: "PAYROLL",
-          rate: 0.03,
-          factor: 0.03,
+          rate: { error: null, result: 0.03 },
+          factor: { error: null, result: 0.03 },
         }]
       });
     });
@@ -140,23 +134,20 @@ describe('Mexico', () => {
         taxTotal: 268,
         grandTotal: 1268,
         taxes: [{
-          error: null,
           name: 'IVA',
-          rate: 0.16,
-          factor: 0.16,
-          amount: 160,
+          rate: { error: null, result: 0.16 },
+          factor: { error: null, result: 0.16 },
+          amount: { error: null, result: 160 },
         }, {
-          error: null,
           name: 'ISR',
-          rate: 0.10,
-          factor: 0.10,
-          amount: 100,
+          rate: { error: null, result: 0.10 },
+          factor: { error: null, result: 0.10 },
+          amount: { error: null, result: 100 },
         }, {
-          error: null,
           name: 'RET_IVA',
-          rate: 0.05,
-          factor: 0.008,
-          amount: 8,
+          rate: { error: null, result: 0.05 },
+          factor: { error: null, result: 0.008 },
+          amount: { error: null, result: 8 },
         }]
       });
     });
@@ -175,15 +166,14 @@ describe('Mexico', () => {
 
       expect(getTaxes(q)).toEqual({
         taxes: [{
-          error: null,
           name: 'IVA',
-          rate: 0.16,
-          factor: 0.16
+          rate: { error: null, result: 0.16 },
+          factor: { error: null, result: 0.16 },
         }, {
           error: null,
           name: 'IEPS',
-          rate: 0.05,
-          factor: 0.05
+          rate: { error: null, result: 0.05 },
+          factor: { error: null, result: 0.05 },
         }]
       });
     });

@@ -17,10 +17,9 @@ describe('KSA VAT', () => {
 
       expect(getTaxes(q)).toEqual({
         taxes: [{
-          error: null,
           name: 'VAT',
-          rate: 0.02,
-          factor: 0.02,
+          rate: { error: null, result: 0.02 },
+          factor: { error: null, result: 0.02 },
         }]
       });
     });
@@ -40,10 +39,9 @@ describe('KSA VAT', () => {
 
       expect(getTaxes(q)).toEqual({
         taxes: [{
-          error: null,
           name: 'VAT',
-          rate: 0.05,
-          factor: 0.05,
+          rate: { error: null, result: 0.05 },
+          factor: { error: null, result: 0.05 },
         }]
       });
     });
@@ -60,10 +58,9 @@ describe('KSA VAT', () => {
 
       expect(getTaxes(q)).toEqual({
         taxes: [{
-          error: null,
           name: 'VAT',
-          rate: 0.0,
-          factor: 0.0,
+          rate: { error: null, result: 0.0 },
+          factor: { error: null, result: 0.0 },
         }]
       });
     });
@@ -85,10 +82,9 @@ describe('KSA VAT', () => {
 
       expect(getTaxes(q)).toEqual({
         taxes: [{
-          error: null,
           name: 'VAT',
-          rate: 0.05,
-          factor: 0.05,
+          rate: { error: null, result: 0.05 },
+          factor: { error: null, result: 0.05 },
         }]
       });
     });
@@ -108,10 +104,9 @@ describe('KSA VAT', () => {
 
       expect(getTaxes(q)).toEqual({
         taxes: [{
-          error: null,
           name: 'VAT',
-          rate: 0.04,
-          factor: 0.04,
+          rate: { error: null, result: 0.04 },
+          factor: { error: null, result: 0.04 },
         }]
       });
     });

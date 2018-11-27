@@ -3,7 +3,7 @@ const moment = require('moment');
 const db = require('./db');
 const FormulaParser = require('hot-formula-parser').Parser;
 const parser = new FormulaParser();
-const currency = require('currency.js');
+const Currency = require('currency.js');
 
 const getTaxes = (query) => {
   const rules = getRules(query);
@@ -69,7 +69,6 @@ const applyRules = (rules, query) => {
   return _.map(rules, (rule) => {
     // ToDo: Separate rate & amount in different error/result tuples
     let result = {};
-    let error = null;
 
     if(!!rule.validUntil && moment(rule.validUntil) < moment()) {
       throw new Error(`Rule date invalid: ${JSON.stringify(rule.validUntil)}` );
@@ -84,19 +83,14 @@ const applyRules = (rules, query) => {
     }
 
     if(!!rule.rate) {
-      const rateResult = parser.parse(rule.rate);
-      result = {...result, rate: rateResult.result};
-      error = !error ? rateResult.error : error;
+      result = {...result, rate: parser.parse(rule.rate)};
     }
 
     if(!!rule.amount) {
-      const amountResult = parser.parse(rule.amount);
-      result = {...result, amount: amountResult.result};
-      error = !error ? amountResult.error : error;
+      result = {...result, amount: parser.parse(rule.amount)};
     }
 
     return {
-      error,
       name: rule.taxName,
       ...result,
     }
@@ -105,24 +99,34 @@ const applyRules = (rules, query) => {
 
 const calculateFactors = (results, rules) => {
   return _.map(results, (result) => {
-    let factor = result.rate;
+    let factor = result.rate && result.rate.result;
     const taxRule = _.find(rules, { taxName: result.name });
     const depTax = _.find(results, { name: taxRule.dep });
 
     if(!!depTax) {
-      factor *= _.find(results, { name: taxRule.dep }).rate;
+      factor *= _.find(results, { name: taxRule.dep }).rate.result;
     }
 
-    return { ...result, factor };
+    return {
+      ...result,
+      factor: {
+        error: null,
+        result: factor
+      }
+    };
   });
 }
 
 const calculateAmounts = (results, query) => {
   return _.map(results, (result) => {
-    let amount;
-
     if(!!query.vars && !!query.vars.subTotal && !query.vars.amount) {
-      return { ...result, amount: currency(query.vars.subTotal).multiply(result.factor).value};
+      return {
+        ...result,
+        amount: {
+          error: null,
+          result: Currency(query.vars.subTotal).multiply(result.factor.result).value
+        }
+      };
     } else {
       return result;
     }
@@ -132,10 +136,10 @@ const calculateAmounts = (results, query) => {
 const calculateTotals = (results, query) => {
   if(!!query.vars && !!query.vars.subTotal) {
     const taxTotal = _.reduce(results, (sum, result) => {
-      return currency(result.amount).add(sum).value;
+      return Currency(result.amount.result).add(sum).value;
     }, 0);
-    const subTotal = currency(query.vars.subTotal).value;
-    const grandTotal = currency(taxTotal).add(subTotal).value;
+    const subTotal = Currency(query.vars.subTotal).value;
+    const grandTotal = Currency(taxTotal).add(subTotal).value;
 
     return {
       subTotal,

@@ -20,11 +20,10 @@ describe('Argentina', () => {
         taxTotal: 1284.12,
         grandTotal: 11985.12,
         taxes: [{
-          error: null,
           name: "IVA",
-          rate: 0.12,
-          factor: 0.12,
-          amount: 1284.12,
+          rate: { error: null, result: 0.12 },
+          factor: { error: null, result: 0.12 },
+          amount: { error: null, result: 1284.12 },
         }]
       });
     });
@@ -47,11 +46,10 @@ describe('Argentina', () => {
         taxTotal: 2999.85,
         grandTotal: 22998.85,
         taxes: [{
-          error: null,
           name: "IVA",
-          rate: 0.15,
-          factor: 0.15,
-          amount: 2999.85,
+          rate: { error: null, result: 0.15 },
+          factor: { error: null, result: 0.15 },
+          amount: { error: null, result: 2999.85 },
         }]
       });
     });
@@ -74,11 +72,10 @@ describe('Argentina', () => {
         taxTotal: 16200,
         grandTotal: 76200,
         taxes: [{
-          error: null,
           name: "IVA",
-          rate: 0.27,
-          factor: 0.27,
-          amount: 16200,
+          rate: { error: null, result: 0.27 },
+          factor: { error: null, result: 0.27 },
+          amount: { error: null, result: 16200 },
         }]
       });
     });
@@ -101,11 +98,10 @@ describe('Argentina', () => {
         taxTotal: 642,
         grandTotal: 11342,
         taxes: [{
-          error: null,
           name: "IVA",
-          rate: 0.06,
-          factor: 0.06,
-          amount: 642,
+          rate: { error: null, result: 0.06 },
+          factor: { error: null, result: 0.06 },
+          amount: { error: null, result: 642 },
         }]
       });
     });
@@ -130,11 +126,10 @@ describe('Argentina', () => {
         taxTotal: 2996.28,
         grandTotal: 13697.28,
         taxes: [{
-          error: null,
           name: "IVA",
-          rate: 0.28,
-          factor: 0.28,
-          amount: 2996.28,
+          rate: { error: null, result: 0.28 },
+          factor: { error: null, result: 0.28 },
+          amount: { error: null, result: 2996.28 },
         }]
       });
     });
@@ -157,11 +152,10 @@ describe('Argentina', () => {
         taxTotal: 150,
         grandTotal: 750,
         taxes: [{
-          error: null,
           name: "IVA",
-          rate: 0.25,
-          factor: 0.25,
-          amount: 150,
+          rate: { error: null, result: 0.25 },
+          factor: { error: null, result: 0.25 },
+          amount: { error: null, result: 150 },
         }]
       });
     });

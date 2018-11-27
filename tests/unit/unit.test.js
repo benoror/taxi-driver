@@ -12,9 +12,11 @@ describe('Applying rules', () => {
       taxes: [{ name: 'IVA' }]
     };
     expect(applyRules(r, q)). toEqual([{
-      error: null,
       name: 'IVA',
-      rate: 1,
+      rate: {
+        error: null,
+        result: 1
+      },
     }]);
   });
 

@@ -16,11 +16,15 @@ describe('Argentina', () => {
       };
 
       expect(getTaxes(q)).toEqual({
+        subTotal: 10701,
+        taxTotal: 1284.12,
+        grandTotal: 11985.12,
         taxes: [{
           error: null,
           name: "IVA",
-          rate: 10701*0.12, // 1284.12,
-          factor: 10701*0.12 // 1284.12,
+          rate: 0.12,
+          factor: 0.12,
+          amount: 1284.12,
         }]
       });
     });
@@ -33,17 +37,21 @@ describe('Argentina', () => {
         category: 'ALQUILERES_rural',
         bpType: 'INSCRIPTO',
         vars: {
-          productTotal: '19999'
+          subTotal: '19999'
         },
         taxes: ["IVA"],
       };
 
       expect(getTaxes(q)).toEqual({
+        subTotal: 19999,
+        taxTotal: 2999.85,
+        grandTotal: 22998.85,
         taxes: [{
           error: null,
           name: "IVA",
-          rate: 19999*0.15, // 2,999.85,
-          factor: 19999*0.15 // 2,999.85,
+          rate: 0.15,
+          factor: 0.15,
+          amount: 2999.85,
         }]
       });
     });
@@ -56,17 +64,21 @@ describe('Argentina', () => {
         category: 'ALQUILERES_rural',
         bpType: 'INSCRIPTO',
         vars: {
-          productTotal: '60000'
+          subTotal: '60000'
         },
         taxes: ["IVA"],
       };
 
       expect(getTaxes(q)).toEqual({
+        subTotal: 60000,
+        taxTotal: 16200,
+        grandTotal: 76200,
         taxes: [{
           error: null,
           name: "IVA",
-          rate: 60000*0.27, // 16,200,
-          factor: 60000*0.27 // 16,200,
+          rate: 0.27,
+          factor: 0.27,
+          amount: 16200,
         }]
       });
     });
@@ -79,17 +91,21 @@ describe('Argentina', () => {
         category: 'ALQUILERES_rural',
         bpType: 'INSCRIPTO',
         vars: {
-          productTotal: '10700'
+          subTotal: '10700'
         },
         taxes: ["IVA"],
       };
 
       expect(getTaxes(q)).toEqual({
+        subTotal: 10700,
+        taxTotal: 642,
+        grandTotal: 11342,
         taxes: [{
           error: null,
           name: "IVA",
-          rate: 10700*0.06, // 642,
-          factor: 10700*0.06 // 642,
+          rate: 0.06,
+          factor: 0.06,
+          amount: 642,
         }]
       });
     });
@@ -104,17 +120,21 @@ describe('Argentina', () => {
         category: 'ALQUILERES_rural',
         bpType: 'NO_INSCRIPTO',
         vars: {
-          productTotal: '10701'
+          subTotal: '10701'
         },
         taxes: ["IVA"],
       };
 
       expect(getTaxes(q)).toEqual({
+        subTotal: 10701,
+        taxTotal: 2996.28,
+        grandTotal: 13697.28,
         taxes: [{
           error: null,
           name: "IVA",
-          rate: 10701*0.28, // 2996.28,
-          factor: 10701*0.28 // 2996.28,
+          rate: 0.28,
+          factor: 0.28,
+          amount: 2996.28,
         }]
       });
     });
@@ -127,20 +147,23 @@ describe('Argentina', () => {
         category: 'ALQUILERES_rural',
         bpType: 'NO_INSCRIPTO',
         vars: {
-          productTotal: '600'
+          subTotal: '600'
         },
         taxes: ["IVA"],
       };
 
       expect(getTaxes(q)).toEqual({
+        subTotal: 600,
+        taxTotal: 150,
+        grandTotal: 750,
         taxes: [{
           error: null,
           name: "IVA",
-          rate: 150,
-          factor: 150,
+          rate: 0.25,
+          factor: 0.25,
+          amount: 150,
         }]
       });
     });
   });
 });
-

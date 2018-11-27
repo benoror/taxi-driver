@@ -66,6 +66,10 @@ const findByTaxes = (rules, taxes) => {
 
 const applyRules = (rules, query) => {
   return _.map(rules, (rule) => {
+    // ToDo: Separate rate & amount in different error/result tuples
+    let result = {};
+    let error = null;
+
     if(!!rule.validUntil && moment(rule.validUntil) < moment()) {
       throw new Error(`Rule date invalid: ${JSON.stringify(rule.validUntil)}` );
     }
@@ -78,12 +82,22 @@ const applyRules = (rules, query) => {
       _.forEach(rule.vars, (v, k) => parser.setVariable(k, parser.parse(v).result));
     }
 
-    const parseResult = parser.parse(rule.rate);
+    if(!!rule.rate) {
+      const rateResult = parser.parse(rule.rate);
+      result = {...result, rate: rateResult.result};
+      error = !error ? rateResult.error : error;
+    }
+
+    if(!!rule.amount) {
+      const amountResult = parser.parse(rule.amount);
+      result = {...result, amount: amountResult.result};
+      error = !error ? amountResult.error : error;
+    }
 
     return {
-      error: parseResult.error,
+      error,
       name: rule.taxName,
-      rate: parseResult.result,
+      ...result,
     }
   });
 }
@@ -106,7 +120,7 @@ const calculateAmounts = (results, query) => {
   return _.map(results, (result) => {
     let amount;
 
-    if(!!query.vars && !!query.vars.subTotal) {
+    if(!!query.vars && !!query.vars.subTotal && !query.vars.amount) {
       return { ...result, amount: result.factor * query.vars.subTotal};
     } else {
       return result;
@@ -116,11 +130,11 @@ const calculateAmounts = (results, query) => {
 
 const calculateTotals = (results, query) => {
   if(!!query.vars && !!query.vars.subTotal) {
-    const subTotal = query.vars.subTotal;
     const taxTotal = _.reduce(results, (sum, result) => {
       return sum + result.amount;
     }, 0);
-    const grandTotal = subTotal + taxTotal;
+    const subTotal = parseFloat(query.vars.subTotal);
+    const grandTotal = subTotal + parseFloat(taxTotal);
 
     return {
       subTotal,

@@ -86,7 +86,7 @@
     },
     {
       "country": "mx",
-      "taxName": "RET_ISR",
+      "taxName": "RET_IVA",
       "region": "AGS",
       "docType": "ARI",
       "txType": "sales",

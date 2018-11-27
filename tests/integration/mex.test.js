@@ -108,7 +108,7 @@ describe('Mexico', () => {
   });
 
   describe('Multi Taxes', () => {
-    test('With dependant whitholding (RET_ISR)', () => {
+    test('With dependant whitholding (RET_IVA)', () => {
       const q = {
         country: "MX",
         region: 'AGS',
@@ -123,7 +123,7 @@ describe('Mexico', () => {
         taxes: [
           { name: 'IVA' },
           { name: 'ISR' },
-          { name: 'RET_ISR', dep: 'IVA' },
+          { name: 'RET_IVA', dep: 'IVA' },
         ],
       };
 
@@ -141,7 +141,7 @@ describe('Mexico', () => {
           amount: 100,
         }, {
           error: null,
-          name: 'RET_ISR',
+          name: 'RET_IVA',
           rate: 0.05,
           factor: 0.008,
           amount: 8,

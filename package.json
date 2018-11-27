@@ -11,6 +11,7 @@
   "author": "Ben Orozco <benoror@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "currency.js": "^1.2.1",
     "hot-formula-parser": "^3.0.0",
     "lodash": "^4.17.11",
     "lowdb": "^1.0.0",

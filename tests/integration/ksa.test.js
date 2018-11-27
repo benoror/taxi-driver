@@ -7,7 +7,7 @@ describe('KSA VAT', () => {
         country: "sa",
         txType: "SALES",
         docType: "invoice",
-        taxes: [{ name: 'VAT' }],
+        taxes: ['VAT'],
         category: 'DRUG',
         bpType: 'TAXYES',
         vars: {
@@ -30,7 +30,7 @@ describe('KSA VAT', () => {
         country: "sa",
         txType: "SALES",
         docType: "invoice",
-        taxes: [{ name: 'VAT' }],
+        taxes: ['VAT'],
         category: 'DRUG',
         bpType: 'TAXYES',
         vars: {
@@ -53,7 +53,7 @@ describe('KSA VAT', () => {
         country: "sa",
         txType: "SALES",
         docType: "invoice",
-        taxes: [{ name: 'VAT' }],
+        taxes: ['VAT'],
         category: 'DRUG',
         bpType: '!TAXYES'
       };
@@ -75,7 +75,7 @@ describe('KSA VAT', () => {
         country: "sa",
         txType: "SALES",
         docType: "invoice",
-        taxes: [{ name: 'VAT' }],
+        taxes: ['VAT'],
         category: '!DRUG',
         bpType: 'TAXYES',
         vars: {
@@ -98,7 +98,7 @@ describe('KSA VAT', () => {
         country: "sa",
         txType: "SALES",
         docType: "invoice",
-        taxes: [{ name: 'VAT' }],
+        taxes: ['VAT'],
         category: '!DRUG',
         bpType: 'TAXYES',
         vars: {

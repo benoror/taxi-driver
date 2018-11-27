@@ -7,7 +7,7 @@ describe('Mexico', () => {
         country: "MX",
         txType: "sales",
         docType: "invoice",
-        taxes: [{ name: "IVA" }],
+        taxes: ["IVA"],
       };
 
       expect(getTaxes(q)).toEqual({
@@ -27,7 +27,7 @@ describe('Mexico', () => {
         docType: "invoice",
         category: 'DRUG',
         area: 'PHARMACY',
-        taxes: [{ name: "IVA" }],
+        taxes: ["IVA"],
       };
 
       expect(getTaxes(q)).toEqual({
@@ -47,7 +47,7 @@ describe('Mexico', () => {
         country: "MX",
         txType: "income",
         docType: "invoice",
-        taxes: [{ name: "RET_IVA" }],
+        taxes: ["RET_IVA"],
       };
 
       expect(getTaxes(q)).toEqual({
@@ -65,7 +65,7 @@ describe('Mexico', () => {
         country: "MX",
         txType: "income",
         docType: "invoice",
-        taxes: [{ name: "RET_ISR" }],
+        taxes: ["RET_ISR"],
       };
 
       expect(getTaxes(q)).toEqual({
@@ -86,7 +86,7 @@ describe('Mexico', () => {
         region: 'NL',
         txType: "income",
         category: 'NOMINA',
-        taxes: [{ name: "PAYROLL" }],
+        taxes: ["PAYROLL"],
       };
 
       expect(getTaxes(q)).toEqual({
@@ -105,7 +105,7 @@ describe('Mexico', () => {
         region: 'DF',
         txType: "income",
         category: 'NOMINA',
-        taxes: [{ name: "PAYROLL" }],
+        taxes: ["PAYROLL"],
       };
 
       expect(getTaxes(q)).toEqual({
@@ -132,11 +132,7 @@ describe('Mexico', () => {
         vars: {
           subTotal: 1000
         },
-        taxes: [
-          { name: 'IVA' },
-          { name: 'ISR' },
-          { name: 'RET_IVA' },
-        ],
+        taxes: [ 'IVA', 'ISR', 'RET_IVA' ],
       };
 
       expect(getTaxes(q)).toEqual({
@@ -174,10 +170,7 @@ describe('Mexico', () => {
         bpType: "signed",
         area: 'PHARMACY',
         category: 'DRUG',
-        taxes: [
-          { name: 'IVA' },
-          { name: 'IEPS' },
-        ],
+        taxes: [ 'IVA', 'IEPS' ],
       };
 
       expect(getTaxes(q)).toEqual({

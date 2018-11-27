@@ -3,6 +3,7 @@ const moment = require('moment');
 const db = require('./db');
 const FormulaParser = require('hot-formula-parser').Parser;
 const parser = new FormulaParser();
+const currency = require('currency.js');
 
 const getTaxes = (query) => {
   const rules = getRules(query);
@@ -121,7 +122,7 @@ const calculateAmounts = (results, query) => {
     let amount;
 
     if(!!query.vars && !!query.vars.subTotal && !query.vars.amount) {
-      return { ...result, amount: result.factor * query.vars.subTotal};
+      return { ...result, amount: currency(query.vars.subTotal).multiply(result.factor).value};
     } else {
       return result;
     }
@@ -131,10 +132,10 @@ const calculateAmounts = (results, query) => {
 const calculateTotals = (results, query) => {
   if(!!query.vars && !!query.vars.subTotal) {
     const taxTotal = _.reduce(results, (sum, result) => {
-      return sum + result.amount;
+      return currency(result.amount).add(sum).value;
     }, 0);
-    const subTotal = parseFloat(query.vars.subTotal);
-    const grandTotal = subTotal + parseFloat(taxTotal);
+    const subTotal = currency(query.vars.subTotal).value;
+    const grandTotal = currency(taxTotal).add(subTotal).value;
 
     return {
       subTotal,

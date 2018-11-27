@@ -140,6 +140,9 @@ describe('Mexico', () => {
       };
 
       expect(getTaxes(q)).toEqual({
+        subTotal: 1000,
+        taxTotal: 268,
+        grandTotal: 1268,
         taxes: [{
           error: null,
           name: 'IVA',

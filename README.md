@@ -15,19 +15,52 @@ Built with [Micro](https://github.com/zeit/micro) & [Lowdb ⚡️](https://githu
 - [x] 🇦🇷Argentina
 - [x] 🇸🇦Saudi Arabia
 
-\*Specification tests can be found at [tests/integration](https://github.com/ecaresoft/taxi-driver/tree/master/tests/integration)
+\*Full tests & specification for each country can be found at [tests/integration](https://github.com/ecaresoft/taxi-driver/tree/master/tests/integration)
 
-### Rules
+### Tax Rules
 
-Rules are defined in a LowDB located at [db.json#L18](https://github.com/ecaresoft/taxi-driver/blob/master/db.json#L18)
+Tax Rules are defined in a LowDB located at [db.json#L18](https://github.com/ecaresoft/taxi-driver/blob/master/db.json#L18)
 
-`Parameters` (defined at [db.json#L3](https://github.com/ecaresoft/taxi-driver/blob/master/db.json#L3)) are used to "exact match" a rule while querying the app via the API.
+These rules are matched and applied based on the provided Query.
+
+#### Validity Life `validUntil`
+
+A `Datetime` value for specifying the validity of a rule
 
 ### Query
 
-A query includes any number of allowed `parameters` (case insensitive), plus an optional `vars` object.
+A query includes the following (case insensitive) fields:
 
-Example:
+#### Country
+
+  - `country`: Country code
+
+#### Allowed `params`
+
+`Parameters` (defined at [db.json#L3](https://github.com/ecaresoft/taxi-driver/blob/master/db.json#L3)) are used to "exact match" a rule while querying the app via the API.
+
+- `txType`
+- `docType`
+- `bpType`
+- `category`
+- `area`
+- `region`
+
+#### Optional `vars` object.
+
+`vars` object is used both in a query and rules, to store variable dependant values (such as sub-totals), and other formulas to be evaluated by the `FormulaParser`.
+
+\*Commonly used for: `subTotal`, `productTotal`, ...
+
+#### Array of `taxes`
+
+An array of `String`'s to be matched against rule(s) `taxName`
+
+### Formulas & Variables
+
+\*Both `vars`, `rate` & `amount` have to be `String`'s, since are always evaluated using [handsontable/formula-parser](https://github.com/handsontable/formula-parser)
+
+### Query Example
 
 ```javascript
 {
@@ -44,11 +77,12 @@ Example:
 }
 ```
 
-### Matching
+### Rule Matching
 
-The query above will match to the following rule:
+The query above will match to the following rule(s):
 
 ```json
+  [
     {
       "countryCode": "sa",
       "txType": "sales",
@@ -56,18 +90,66 @@ The query above will match to the following rule:
       "taxName": "VAT",
       "category": "DRUG",
       "bpTaxType": "TAXYES",
-      "formula": "IF(productTotal > 2000, 0.02, 0.05)"
-    },
-a
+      "rate": "IF(productTotal > 2000, 0.02, 0.05)"
+    }
+  ]
 ```
 
-### Formulas & Variables
+### API
 
-`vars` object is used both in a query and rules, to store variable dependant values (such as sub-totals), and other formulas to be evaluated.
+Postman collection: https://web.postman.co/collections/27932-1280fe65-8858-4d0f-bde4-4c3b79d6b5b3?workspace=61c65267-c247-4243-8558-65eaee551abe
 
-\*Both `vars` and `formula` have to be `String`'s, since are always evaluated using [handsontable/formula-parser](https://github.com/handsontable/formula-parser)
+#### `GET /countries`
 
-## GUI
+#### `GET /rules`
+
+#### `POST /taxes`
+
+Request:
+
+```javascript
+{
+  country: "sa",
+  // ... params
+  vars: {
+    // ...
+  },
+  taxes: [ /* ... */ ]
+}
+```
+
+Response:
+
+```javascript
+{
+  taxes: [{
+    name: "/**/",
+    rate: {error: /*...*/, result: /*...*/},
+    // ...
+  }, {
+    name: "/**/",
+    rate: {error: /*...*/, result: /*...*/},
+    // ...
+  }]
+}
+```
+
+### Advanced Usage
+
+#### Factor, amounts & totals calculation
+
+If a `vars.subTotal` is provided, the engine will automatically
+calculate and return:
+
+- totals (`taxTotal` & `grandTotal`) in the response header.
+- `amount` & `factor` per tax
+
+#### Dependant Tax Factors
+
+Rules can have a `dep` string with the name of a dependant taxName that
+has to be used to calculate the factor
+
+## GUI (alpha version)
 
 https://github.com/ecaresoft/taxi-driver-ui
 
@@ -85,38 +167,6 @@ yarn run dev
 
 ```
 yarn test
-```
-
-### API
-
-Postman collection: https://web.postman.co/collections/27932-1280fe65-8858-4d0f-bde4-4c3b79d6b5b3?workspace=61c65267-c247-4243-8558-65eaee551abe
-
-#### `GET /countries`
-
-#### `GET /rules`
-
-#### `POST /tax`
-
-Example:
-
-```javascript
-{
-  country: "sa",
-  // ... params
-  vars: {
-    // ...
-  },
-  taxes: [ /* ... */ ]
-}
-```
-
-Response:
-
-```javascript
-{
-  error: null,
-  result: 0.05
-}
 ```
 
 ## Inspired by

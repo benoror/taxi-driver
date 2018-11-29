@@ -1,4 +1,4 @@
-const { applyRules } = require('../../getTax');
+const { applyRules } = require('../../lib');
 
 describe('Applying rules', () => {
 

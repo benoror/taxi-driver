@@ -17,10 +17,10 @@ const getTaxes = (query) => {
 const getRules = (query) => {
   const country = query.country;
   const rules = db.get('taxRules');
-  const params = db.get('meta.taxRulesParams');
+  const params = db.get('meta.optionalParams');
   const countryRules = findByCountry(rules, country);
   const paramsMatches = findByParams(countryRules, query, params.value());
-  const taxMatches = findByTaxes(paramsMatches, query.taxes);
+  const taxMatches = findByTaxName(paramsMatches, query.taxes);
 
   if(_.isEmpty(rules)) {
     throw new Error(`Tax rules for country ${query.country} not found`);
@@ -57,7 +57,7 @@ const findByParams = (rules, query, params) => {
   }, rules);
 }
 
-const findByTaxes = (rules, taxes) => {
+const findByTaxName = (rules, taxes) => {
   return _.filter(rules, (rule) => {
     return _.reduce(taxes, (contains, tax) => {
       return _.toLower(rule.taxName) === _.toLower(tax) ? true : contains;
@@ -84,6 +84,10 @@ const applyRules = (rules, query) => {
 
     if(!!rule.rate) {
       result = {...result, rate: parser.parse(rule.rate)};
+
+      if(!!rule.whitholded) {
+        result.rate.result *= -1;
+      }
     }
 
     if(!!rule.amount) {
@@ -104,7 +108,7 @@ const calculateFactors = (results, rules) => {
     const depTax = _.find(results, { name: taxRule.dep });
 
     if(!!depTax) {
-      factor *= _.find(results, { name: taxRule.dep }).rate.result;
+      factor *= depTax.rate.result;
     }
 
     return {

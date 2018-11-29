@@ -31,20 +31,25 @@ A `Datetime` value for specifying the validity of a rule
 
 A query includes the following (case insensitive) fields:
 
-#### Country
+#### Required `params`
 
-  - `country`: Country code
+Required `params` are used to filter out the tax rules by:
 
-#### Allowed `params`
+  - `country` (String): Country code
+  - `taxName` (String): A name to identify the tax
+  - `witholded` (Boolean): If whitholding, the factor will be
+    calculated as negative (-)
 
-`Parameters` (defined at [db.json#L3](https://github.com/ecaresoft/taxi-driver/blob/master/db.json#L3)) are used to "exact match" a rule while querying the app via the API.
+#### Optional `params`
 
-- `txType`
-- `docType`
-- `bpType`
-- `category`
-- `area`
-- `region`
+Optional `params` (defined at [db.json#L3](https://github.com/ecaresoft/taxi-driver/blob/master/db.json#L3)) can be used to "exact match" a single rule while querying the app via the API. These can be *freely* used:
+
+  - `txType`: Transaction type
+  - `docType`: Document type
+  - `bpType`: Business Partner type
+  - `category`: Category name (ex.: for products)
+  - `area`: Area (ex.: geographic area)
+  - `region`: Region (ex. border tax)
 
 #### Optional `vars` object.
 

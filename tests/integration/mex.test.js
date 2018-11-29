@@ -51,8 +51,8 @@ describe('Mexico', () => {
       expect(getTaxes(q)).toEqual({
         taxes: [{
           name: "RET_IVA",
-          rate: { error: null, result: 0.167 },
-          factor: { error: null, result: 0.167 },
+          rate: { error: null, result: -0.167 },
+          factor: { error: null, result: -0.167 },
         }]
       });
     });
@@ -68,8 +68,8 @@ describe('Mexico', () => {
       expect(getTaxes(q)).toEqual({
         taxes: [{
           name: "RET_ISR",
-          rate: { error: null, result: 0.1 },
-          factor: { error: null, result: 0.1 },
+          rate: { error: null, result: -0.1 },
+          factor: { error: null, result: -0.1 },
         }]
       });
     });
@@ -131,8 +131,8 @@ describe('Mexico', () => {
 
       expect(getTaxes(q)).toEqual({
         subTotal: 1000,
-        taxTotal: 268,
-        grandTotal: 1268,
+        taxTotal: 252,
+        grandTotal: 1252,
         taxes: [{
           name: 'IVA',
           rate: { error: null, result: 0.16 },
@@ -145,9 +145,9 @@ describe('Mexico', () => {
           amount: { error: null, result: 100 },
         }, {
           name: 'RET_IVA',
-          rate: { error: null, result: 0.05 },
-          factor: { error: null, result: 0.008 },
-          amount: { error: null, result: 8 },
+          rate: { error: null, result: -0.05 },
+          factor: { error: null, result: -0.008 },
+          amount: { error: null, result: -8 },
         }]
       });
     });

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "taxRulesParams": [
+    "optionalParams": [
       "txType",
       "docType",
       "bpType",
@@ -18,6 +18,7 @@
     {
       "country": "mx",
       "taxName": "IVA",
+      "whitholded": false,
       "validUntil": "2999-04-23T18:25:43.511Z",
       "txType": "sales",
       "docType": "invoice",
@@ -26,6 +27,7 @@
     {
       "country": "mx",
       "taxName": "IVA",
+      "whitholded": false,
       "txType": "sales",
       "docType": "invoice",
       "category": "DRUG",
@@ -35,6 +37,7 @@
     {
       "country": "mx",
       "taxName": "RET_IVA",
+      "whitholded": true,
       "dep": "IVA",
       "txType": "income",
       "docType": "invoice",
@@ -43,6 +46,7 @@
     {
       "country": "mx",
       "taxName": "RET_ISR",
+      "whitholded": true,
       "dep": "ISR",
       "txType": "income",
       "docType": "invoice",
@@ -51,6 +55,7 @@
     {
       "country": "mx",
       "taxName": "PAYROLL",
+      "whitholded": false,
       "txType": "income",
       "category": "NOMINA",
       "region": "NL",
@@ -59,6 +64,7 @@
     {
       "country": "mx",
       "taxName": "PAYROLL",
+      "whitholded": false,
       "txType": "income",
       "category": "NOMINA",
       "region": "DF",
@@ -67,6 +73,7 @@
     {
       "country": "mx",
       "taxName": "IVA",
+      "whitholded": false,
       "region": "AGS",
       "docType": "ARI",
       "txType": "sales",
@@ -78,6 +85,7 @@
     {
       "country": "mx",
       "taxName": "ISR",
+      "whitholded": false,
       "region": "AGS",
       "docType": "ARI",
       "txType": "sales",
@@ -89,6 +97,7 @@
     {
       "country": "mx",
       "taxName": "RET_IVA",
+      "whitholded": true,
       "dep": "IVA",
       "region": "AGS",
       "docType": "ARI",
@@ -101,6 +110,7 @@
     {
       "country": "mx",
       "taxName": "IEPS",
+      "whitholded": false,
       "region": "AGS",
       "docType": "ARI",
       "txType": "sales",
@@ -112,6 +122,7 @@
     {
       "country": "sa",
       "taxName": "VAT",
+      "whitholded": false,
       "txType": "sales",
       "docType": "invoice",
       "category": "DRUG",
@@ -121,6 +132,7 @@
     {
       "country": "sa",
       "taxName": "VAT",
+      "whitholded": false,
       "txType": "sales",
       "docType": "invoice",
       "category": "DRUG",
@@ -130,6 +142,7 @@
     {
       "country": "sa",
       "taxName": "VAT",
+      "whitholded": false,
       "txType": "sales",
       "docType": "invoice",
       "category": "!DRUG",
@@ -139,6 +152,7 @@
     {
       "country": "sa",
       "taxName": "VAT",
+      "whitholded": false,
       "txType": "sales",
       "docType": "invoice",
       "category": "!DRUG",
@@ -148,6 +162,7 @@
     {
       "country": "ar",
       "taxName": "IVA",
+      "whitholded": false,
       "txType": "sales",
       "docType": "payment",
       "category": "ALQUILERES_RURAL",
@@ -163,6 +178,7 @@
     {
       "country": "ar",
       "taxName": "IVA",
+      "whitholded": false,
       "txType": "sales",
       "docType": "payment",
       "category": "ALQUILERES_RURAL",

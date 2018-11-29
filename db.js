@@ -1,6 +1,9 @@
 const low = require('lowdb');
-const FileSync = require('lowdb/adapters/FileSync');
-const adapter = new FileSync('./db.json');
-const db = low(adapter);
+const Memory = require('lowdb/adapters/Memory')
+const data = require('./db.json');
+const db = low(new Memory());
+
+db.defaults(data)
+  .write()
 
 module.exports = db;

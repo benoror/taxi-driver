@@ -2,6 +2,8 @@
   "version": 2,
   "name": "taxi-driver",
   "builds": [
-    { "src": "index.js", "use": "@now/node" }
+    { "src": "api/countries/index.js", "use": "@now/node" },
+    { "src": "api/rules/index.js", "use": "@now/node" },
+    { "src": "api/taxes/index.js", "use": "@now/node" }
   ]
 }

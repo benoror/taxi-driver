@@ -100,6 +100,8 @@ const applyRules = (rules, query) => {
   }, {});
 }
 
+const FACTOR_PRECISION = 8;
+
 const calculateFactors = (taxes, rules) => {
   return _.reduce(taxes, (accum, tax, taxName) => {
     let factor = tax.rate && tax.rate.result;
@@ -107,8 +109,8 @@ const calculateFactors = (taxes, rules) => {
     const depTax = taxes[taxRule.dep];
 
     if(!!depTax) {
-      console.log(depTax)
-      factor *= depTax.rate.result;
+      factor = Currency(depTax.rate.result, { precision: FACTOR_PRECISION })
+        .multiply(factor).value
     }
 
     return {
@@ -145,8 +147,8 @@ const calculateAmounts = (taxes, query) => {
 
 const calculateTotals = (taxes, query) => {
   if(!!query.vars && !!query.vars.subTotal) {
-    const taxTotal = _.reduce(taxes, (sum, result) => {
-      return Currency(result.amount.result).add(sum).value;
+    const taxTotal = _.reduce(taxes, (sum, tax) => {
+      return Currency(tax.amount.result).add(sum).value;
     }, 0);
     const subTotal = Currency(query.vars.subTotal).value;
     const grandTotal = Currency(taxTotal).add(subTotal).value;
@@ -162,4 +164,11 @@ const calculateTotals = (taxes, query) => {
   }
 }
 
-module.exports = { getTaxes, getRules, findByCountry, findByParams, applyRules };
+module.exports = {
+  getTaxes,
+  getRules,
+  findByCountry,
+  findByParams,
+  applyRules,
+  FACTOR_PRECISION
+};

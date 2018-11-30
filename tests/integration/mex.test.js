@@ -2,7 +2,7 @@ const Currency = require('currency.js');
 const {
   getTaxes,
   FACTOR_PRECISION
-} = require('../../getTax');
+} = require('../../lib');
 
 describe('Mexico', () => {
   describe('IVA', () => {

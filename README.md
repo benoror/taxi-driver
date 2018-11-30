@@ -127,15 +127,16 @@ Response:
 
 ```javascript
 {
-  taxes: [{
-    name: "/**/",
-    rate: {error: /*...*/, result: /*...*/},
-    // ...
-  }, {
-    name: "/**/",
-    rate: {error: /*...*/, result: /*...*/},
-    // ...
-  }]
+  taxes: {
+    [taxName]: {
+      rate: {error: /*...*/, result: /*...*/},
+      // ...
+    },
+    [taxName]: {
+      rate: {error: /*...*/, result: /*...*/},
+      // ...
+    }
+  }
 }
 ```
 

@@ -9,15 +9,16 @@ describe('Applying rules', () => {
       "taxName": "IVA"
     }];
     const q = {
-      taxes: [{ name: 'IVA' }]
+      taxes: ['IVA']
     };
-    expect(applyRules(r, q)). toEqual([{
-      name: 'IVA',
-      rate: {
-        error: null,
-        result: 1
-      },
-    }]);
+    expect(applyRules(r, q)). toEqual({
+      'IVA': {
+        rate: {
+          error: null,
+          result: 1
+        },
+      }
+    });
   });
 
   test('Invalid date', () => {

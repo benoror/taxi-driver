@@ -19,12 +19,13 @@ describe('Argentina', () => {
         subTotal: 10701,
         taxTotal: 1284.12,
         grandTotal: 11985.12,
-        taxes: [{
-          name: "IVA",
-          rate: { error: null, result: 0.12 },
-          factor: { error: null, result: 0.12 },
-          amount: { error: null, result: 1284.12 },
-        }]
+        taxes: {
+          'IVA': {
+            rate: { error: null, result: 0.12 },
+            factor: { error: null, result: 0.12 },
+            amount: { error: null, result: 1284.12 },
+          }
+        }
       });
     });
 
@@ -45,12 +46,13 @@ describe('Argentina', () => {
         subTotal: 19999,
         taxTotal: 2999.85,
         grandTotal: 22998.85,
-        taxes: [{
-          name: "IVA",
-          rate: { error: null, result: 0.15 },
-          factor: { error: null, result: 0.15 },
-          amount: { error: null, result: 2999.85 },
-        }]
+        taxes: {
+          'IVA': {
+            rate: { error: null, result: 0.15 },
+            factor: { error: null, result: 0.15 },
+            amount: { error: null, result: 2999.85 },
+          }
+        }
       });
     });
 
@@ -71,12 +73,13 @@ describe('Argentina', () => {
         subTotal: 60000,
         taxTotal: 16200,
         grandTotal: 76200,
-        taxes: [{
-          name: "IVA",
-          rate: { error: null, result: 0.27 },
-          factor: { error: null, result: 0.27 },
-          amount: { error: null, result: 16200 },
-        }]
+        taxes: {
+          'IVA': {
+            rate: { error: null, result: 0.27 },
+            factor: { error: null, result: 0.27 },
+            amount: { error: null, result: 16200 },
+          }
+        }
       });
     });
 
@@ -97,12 +100,13 @@ describe('Argentina', () => {
         subTotal: 10700,
         taxTotal: 642,
         grandTotal: 11342,
-        taxes: [{
-          name: "IVA",
-          rate: { error: null, result: 0.06 },
-          factor: { error: null, result: 0.06 },
-          amount: { error: null, result: 642 },
-        }]
+        taxes: {
+          'IVA': {
+            rate: { error: null, result: 0.06 },
+            factor: { error: null, result: 0.06 },
+            amount: { error: null, result: 642 },
+          }
+        }
       });
     });
   });
@@ -125,12 +129,13 @@ describe('Argentina', () => {
         subTotal: 10701,
         taxTotal: 2996.28,
         grandTotal: 13697.28,
-        taxes: [{
-          name: "IVA",
-          rate: { error: null, result: 0.28 },
-          factor: { error: null, result: 0.28 },
-          amount: { error: null, result: 2996.28 },
-        }]
+        taxes: {
+          'IVA': {
+            rate: { error: null, result: 0.28 },
+            factor: { error: null, result: 0.28 },
+            amount: { error: null, result: 2996.28 },
+          }
+        }
       });
     });
 
@@ -151,12 +156,13 @@ describe('Argentina', () => {
         subTotal: 600,
         taxTotal: 150,
         grandTotal: 750,
-        taxes: [{
-          name: "IVA",
-          rate: { error: null, result: 0.25 },
-          factor: { error: null, result: 0.25 },
-          amount: { error: null, result: 150 },
-        }]
+        taxes: {
+          'IVA': {
+            rate: { error: null, result: 0.25 },
+            factor: { error: null, result: 0.25 },
+            amount: { error: null, result: 150 },
+          }
+        }
       });
     });
   });

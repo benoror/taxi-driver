@@ -16,11 +16,12 @@ describe('KSA VAT', () => {
       };
 
       expect(getTaxes(q)).toEqual({
-        taxes: [{
-          name: 'VAT',
-          rate: { error: null, result: 0.02 },
-          factor: { error: null, result: 0.02 },
-        }]
+        taxes: {
+          'VAT': {
+            rate: { error: null, result: 0.02 },
+            factor: { error: null, result: 0.02 },
+          }
+        }
       });
     });
 
@@ -38,11 +39,12 @@ describe('KSA VAT', () => {
       };
 
       expect(getTaxes(q)).toEqual({
-        taxes: [{
-          name: 'VAT',
-          rate: { error: null, result: 0.05 },
-          factor: { error: null, result: 0.05 },
-        }]
+        taxes: {
+          'VAT': {
+            rate: { error: null, result: 0.05 },
+            factor: { error: null, result: 0.05 },
+          }
+        }
       });
     });
 
@@ -57,11 +59,12 @@ describe('KSA VAT', () => {
       };
 
       expect(getTaxes(q)).toEqual({
-        taxes: [{
-          name: 'VAT',
-          rate: { error: null, result: 0.0 },
-          factor: { error: null, result: 0.0 },
-        }]
+        taxes: {
+          'VAT': {
+            rate: { error: null, result: 0.0 },
+            factor: { error: null, result: 0.0 },
+          }
+        }
       });
     });
   });
@@ -81,11 +84,12 @@ describe('KSA VAT', () => {
       };
 
       expect(getTaxes(q)).toEqual({
-        taxes: [{
-          name: 'VAT',
-          rate: { error: null, result: 0.05 },
-          factor: { error: null, result: 0.05 },
-        }]
+        taxes: {
+          'VAT': {
+            rate: { error: null, result: 0.05 },
+            factor: { error: null, result: 0.05 },
+          }
+        }
       });
     });
 
@@ -103,11 +107,12 @@ describe('KSA VAT', () => {
       };
 
       expect(getTaxes(q)).toEqual({
-        taxes: [{
-          name: 'VAT',
-          rate: { error: null, result: 0.04 },
-          factor: { error: null, result: 0.04 },
-        }]
+        taxes: {
+          'VAT': {
+            rate: { error: null, result: 0.04 },
+            factor: { error: null, result: 0.04 },
+          }
+        }
       });
     });
   });

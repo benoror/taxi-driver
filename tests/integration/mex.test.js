@@ -11,11 +11,12 @@ describe('Mexico', () => {
       };
 
       expect(getTaxes(q)).toEqual({
-        taxes: [{
-          name: "IVA",
-          rate: { error: null, result: 0.16 },
-          factor: { error: null, result: 0.16 },
-        }]
+        taxes: {
+          'IVA': {
+            rate: { error: null, result: 0.16 },
+            factor: { error: null, result: 0.16 },
+          }
+        }
       });
     });
 
@@ -30,11 +31,12 @@ describe('Mexico', () => {
       };
 
       expect(getTaxes(q)).toEqual({
-        taxes: [{
-          name: "IVA",
-          rate: { error: null, result: 0 },
-          factor: { error: null, result: 0 },
-        }]
+        taxes: {
+          'IVA': {
+            rate: { error: null, result: 0 },
+            factor: { error: null, result: 0 },
+          }
+        }
       });
     });
   });
@@ -49,11 +51,12 @@ describe('Mexico', () => {
       };
 
       expect(getTaxes(q)).toEqual({
-        taxes: [{
-          name: "RET_IVA",
-          rate: { error: null, result: -0.167 },
-          factor: { error: null, result: -0.167 },
-        }]
+        taxes: {
+          'RET_IVA': {
+            rate: { error: null, result: -0.167 },
+            factor: { error: null, result: -0.167 },
+          }
+        }
       });
     });
 
@@ -66,11 +69,12 @@ describe('Mexico', () => {
       };
 
       expect(getTaxes(q)).toEqual({
-        taxes: [{
-          name: "RET_ISR",
-          rate: { error: null, result: -0.1 },
-          factor: { error: null, result: -0.1 },
-        }]
+        taxes: {
+          'RET_ISR': {
+            rate: { error: null, result: -0.1 },
+            factor: { error: null, result: -0.1 },
+          }
+        }
       });
     });
   });
@@ -86,11 +90,12 @@ describe('Mexico', () => {
       };
 
       expect(getTaxes(q)).toEqual({
-        taxes: [{
-          name: "PAYROLL",
-          rate: { error: null, result: 0.02 },
-          factor: { error: null, result: 0.02 },
-        }]
+        taxes: {
+          'PAYROLL': {
+            rate: { error: null, result: 0.02 },
+            factor: { error: null, result: 0.02 },
+          }
+        }
       });
     });
 
@@ -104,11 +109,12 @@ describe('Mexico', () => {
       };
 
       expect(getTaxes(q)).toEqual({
-        taxes: [{
-          name: "PAYROLL",
-          rate: { error: null, result: 0.03 },
-          factor: { error: null, result: 0.03 },
-        }]
+        taxes: {
+          'PAYROLL': {
+            rate: { error: null, result: 0.03 },
+            factor: { error: null, result: 0.03 },
+          }
+        }
       });
     });
   });
@@ -133,22 +139,23 @@ describe('Mexico', () => {
         subTotal: 1000,
         taxTotal: 252,
         grandTotal: 1252,
-        taxes: [{
-          name: 'IVA',
-          rate: { error: null, result: 0.16 },
-          factor: { error: null, result: 0.16 },
-          amount: { error: null, result: 160 },
-        }, {
-          name: 'ISR',
-          rate: { error: null, result: 0.10 },
-          factor: { error: null, result: 0.10 },
-          amount: { error: null, result: 100 },
-        }, {
-          name: 'RET_IVA',
-          rate: { error: null, result: -0.05 },
-          factor: { error: null, result: -0.008 },
-          amount: { error: null, result: -8 },
-        }]
+        taxes: {
+          'IVA': {
+            rate: { error: null, result: 0.16 },
+            factor: { error: null, result: 0.16 },
+            amount: { error: null, result: 160 },
+          },
+          'ISR': {
+            rate: { error: null, result: 0.10 },
+            factor: { error: null, result: 0.10 },
+            amount: { error: null, result: 100 },
+          },
+          'RET_IVA': {
+            rate: { error: null, result: -0.05 },
+            factor: { error: null, result: -0.008 },
+            amount: { error: null, result: -8 },
+          }
+        }
       });
     });
 
@@ -165,16 +172,17 @@ describe('Mexico', () => {
       };
 
       expect(getTaxes(q)).toEqual({
-        taxes: [{
-          name: 'IVA',
-          rate: { error: null, result: 0.16 },
-          factor: { error: null, result: 0.16 },
-        }, {
-          error: null,
-          name: 'IEPS',
-          rate: { error: null, result: 0.05 },
-          factor: { error: null, result: 0.05 },
-        }]
+        taxes: {
+          'IVA': {
+            rate: { error: null, result: 0.16 },
+            factor: { error: null, result: 0.16 },
+          },
+          'IEPS': {
+            error: null,
+            rate: { error: null, result: 0.05 },
+            factor: { error: null, result: 0.05 },
+          }
+        }
       });
     });
   });

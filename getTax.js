@@ -66,9 +66,8 @@ const findByTaxName = (rules, taxes) => {
 }
 
 const applyRules = (rules, query) => {
-  return _.map(rules, (rule) => {
-    // ToDo: Separate rate & amount in different error/result tuples
-    let result = {};
+  return _.reduce(rules, (accum, rule) => {
+    let tax = {};
 
     if(!!rule.validUntil && moment(rule.validUntil) < moment()) {
       throw new Error(`Rule date invalid: ${JSON.stringify(rule.validUntil)}` );
@@ -83,63 +82,70 @@ const applyRules = (rules, query) => {
     }
 
     if(!!rule.rate) {
-      result = {...result, rate: parser.parse(rule.rate)};
+      tax = {...tax, rate: parser.parse(rule.rate)};
 
       if(!!rule.whitholded) {
-        result.rate.result *= -1;
+        tax.rate.result *= -1;
       }
     }
 
     if(!!rule.amount) {
-      result = {...result, amount: parser.parse(rule.amount)};
+      tax = {...tax, amount: parser.parse(rule.amount)};
     }
 
     return {
-      name: rule.taxName,
-      ...result,
-    }
-  });
+      ...accum,
+      [rule.taxName]: tax
+    };
+  }, {});
 }
 
-const calculateFactors = (results, rules) => {
-  return _.map(results, (result) => {
-    let factor = result.rate && result.rate.result;
-    const taxRule = _.find(rules, { taxName: result.name });
-    const depTax = _.find(results, { name: taxRule.dep });
+const calculateFactors = (taxes, rules) => {
+  return _.reduce(taxes, (accum, tax, taxName) => {
+    let factor = tax.rate && tax.rate.result;
+    const taxRule = _.find(rules, { taxName });
+    const depTax = taxes[taxRule.dep];
 
     if(!!depTax) {
+      console.log(depTax)
       factor *= depTax.rate.result;
     }
 
     return {
-      ...result,
-      factor: {
-        error: null,
-        result: factor
+      ...accum,
+      [taxName]: {
+        ...tax,
+        factor: {
+          error: null,
+          result: factor
+        }
       }
     };
-  });
+  }, {});
 }
 
-const calculateAmounts = (results, query) => {
-  return _.map(results, (result) => {
+const calculateAmounts = (taxes, query) => {
+  return _.reduce(taxes, (accum, tax, taxName) => {
     if(!!query.vars && !!query.vars.subTotal && !query.vars.amount) {
       return {
-        ...result,
-        amount: {
-          error: null,
-          result: Currency(query.vars.subTotal).multiply(result.factor.result).value
+        ...accum,
+        [taxName]: {
+          ...tax,
+          amount: {
+            error: null,
+            result: Currency(query.vars.subTotal).multiply(tax.factor.result).value
+          }
         }
       };
     } else {
-      return result;
+      return { ...accum, [taxName]: tax };
     }
-  });
+  }, {});
 }
 
-const calculateTotals = (results, query) => {
+const calculateTotals = (taxes, query) => {
   if(!!query.vars && !!query.vars.subTotal) {
-    const taxTotal = _.reduce(results, (sum, result) => {
+    const taxTotal = _.reduce(taxes, (sum, result) => {
       return Currency(result.amount.result).add(sum).value;
     }, 0);
     const subTotal = Currency(query.vars.subTotal).value;
@@ -149,10 +155,10 @@ const calculateTotals = (results, query) => {
       subTotal,
       taxTotal,
       grandTotal,
-      taxes: results
+      taxes,
     };
   } else {
-    return { taxes: results };
+    return { taxes };
   }
 }
 

@@ -98,14 +98,26 @@
       "country": "mx",
       "taxName": "RET_IVA",
       "whitholded": true,
-      "dep": "IVA",
       "region": "AGS",
       "docType": "ARI",
       "txType": "sales",
       "bpType": "signed",
       "area": "PHARMACY",
       "category": "DRUG",
-      "rate": "0.05"
+      "rate": "2/3",
+      "dep": "IVA"
+    },
+    {
+      "country": "mx",
+      "taxName": "RET_ISR",
+      "whitholded": true,
+      "region": "AGS",
+      "docType": "ARI",
+      "txType": "sales",
+      "bpType": "signed",
+      "area": "PHARMACY",
+      "category": "DRUG",
+      "rate": "0.10"
     },
     {
       "country": "mx",

@@ -1,4 +1,8 @@
-const { getTaxes } = require('../../getTax');
+const Currency = require('currency.js');
+const {
+  getTaxes,
+  FACTOR_PRECISION
+} = require('../../getTax');
 
 describe('Mexico', () => {
   describe('IVA', () => {
@@ -137,8 +141,8 @@ describe('Mexico', () => {
 
       expect(getTaxes(q)).toEqual({
         subTotal: 1000,
-        taxTotal: 252,
-        grandTotal: 1252,
+        taxTotal: 153.33,
+        grandTotal: 1153.33,
         taxes: {
           'IVA': {
             rate: { error: null, result: 0.16 },
@@ -151,9 +155,63 @@ describe('Mexico', () => {
             amount: { error: null, result: 100 },
           },
           'RET_IVA': {
-            rate: { error: null, result: -0.05 },
-            factor: { error: null, result: -0.008 },
-            amount: { error: null, result: -8 },
+            rate: {
+              error: null,
+              result: -2/3
+            },
+            factor: {
+              error: null,
+              result: Currency(-0.16*(2/3), { precision: FACTOR_PRECISION }).value
+            },
+            amount: { error: null, result: -106.67 },
+          }
+        }
+      });
+    });
+
+    /*
+     * https://www.elcontribuyente.mx/calculadora/honorarios/
+     */
+    test('With 2 whitholding (Honorarios)', () => {
+      const q = {
+        country: "MX",
+        region: 'AGS',
+        docType: 'ARI',
+        txType: "sales",
+        bpType: "signed",
+        area: 'PHARMACY',
+        category: 'DRUG',
+        vars: {
+          subTotal: 1000
+        },
+        taxes: [ 'IVA', 'RET_ISR', 'RET_IVA' ],
+      };
+
+      expect(getTaxes(q)).toEqual({
+        subTotal: 1000,
+        taxTotal: -46.67,
+        grandTotal: 953.33,
+        taxes: {
+          'IVA': {
+            rate: { error: null, result: 0.16 },
+            factor: { error: null, result: 0.16 },
+            amount: { error: null, result: 160 },
+          },
+          'RET_ISR': {
+            rate: { error: null, result: -0.10 },
+            factor: { error: null, result: -0.10 },
+            amount: { error: null, result: -100 },
+          },
+          'RET_IVA': {
+            rate: {
+              error: null,
+              result: -2/3
+            },
+            factor: {
+              error: null,
+              result: Currency(-0.16*(2/3), { precision: FACTOR_PRECISION }).value
+            },
+            amount: { error: null, result: -106.67 },
           }
         }
       });

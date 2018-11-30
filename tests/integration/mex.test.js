@@ -87,6 +87,7 @@ describe('Mexico', () => {
     test('N.L.', () => {
       const q = {
         country: "MX",
+        local: true,
         region: 'NL',
         txType: "income",
         category: 'NOMINA',
@@ -106,6 +107,7 @@ describe('Mexico', () => {
     test('D.F.', () => {
       const q = {
         country: "MX",
+        local: true,
         region: 'DF',
         txType: "income",
         category: 'NOMINA',
@@ -127,6 +129,7 @@ describe('Mexico', () => {
     test('With dependant whitholding (RET_IVA)', () => {
       const q = {
         country: "MX",
+        local: true,
         region: 'AGS',
         docType: 'ARI',
         txType: "sales",
@@ -175,6 +178,7 @@ describe('Mexico', () => {
     test('With 2 whitholding (Honorarios)', () => {
       const q = {
         country: "MX",
+        local: true,
         region: 'AGS',
         docType: 'ARI',
         txType: "sales",
@@ -220,6 +224,7 @@ describe('Mexico', () => {
     test.skip('Based on vars (IEPS)', () => {
       const q = {
         country: "MX",
+        local: true,
         region: 'AGS',
         docType: 'ARI',
         txType: "sales",

@@ -1,12 +1,13 @@
 {
   "meta": {
     "optionalParams": [
+      "local",
+      "region",
       "txType",
       "docType",
       "bpType",
       "category",
-      "area",
-      "region"
+      "area"
     ]
   },
   "countries": [
@@ -54,27 +55,30 @@
     },
     {
       "country": "mx",
+      "local": true,
+      "region": "NL",
       "taxName": "PAYROLL",
       "whitholded": false,
       "txType": "income",
       "category": "NOMINA",
-      "region": "NL",
       "rate": "0.02"
     },
     {
       "country": "mx",
+      "local": true,
+      "region": "DF",
       "taxName": "PAYROLL",
       "whitholded": false,
       "txType": "income",
       "category": "NOMINA",
-      "region": "DF",
       "rate": "0.03"
     },
     {
       "country": "mx",
+      "local": true,
+      "region": "AGS",
       "taxName": "IVA",
       "whitholded": false,
-      "region": "AGS",
       "docType": "ARI",
       "txType": "sales",
       "bpType": "signed",
@@ -84,9 +88,10 @@
     },
     {
       "country": "mx",
+      "local": true,
+      "region": "AGS",
       "taxName": "ISR",
       "whitholded": false,
-      "region": "AGS",
       "docType": "ARI",
       "txType": "sales",
       "bpType": "signed",
@@ -96,9 +101,10 @@
     },
     {
       "country": "mx",
+      "local": true,
+      "region": "AGS",
       "taxName": "RET_IVA",
       "whitholded": true,
-      "region": "AGS",
       "docType": "ARI",
       "txType": "sales",
       "bpType": "signed",
@@ -109,9 +115,10 @@
     },
     {
       "country": "mx",
+      "local": true,
+      "region": "AGS",
       "taxName": "RET_ISR",
       "whitholded": true,
-      "region": "AGS",
       "docType": "ARI",
       "txType": "sales",
       "bpType": "signed",
@@ -121,9 +128,10 @@
     },
     {
       "country": "mx",
+      "local": true,
+      "region": "AGS",
       "taxName": "IEPS",
       "whitholded": false,
-      "region": "AGS",
       "docType": "ARI",
       "txType": "sales",
       "bpType": "signed",

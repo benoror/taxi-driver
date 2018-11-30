@@ -54,12 +54,13 @@ Required `params` are used to filter out the tax rules by:
 
 Optional `params` (defined at [db.json#L3](https://github.com/ecaresoft/taxi-driver/blob/master/db.json#L3)) can be used to "exact match" a single rule while querying the app via the API. These can be *freely* used:
 
+  - `local`: Local or National tax
+  - `region`: Region (ex. border tax, state, county, municipality)
   - `txType`: Transaction type
   - `docType`: Document type
   - `bpType`: Business Partner type
   - `category`: Category name (ex.: for products)
-  - `area`: Area (ex.: geographic area)
-  - `region`: Region (ex. border tax)
+  - `area`: Area (ex.: business area)
 
 #### Optional `vars` object.
 

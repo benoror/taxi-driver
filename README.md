@@ -27,6 +27,16 @@ These rules are matched and applied based on the provided Query.
 
 A `Datetime` value for specifying the validity of a rule
 
+#### Currency & decimals precision
+
+Taxi Driver use [Currency.js](https://currency.js.org) for all Currency
+calculations, thus getting rid of decimals rounding issues.
+
+For currency amounts the default number of cents is 2
+
+For the rate factors the precision is set to 8 using the `FACTOR_PRECISION`
+constant.
+
 ### Query
 
 A query includes the following (case insensitive) fields:

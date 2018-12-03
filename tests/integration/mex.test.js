@@ -24,7 +24,7 @@ describe('Mexico', () => {
       });
     });
 
-    test('Pharmacy Drug', () => {
+    test('Exampt (Pharmacy Drug)', () => {
       const q = {
         country: "MX",
         txType: "sales",
@@ -39,6 +39,7 @@ describe('Mexico', () => {
           'IVA': {
             rate: { error: null, result: 0 },
             factor: { error: null, result: 0 },
+            meta: { exempt: true },
           }
         }
       });

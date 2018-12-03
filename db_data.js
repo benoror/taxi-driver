@@ -33,7 +33,10 @@ module.exports = {
       "docType": "invoice",
       "category": "DRUG",
       "area": "PHARMACY",
-      "rate": "0.0"
+      "rate": "0.0",
+      "meta": {
+        "exempt": true
+      }
     },
     {
       "country": "mx",

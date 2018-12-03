@@ -153,6 +153,12 @@ Response:
 
 ### Advanced Usage
 
+#### `meta` object
+
+Rules can have a `meta` object, containing any informative fields that
+need to be passed to the consumer. For example, an `exempt` flag for
+Mexico's particular exempt taxes.
+
 #### Factor, amounts & totals calculation
 
 If a `vars.subTotal` is provided, the engine will automatically

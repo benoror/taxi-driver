@@ -24,7 +24,7 @@ describe('Mexico', () => {
       });
     });
 
-    test('Exampt (Pharmacy Drug)', () => {
+    test('Exempt (Pharmacy Drug)', () => {
       const q = {
         country: "MX",
         txType: "sales",
@@ -173,8 +173,7 @@ describe('Mexico', () => {
       });
     });
 
-    
-    https://www.elcontribuyente.mx/calculadora/honorarios/
+    // https://www.elcontribuyente.mx/calculadora/honorarios/
     test('With 2 whitholding (Honorarios)', () => {
       const q = {
         country: "MX",
@@ -220,6 +219,36 @@ describe('Mexico', () => {
         }
       });
     });
+
+    test('Energy Drinks (IVA+IEPS)', () => {
+      const q = {
+        country: 'MX',
+        local: false,
+        txType: 'sales',
+        category: 'SOFT_DRINKS',
+        vars: {
+          quantity: 3,
+          subTotal: 30
+        },
+        taxes: [ 'IVA', 'IEPS' ],
+      };
+
+      expect(getTaxes(q)).toEqual({
+        subTotal: 30,
+        taxTotal: 7.8,
+        grandTotal: 37.8,
+        taxes: {
+          'IVA': {
+            rate: { error: null, result: 0.16 },
+            factor: { error: null, result: 0.16 },
+            amount: { error: null, result: 4.8 },
+          },
+          'IEPS': {
+            amount: { error: null, result: 3 },
+          }
+        }
+      });
+    });
   });
 
   describe('IEPS', () => {
@@ -230,7 +259,7 @@ describe('Mexico', () => {
         txType: 'sales',
         category: 'CANDY',
         vars: {
-          grams: '101'
+          quantity: '101'
         },
         taxes: [ 'IEPS' ],
       };
@@ -252,7 +281,7 @@ describe('Mexico', () => {
         txType: 'sales',
         category: 'CANDY',
         vars: {
-          grams: 99
+          quantity: 99
         },
         taxes: [ 'IEPS' ],
       };
@@ -281,6 +310,31 @@ describe('Mexico', () => {
           'IEPS': {
             rate: { error: null, result: 0.25 },
             factor: { error: null, result: 0.25 },
+          }
+        }
+      });
+    });
+
+    test('Soft Drinks', () => {
+      const q = {
+        country: 'MX',
+        local: false,
+        txType: 'sales',
+        category: 'SOFT_DRINKS',
+        vars: {
+          quantity: 3,
+          subTotal: 30
+        },
+        taxes: [ 'IEPS' ],
+      };
+
+      expect(getTaxes(q)).toEqual({
+        subTotal: 30,
+        taxTotal: 3,
+        grandTotal: 33,
+        taxes: {
+          'IEPS': {
+            amount: { error: null, result: 3 }
           }
         }
       });

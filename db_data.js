@@ -136,7 +136,7 @@ module.exports = {
       "whitholded": false,
       "txType": "sales",
       "category": "CANDY",
-      "rate": "IF(grams > 100, 0.08, 0.0)"
+      "rate": "IF(quantity > 100, 0.08, 0.0)"
     },
     {
       "country": "mx",
@@ -146,6 +146,24 @@ module.exports = {
       "txType": "sales",
       "category": "ENERGY_DRINKS",
       "rate": 0.25
+    },
+    {
+      "country": "mx",
+      "local": false,
+      "taxName": "IVA",
+      "whitholded": false,
+      "txType": "sales",
+      "category": "SOFT_DRINKS",
+      "rate": 0.16
+    },
+    {
+      "country": "mx",
+      "local": false,
+      "taxName": "IEPS",
+      "whitholded": false,
+      "txType": "sales",
+      "category": "SOFT_DRINKS",
+      "amount": "quantity"
     },
     {
       "country": "sa",

@@ -266,6 +266,25 @@ describe('Mexico', () => {
         }
       });
     });
+
+    test('Energy Drinks', () => {
+      const q = {
+        country: 'MX',
+        local: false,
+        txType: 'sales',
+        category: 'ENERGY_DRINKS',
+        taxes: [ 'IEPS' ],
+      };
+
+      expect(getTaxes(q)).toEqual({
+        taxes: {
+          'IEPS': {
+            rate: { error: null, result: 0.25 },
+            factor: { error: null, result: 0.25 },
+          }
+        }
+      });
+    });
   });
 });
 

@@ -139,6 +139,15 @@ module.exports = {
       "rate": "IF(grams > 100, 0.08, 0.0)"
     },
     {
+      "country": "mx",
+      "local": false,
+      "taxName": "IEPS",
+      "whitholded": false,
+      "txType": "sales",
+      "category": "ENERGY_DRINKS",
+      "rate": 0.25
+    },
+    {
       "country": "sa",
       "taxName": "VAT",
       "whitholded": false,

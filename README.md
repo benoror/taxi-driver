@@ -74,7 +74,7 @@ An array of `String`'s to be matched against rule(s) `taxName`
 
 ### Formulas & Variables
 
-\*Both `vars`, `rate` & `amount` have to be `String`'s, since are always evaluated using [handsontable/formula-parser](https://github.com/handsontable/formula-parser)
+\*Both `vars`, `rate` & `amount` can also be `String`'s, as they can be evaluated using [handsontable/formula-parser](https://github.com/handsontable/formula-parser)
 
 ### Query Example
 

@@ -131,16 +131,12 @@ module.exports = {
     },
     {
       "country": "mx",
-      "local": true,
-      "region": "AGS",
+      "local": false,
       "taxName": "IEPS",
       "whitholded": false,
-      "docType": "ARI",
       "txType": "sales",
-      "bpType": "signed",
-      "area": "PHARMACY",
-      "category": "DRUG",
-      "rate": "0.05"
+      "category": "CANDY",
+      "rate": "IF(grams > 100, 0.08, 0.0)"
     },
     {
       "country": "sa",

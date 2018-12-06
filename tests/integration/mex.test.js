@@ -173,9 +173,8 @@ describe('Mexico', () => {
       });
     });
 
-    /*
-     * https://www.elcontribuyente.mx/calculadora/honorarios/
-     */
+    
+    https://www.elcontribuyente.mx/calculadora/honorarios/
     test('With 2 whitholding (Honorarios)', () => {
       const q = {
         country: "MX",
@@ -221,30 +220,48 @@ describe('Mexico', () => {
         }
       });
     });
+  });
 
-    test.skip('Based on vars (IEPS)', () => {
+  describe('IEPS', () => {
+    test('Candy > 100g', () => {
       const q = {
-        country: "MX",
-        local: true,
-        region: 'AGS',
-        docType: 'ARI',
-        txType: "sales",
-        bpType: "signed",
-        area: 'PHARMACY',
-        category: 'DRUG',
-        taxes: [ 'IVA', 'IEPS' ],
+        country: 'MX',
+        local: false,
+        txType: 'sales',
+        category: 'CANDY',
+        vars: {
+          grams: '101'
+        },
+        taxes: [ 'IEPS' ],
       };
 
       expect(getTaxes(q)).toEqual({
         taxes: {
-          'IVA': {
-            rate: { error: null, result: 0.16 },
-            factor: { error: null, result: 0.16 },
-          },
           'IEPS': {
-            error: null,
-            rate: { error: null, result: 0.05 },
-            factor: { error: null, result: 0.05 },
+            rate: { error: null, result: 0.08 },
+            factor: { error: null, result: 0.08 },
+          }
+        }
+      });
+    });
+
+    test('Candy <= 100g', () => {
+      const q = {
+        country: 'MX',
+        local: false,
+        txType: 'sales',
+        category: 'CANDY',
+        vars: {
+          grams: 99
+        },
+        taxes: [ 'IEPS' ],
+      };
+
+      expect(getTaxes(q)).toEqual({
+        taxes: {
+          'IEPS': {
+            rate: { error: null, result: 0.0 },
+            factor: { error: null, result: 0.0 },
           }
         }
       });

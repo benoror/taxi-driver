@@ -20,8 +20,8 @@ module.exports = {
       "whitholded": false,
       "txType": "sales",
       "docType": "invoice",
+      "area": "externo",
       "category": "DRUG",
-      "area": "PHARMACY",
       "rate": "0.0",
       "meta": {
         "exempt": true
@@ -71,7 +71,7 @@ module.exports = {
       "docType": "ARI",
       "txType": "sales",
       "bpType": "signed",
-      "area": "PHARMACY",
+      "area": "externo",
       "category": "DRUG",
       "rate": "0.16"
     },
@@ -83,7 +83,7 @@ module.exports = {
       "docType": "ARI",
       "txType": "sales",
       "bpType": "signed",
-      "area": "PHARMACY",
+      "area": "externo",
       "category": "DRUG",
       "rate": "0.10"
     },
@@ -95,7 +95,7 @@ module.exports = {
       "docType": "ARI",
       "txType": "sales",
       "bpType": "signed",
-      "area": "PHARMACY",
+      "area": "externo",
       "category": "DRUG",
       "rate": "2/3",
       "dep": "IVA"
@@ -108,7 +108,7 @@ module.exports = {
       "docType": "ARI",
       "txType": "sales",
       "bpType": "signed",
-      "area": "PHARMACY",
+      "area": "externo",
       "category": "DRUG",
       "rate": "0.10"
     },

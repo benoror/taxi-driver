@@ -28,7 +28,7 @@ describe('Mexico', () => {
         txType: "sales",
         docType: "invoice",
         category: 'DRUG',
-        area: 'PHARMACY',
+        area: 'externo',
         taxes: ["IVA"],
       };
 
@@ -130,7 +130,7 @@ describe('Mexico', () => {
         docType: 'ARI',
         txType: "sales",
         bpType: "signed",
-        area: 'PHARMACY',
+        area: 'externo',
         category: 'DRUG',
         vars: {
           subTotal: 1000
@@ -176,7 +176,7 @@ describe('Mexico', () => {
         docType: 'ARI',
         txType: "sales",
         bpType: "signed",
-        area: 'PHARMACY',
+        area: 'externo',
         category: 'DRUG',
         vars: {
           subTotal: 1000

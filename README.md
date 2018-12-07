@@ -41,23 +41,23 @@ constant.
 
 A query includes the following (case insensitive) fields:
 
-#### Required `params`
+#### Required parameters
 
-Required `params` are used to filter out the tax rules by:
+Initially, these required parameters are used to filter out the tax rules by:
 
   - `country` (String): Country code
-  - `taxName` (String): A name to identify the tax
+  - `taxes` (Array(String)): Name(s) to identify the taxes
 
-#### Optional `params`
+#### Optional `match params`
 
-Optional `params` (defined at [db.json#L3](https://github.com/ecaresoft/taxi-driver/blob/master/db.json#L3)) can be used to "exact match" a single rule while querying the app via the API. These can be *freely* used:
+Optional `match params` (defined at [db.json#L3](https://github.com/ecaresoft/taxi-driver/blob/master/lib/match.js#L4)) are used to "best match" a single rule while querying the app via the API:
 
   - `region`: Region (ex. border tax, state, county, municipality)
+  - `bpType`: Business Partner type
   - `txType`: Transaction type
   - `docType`: Document type
-  - `bpType`: Business Partner type
   - `category`: Category name (ex.: for products)
-  - `area`: Area (ex.: business area)
+  - `area`: Area (ex.: business area, service station)
 
 #### Optional `vars` object.
 
@@ -123,7 +123,7 @@ Request:
 ```javascript
 {
   country: "sa",
-  // ... params
+  // ... match params
   vars: {
     // ...
   },

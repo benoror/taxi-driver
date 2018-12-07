@@ -1,14 +1,4 @@
 module.exports = {
-  "meta": {
-    "optionalParams": [
-      "region",
-      "txType",
-      "docType",
-      "bpType",
-      "category",
-      "area"
-    ]
-  },
   "countries": [
     { "code": "mx", "name": "Mexico" },
     { "code": "ar", "name": "Argentina" },

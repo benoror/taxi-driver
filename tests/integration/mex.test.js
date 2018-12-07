@@ -42,6 +42,25 @@ describe('Mexico', () => {
         }
       });
     });
+
+    test('Best Match (region non-existent)', () => {
+      const q = {
+        country: "MX",
+        region: "OAX",
+        txType: "sales",
+        docType: "invoice",
+        taxes: ["IVA"],
+      };
+
+      expect(getTaxes(q)).toEqual({
+        taxes: {
+          'IVA': {
+            rate: { error: null, result: 0.16 },
+            factor: { error: null, result: 0.16 },
+          }
+        }
+      });
+    });
   });
 
   describe('RET', () => {

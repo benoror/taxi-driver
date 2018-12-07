@@ -1,7 +1,6 @@
 module.exports = {
   "meta": {
     "optionalParams": [
-      "local",
       "region",
       "txType",
       "docType",
@@ -58,7 +57,6 @@ module.exports = {
     },
     {
       "country": "mx",
-      "local": true,
       "region": "NL",
       "taxName": "PAYROLL",
       "whitholded": false,
@@ -68,7 +66,6 @@ module.exports = {
     },
     {
       "country": "mx",
-      "local": true,
       "region": "DF",
       "taxName": "PAYROLL",
       "whitholded": false,
@@ -78,7 +75,6 @@ module.exports = {
     },
     {
       "country": "mx",
-      "local": true,
       "region": "AGS",
       "taxName": "IVA",
       "whitholded": false,
@@ -91,7 +87,6 @@ module.exports = {
     },
     {
       "country": "mx",
-      "local": true,
       "region": "AGS",
       "taxName": "ISR",
       "whitholded": false,
@@ -104,7 +99,6 @@ module.exports = {
     },
     {
       "country": "mx",
-      "local": true,
       "region": "AGS",
       "taxName": "RET_IVA",
       "whitholded": true,
@@ -118,7 +112,6 @@ module.exports = {
     },
     {
       "country": "mx",
-      "local": true,
       "region": "AGS",
       "taxName": "RET_ISR",
       "whitholded": true,
@@ -131,7 +124,6 @@ module.exports = {
     },
     {
       "country": "mx",
-      "local": false,
       "taxName": "IEPS",
       "whitholded": false,
       "txType": "sales",
@@ -140,7 +132,6 @@ module.exports = {
     },
     {
       "country": "mx",
-      "local": false,
       "taxName": "IEPS",
       "whitholded": false,
       "txType": "sales",
@@ -149,7 +140,6 @@ module.exports = {
     },
     {
       "country": "mx",
-      "local": false,
       "taxName": "IVA",
       "whitholded": false,
       "txType": "sales",
@@ -158,7 +148,6 @@ module.exports = {
     },
     {
       "country": "mx",
-      "local": false,
       "taxName": "IEPS",
       "whitholded": false,
       "txType": "sales",

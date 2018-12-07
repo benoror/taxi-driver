@@ -47,14 +47,11 @@ Required `params` are used to filter out the tax rules by:
 
   - `country` (String): Country code
   - `taxName` (String): A name to identify the tax
-  - `witholded` (Boolean): If whitholding, the factor will be
-    calculated as negative (-)
 
 #### Optional `params`
 
 Optional `params` (defined at [db.json#L3](https://github.com/ecaresoft/taxi-driver/blob/master/db.json#L3)) can be used to "exact match" a single rule while querying the app via the API. These can be *freely* used:
 
-  - `local`: Local or National tax
   - `region`: Region (ex. border tax, state, county, municipality)
   - `txType`: Transaction type
   - `docType`: Document type

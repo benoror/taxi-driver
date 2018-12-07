@@ -1,4 +1,4 @@
-const { applyRules } = require('../../lib');
+const { evalRules } = require('../../lib/eval');
 const FormulaParser = require('hot-formula-parser').Parser;
 const parser = new FormulaParser();
 
@@ -13,7 +13,7 @@ describe('Applying rules', () => {
     const q = {
       taxes: ['IVA']
     };
-    expect(applyRules(parser, r, q)). toEqual({
+    expect(evalRules(parser, r, q)). toEqual({
       'IVA': {
         rate: {
           error: null,
@@ -30,7 +30,7 @@ describe('Applying rules', () => {
     const q = {
       taxType: 'IVA'
     };
-    expect(() => applyRules(parser, r, q)).toThrowError();
+    expect(() => evalRules(parser, r, q)).toThrowError();
   });
 
 });

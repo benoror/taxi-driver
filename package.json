@@ -4,7 +4,7 @@
   "description": "A Flexible International Tax Engine Microservice",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "standard && jest",
     "start": "micro",
     "dev": "micro-dev"
   },
@@ -26,6 +26,10 @@
   },
   "devDependencies": {
     "jest": "^23.6.0",
-    "micro-dev": "^3.0.0"
+    "micro-dev": "^3.0.0",
+    "standard": "*"
+  },
+  "standard": {
+    "env": [ "jest" ]
   }
 }

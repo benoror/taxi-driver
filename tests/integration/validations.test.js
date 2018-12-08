@@ -1,24 +1,19 @@
 const { getTaxes } = require('../../lib');
 
-describe('Validations', () => {
+describe('Required Validations', () => {
   test('No country for old men', () => {
-    expect(() => getTaxes('neverland', {})).toThrowError();
+    const q = {
+      country: 'neverland',
+    };
+    expect(() => getTaxes(q)).toThrowError(/country neverland not found/i);
   });
 
-  test('Not specific tax rules', () => {
+  test('No tax name', () => {
     const q = {
-      taxType: 'IVA',
-      category: 'ALCOHOL'
+      country: 'mx',
+      taxes: ['XYZ'],
     };
 
-    expect(() => getTaxes('mx', q)).toThrowError();
-  });
-
-  test('Double deathmatch', () => {
-    const q = {
-      taxType: 'VAT'
-    };
-
-    expect(() => getTaxes('sa', q)).toThrowError();
+    expect(() => getTaxes(q)).toThrowError(/tax rules not found/i);
   });
 });

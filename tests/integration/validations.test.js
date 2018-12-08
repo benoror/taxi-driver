@@ -3,17 +3,25 @@ const { getTaxes } = require('../../lib')
 describe('Required Validations', () => {
   test('No country for old men', () => {
     const q = {
-      country: 'neverland'
+      country: 'neverland',
+      taxes: ['XYZ']
     }
-    expect(() => getTaxes(q)).toThrowError(/country neverland not found/i)
+
+    try { getTaxes(q) } catch (error) {
+      expect(error.message).toMatch(/country neverland not found/i)
+      expect(error.statusCode).toEqual(404)
+    }
   })
 
-  test('No tax name', () => {
+  test('No tax by name', () => {
     const q = {
       country: 'mx',
       taxes: ['XYZ']
     }
 
-    expect(() => getTaxes(q)).toThrowError(/tax rules not found/i)
+    try { getTaxes(q) } catch (error) {
+      expect(error.message).toMatch(/tax rules not found/i)
+      expect(error.statusCode).toEqual(404)
+    }
   })
 })

@@ -75,8 +75,8 @@ describe('Mexico', () => {
       expect(getTaxes(q)).toEqual({
         taxes: {
           'RET_IVA': {
-            rate: { error: null, result: -0.167 },
-            factor: { error: null, result: -0.167 }
+            rate: { error: null, result: -2 / 3 },
+            factor: { error: null, result: -2 / 3 }
           }
         }
       })

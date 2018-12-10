@@ -34,7 +34,7 @@ module.exports = {
       'dep': 'IVA',
       'txType': 'income',
       'docType': 'invoice',
-      'rate': '0.167'
+      'rate': '2/3'
     },
     {
       'country': 'mx',

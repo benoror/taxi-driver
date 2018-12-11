@@ -153,7 +153,7 @@ module.exports = {
       'docType': 'invoice',
       'category': 'DRUG',
       'bpType': 'TAXYES',
-      'rate': 'IF(productTotal > 2000, 0.02, 0.05)'
+      'rate': 'IF(unitPrice > 2000, 0.02, 0.05)'
     },
     {
       'country': 'sa',
@@ -173,7 +173,7 @@ module.exports = {
       'docType': 'invoice',
       'category': '!DRUG',
       'bpType': 'TAXYES',
-      'rate': 'IF(productTotal > 5000, 0.05, 0.04)'
+      'rate': 'IF(unitPrice > 5000, 0.05, 0.04)'
     },
     {
       'country': 'sa',

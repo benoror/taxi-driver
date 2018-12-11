@@ -66,7 +66,7 @@ Optional `match params` (defined at [db.json#L3](https://github.com/ecaresoft/ta
 
 `vars` object is used both in a query and rules, to store variable dependant values (such as sub-totals), and other formulas to be evaluated by the `FormulaParser`.
 
-\*Commonly used for: `subTotal`, `productTotal`, ...
+\*Commonly used for: `subTotal`, `unitPrice`, ...
 
 #### Array of `taxes`
 
@@ -87,7 +87,7 @@ An array of `String`'s to be matched against rule(s) `taxName`
   bpTaxType: 'TAXYES',
   area: undefined,
   vars: {
-    productTotal: 5000
+    unitPrice: 5000
   },
   taxes: ['VAT'],
 }
@@ -106,7 +106,7 @@ The query above will match to the following rule(s):
       "taxName": "VAT",
       "category": "DRUG",
       "bpTaxType": "TAXYES",
-      "rate": "IF(productTotal > 2000, 0.02, 0.05)"
+      "rate": "IF(unitPrice > 2000, 0.02, 0.05)"
     }
   ]
 ```

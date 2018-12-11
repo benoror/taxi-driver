@@ -10,6 +10,9 @@
   },
   "author": "Ben Orozco <benoror@gmail.com>",
   "license": "MIT",
+  "engines" : {
+    "node" : "8.10.0"
+  },
   "dependencies": {
     "currency.js": "^1.2.1",
     "hot-formula-parser": "^3.0.0",

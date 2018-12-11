@@ -3,11 +3,7 @@ Taxi Driver - A Flexible International Tax Engine Microservice
 
 Built with [Micro](https://github.com/zeit/micro) & [Lowdb ⚡️](https://github.com/typicode/lowdb)
 
-[![Build Status](https://travis-ci.org/ecaresoft/taxi-driver.svg?branch=master)](https://travis-ci.org/ecaresoft/taxi-driver)
-
-[![Maintainability](https://api.codeclimate.com/v1/badges/9cabf46da635a1db84a8/maintainability)](https://codeclimate.com/github/ecaresoft/taxi-driver/maintainability)
-
-[![Test Coverage](https://api.codeclimate.com/v1/badges/9cabf46da635a1db84a8/test_coverage)](https://codeclimate.com/github/ecaresoft/taxi-driver/test_coverage)
+[![Build Status](https://travis-ci.org/ecaresoft/taxi-driver.svg?branch=master)](https://travis-ci.org/ecaresoft/taxi-driver) [![Maintainability](https://api.codeclimate.com/v1/badges/9cabf46da635a1db84a8/maintainability)](https://codeclimate.com/github/ecaresoft/taxi-driver/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/9cabf46da635a1db84a8/test_coverage)](https://codeclimate.com/github/ecaresoft/taxi-driver/test_coverage)
 
 ![taxi driver](https://user-images.githubusercontent.com/119117/48316345-df182200-e5a7-11e8-94ff-bab2f79694f0.jpg)
 
@@ -27,9 +23,12 @@ Tax Rules are defined in a LowDB located at [db.json#L18](https://github.com/eca
 
 These rules are matched and applied based on the provided Query.
 
-#### Validity Life `validUntil`
+#### Validity range
 
-A `Datetime` value for specifying the validity of a rule
+A range of `Datetime` values for specifying the validity of a rule
+
+- `validFrom` & `validUntil`: International Standard Date (ISO) (see
+  [moment.js documentation](https://momentjs.com/docs/#/parsing/string/))
 
 #### Currency & decimals precision
 

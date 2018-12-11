@@ -9,6 +9,7 @@ module.exports = {
       'country': 'mx',
       'taxName': 'IVA',
       'whitholded': false,
+      'validFrom': '1900-04-23T18:25:43.511Z',
       'validUntil': '2999-04-23T18:25:43.511Z',
       'txType': 'sales',
       'docType': 'invoice',

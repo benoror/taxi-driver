@@ -16,15 +16,6 @@ module.exports = {
     {
       'country': 'mx',
       'taxName': 'IVA',
-      'validFrom': '2005-01-01T00:00:00.511Z',
-      'validUntil': '2009-12-31T23:59:00.511Z',
-      'whitholded': false,
-      'txType': 'sales',
-      'rate': '0.16'
-    },
-    {
-      'country': 'mx',
-      'taxName': 'IVA',
       'validFrom': '2000-01-01T00:00:00.511Z',
       'validUntil': '2009-12-31T23:59:59.511Z',
       'whitholded': false,

@@ -8,142 +8,176 @@ module.exports = {
     {
       'country': 'mx',
       'taxName': 'IVA',
-      'whitholded': false,
-      'validFrom': '1900-04-23T18:25:43.511Z',
+      'validFrom': '2010-01-01T00:00:00.511Z',
       'validUntil': '2999-04-23T18:25:43.511Z',
-      'txType': 'sales',
-      'docType': 'invoice',
+      'whitholded': false,
       'rate': '0.16'
     },
     {
       'country': 'mx',
       'taxName': 'IVA',
+      'validFrom': '2005-01-01T00:00:00.511Z',
+      'validUntil': '2009-12-31T23:59:00.511Z',
       'whitholded': false,
       'txType': 'sales',
-      'docType': 'invoice',
-      'area': 'externo',
-      'category': 'DRUG',
-      'rate': '0.0',
-      'meta': {
-        'exempt': true
-      }
+      'rate': '0.16'
     },
     {
       'country': 'mx',
-      'taxName': 'RET_IVA',
-      'whitholded': true,
-      'dep': 'IVA',
-      'txType': 'income',
-      'docType': 'invoice',
-      'rate': '2/3'
+      'taxName': 'IVA',
+      'validFrom': '2000-01-01T00:00:00.511Z',
+      'validUntil': '2009-12-31T23:59:59.511Z',
+      'whitholded': false,
+      'rate': '0.11'
     },
     {
       'country': 'mx',
-      'taxName': 'RET_ISR',
-      'whitholded': true,
-      'dep': 'ISR',
-      'txType': 'income',
-      'docType': 'invoice',
-      'rate': '0.1'
+      'taxName': 'IVA11',
+      'validFrom': '2000-01-01T00:00:00.511Z',
+      'validUntil': '2009-12-31T23:59:59.511Z',
+      'whitholded': false,
+      'txType': 'BOTH',
+      'rate': '0.11'
     },
     {
       'country': 'mx',
-      'region': 'NL',
-      'taxName': 'PAYROLL',
+      'taxName': 'IVA0',
+      'validFrom': '2010-01-01T00:00:00.511Z',
+      'validUntil': '2999-04-23T18:25:43.511Z',
+      'whitholded': false,
+      'txType': 'sales',
+      'category': '51000000',
+      'rate': '0'
+    },
+    {
+      'country': 'mx',
+      'taxName': 'IVA0',
       'whitholded': false,
       'txType': 'income',
-      'category': 'NOMINA',
+      'area': 'e',
+      'category': '51000000',
+      'rate': '0'
+    },
+    {
+      'country': 'mx',
+      'taxName': 'A_SAL',
+      'validFrom': '2010-01-01T00:00:00.511Z',
+      'validUntil': '2999-04-23T18:25:43.511Z',
+      'whitholded': false,
+      'txType': 'sales',
+      'rate': '0.103715'
+    },
+    {
+      'country': 'mx',
+      'taxName': 'ISH2',
+      'validFrom': '2010-01-01T00:00:00.511Z',
+      'validUntil': '2999-04-23T18:25:43.511Z',
+      'whitholded': false,
+      'txType': 'sales',
       'rate': '0.02'
     },
     {
       'country': 'mx',
-      'region': 'DF',
-      'taxName': 'PAYROLL',
+      'taxName': 'ISH3',
+      'validFrom': '2010-01-01T00:00:00.511Z',
+      'validUntil': '2999-04-23T18:25:43.511Z',
       'whitholded': false,
-      'txType': 'income',
-      'category': 'NOMINA',
+      'txType': 'sales',
       'rate': '0.03'
     },
     {
       'country': 'mx',
-      'region': 'AGS',
-      'taxName': 'IVA',
+      'taxName': 'ISN3',
+      'validFrom': '2010-01-01T00:00:00.511Z',
+      'validUntil': '2999-04-23T18:25:43.511Z',
       'whitholded': false,
-      'docType': 'ARI',
       'txType': 'sales',
-      'bpType': 'signed',
-      'area': 'externo',
-      'category': 'DRUG',
-      'rate': '0.16'
+      'rate': '0.03'
     },
     {
       'country': 'mx',
-      'region': 'AGS',
-      'taxName': 'ISR',
+      'taxName': 'ISN',
+      'validFrom': '2010-01-01T00:00:00.511Z',
+      'validUntil': '2999-04-23T18:25:43.511Z',
       'whitholded': false,
-      'docType': 'ARI',
       'txType': 'sales',
-      'bpType': 'signed',
-      'area': 'externo',
-      'category': 'DRUG',
-      'rate': '0.10'
+      'rate': '0.03'
     },
     {
       'country': 'mx',
-      'region': 'AGS',
-      'taxName': 'RET_IVA',
-      'whitholded': true,
-      'docType': 'ARI',
+      'taxName': 'RTP3',
+      'validFrom': '2010-01-01T00:00:00.511Z',
+      'validUntil': '2999-04-23T18:25:43.511Z',
+      'whitholded': false,
       'txType': 'sales',
-      'bpType': 'signed',
-      'area': 'externo',
-      'category': 'DRUG',
-      'rate': '2/3',
-      'dep': 'IVA'
+      'rate': '0.03'
     },
     {
       'country': 'mx',
-      'region': 'AGS',
-      'taxName': 'RET_ISR',
+      'taxName': 'RETIVA',
       'whitholded': true,
-      'docType': 'ARI',
+      'dep': 'IVA',
       'txType': 'sales',
-      'bpType': 'signed',
-      'area': 'externo',
-      'category': 'DRUG',
-      'rate': '0.10'
+      'rate': '2/3'
+    },
+    {
+      'country': 'mx',
+      'taxName': 'RETISR',
+      'whitholded': true,
+      'txType': 'sales',
+      'rate': '0.1'
+    },
+    {
+      'country': 'mx',
+      'taxName': 'RETIVA4',
+      'whitholded': true,
+      'txType': 'sales',
+      'rate': '0.04'
     },
     {
       'country': 'mx',
       'taxName': 'IEPS',
       'whitholded': false,
       'txType': 'sales',
-      'category': 'CANDY',
+      'category': '50000000',
       'rate': 'IF(quantity > 100, 0.08, 0.0)'
     },
     {
       'country': 'mx',
-      'taxName': 'IEPS',
+      'taxName': 'IEPS3',
       'whitholded': false,
       'txType': 'sales',
-      'category': 'ENERGY_DRINKS',
-      'rate': 0.25
+      'rate': '0.03'
     },
     {
       'country': 'mx',
-      'taxName': 'IVA',
+      'taxName': 'IEPS8',
       'whitholded': false,
       'txType': 'sales',
-      'category': 'SOFT_DRINKS',
-      'rate': 0.16
+      'rate': '0.08'
+    },
+    {
+      'country': 'mx',
+      'taxName': 'DAP',
+      'whitholded': false,
+      'txType': 'sales',
+      'rate': '0.0999999'
     },
     {
       'country': 'mx',
       'taxName': 'IEPS',
       'whitholded': false,
       'txType': 'sales',
-      'category': 'SOFT_DRINKS',
-      'amount': 'quantity'
+      'category': '50000000',
+      'rate': '0.25'
+    },
+    {
+      'country': 'mx',
+      'taxName': 'IEPS',
+      'whitholded': false,
+      'txType': 'sales',
+      'category': '50000000',
+      'rate': '0.16'
     },
     {
       'country': 'sa',

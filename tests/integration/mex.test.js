@@ -21,26 +21,44 @@ describe('Mexico', () => {
       })
     })
 
-    // test('Exempt (Pharmacy Drug)', () => {
-    //   const q = {
-    //     country: 'MX',
-    //     txType: 'sales',
-    //     docType: 'invoice',
-    //     category: 'DRUG',
-    //     area: 'externo',
-    //     taxes: ['IVA']
-    //   }
+    test('[Cirrus Legacy] Sales Rate 0 (Drug)', () => {
+      const q = {
+        country: 'MX',
+        txType: 'sales',
+        docType: 'invoice',
+        category: '51000000',
+        taxes: ['IVA0']
+      }
 
-    //   expect(getTaxes(q)).toEqual({
-    //     taxes: {
-    //       'IVA': {
-    //         rate: { error: null, result: 0 },
-    //         factor: { error: null, result: 0 },
-    //         meta: { exempt: true }
-    //       }
-    //     }
-    //   })
-    // })
+      expect(getTaxes(q)).toEqual({
+        taxes: {
+          'IVA0': {
+            rate: { error: null, result: 0 },
+            factor: { error: null, result: 0 }
+          }
+        }
+      })
+    })
+
+    test('[exempt] Income Rate 0 (Drug)', () => {
+      const q = {
+        country: 'MX',
+        txType: 'income',
+        category: '51000000',
+        area: 'e',
+        taxes: ['IVA']
+      }
+
+      expect(getTaxes(q)).toEqual({
+        taxes: {
+          'IVA': {
+            rate: { error: null, result: 0 },
+            factor: { error: null, result: 0 },
+            meta: { exempt: true }
+          }
+        }
+      })
+    })
 
     test('Best Match (region non-existent)', () => {
       const q = {
@@ -156,13 +174,14 @@ describe('Mexico', () => {
 
       expect(getTaxes(q)).toEqual({
         subTotal: 1000,
-        taxTotal: -46.67,
-        grandTotal: 953.33,
+        taxTotal: -100,
+        grandTotal: 900,
         taxes: {
           'IVA': {
-            rate: { error: null, result: 0.16 },
-            factor: { error: null, result: 0.16 },
-            amount: { error: null, result: 160 }
+            rate: { error: null, result: 0 },
+            factor: { error: null, result: 0 },
+            amount: { error: null, result: 0 },
+            meta: { exempt: true }
           },
           'RETISR': {
             rate: { error: null, result: -0.10 },
@@ -176,9 +195,9 @@ describe('Mexico', () => {
             },
             factor: {
               error: null,
-              result: Currency(-0.16 * (2 / 3), { precision: FACTOR_PRECISION }).value
+              result: Currency(0 * (2 / 3), { precision: FACTOR_PRECISION }).value
             },
-            amount: { error: null, result: -106.67 }
+            amount: { error: null, result: 0 }
           }
         }
       })

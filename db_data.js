@@ -32,6 +32,31 @@ module.exports = {
     },
     {
       'country': 'mx',
+      'taxName': 'IVA',
+      'validFrom': '2010-01-01T00:00:00.511Z',
+      'validUntil': '2999-04-23T18:25:43.511Z',
+      'whitholded': false,
+      'txType': 'sales',
+      'category': '51000000',
+      'rate': '0',
+      'meta': {
+        'exempt': true
+      }
+    },
+    {
+      'country': 'mx',
+      'taxName': 'IVA',
+      'whitholded': false,
+      'txType': 'income',
+      'area': 'e',
+      'category': '51000000',
+      'rate': '0',
+      'meta': {
+        'exempt': true
+      }
+    },
+    {
+      'country': 'mx',
       'taxName': 'IVA0',
       'validFrom': '2010-01-01T00:00:00.511Z',
       'validUntil': '2999-04-23T18:25:43.511Z',

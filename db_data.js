@@ -11,6 +11,7 @@ module.exports = {
       'validFrom': '2010-01-01T00:00:00.511Z',
       'validUntil': '2999-04-23T18:25:43.511Z',
       'whitholded': false,
+      'txType': 'sales',
       'rate': '0.16'
     },
     {
@@ -19,6 +20,7 @@ module.exports = {
       'validFrom': '2000-01-01T00:00:00.511Z',
       'validUntil': '2009-12-31T23:59:59.511Z',
       'whitholded': false,
+      'txType': 'sales',
       'rate': '0.11'
     },
     {
@@ -27,7 +29,7 @@ module.exports = {
       'validFrom': '2000-01-01T00:00:00.511Z',
       'validUntil': '2009-12-31T23:59:59.511Z',
       'whitholded': false,
-      'txType': 'BOTH',
+      'txType': undefined, // BOTH
       'rate': '0.11'
     },
     {

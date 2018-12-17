@@ -84,7 +84,7 @@ describe('Mexico', () => {
     test('RETIVA', () => {
       const q = {
         country: 'MX',
-        txType: 'income',
+        txType: 'sales',
         docType: 'invoice',
         taxes: ['RETIVA']
       }
@@ -102,7 +102,7 @@ describe('Mexico', () => {
     test('RETISR', () => {
       const q = {
         country: 'MX',
-        txType: 'income',
+        txType: 'sales',
         docType: 'invoice',
         taxes: ['RETISR']
       }
@@ -163,7 +163,7 @@ describe('Mexico', () => {
     test('With dependant whitholding (RETIVA)', () => {
       const q = {
         country: 'MX',
-        txType: 'income',
+        txType: 'sales',
         area: 'e',
         category: '51000000',
         vars: {

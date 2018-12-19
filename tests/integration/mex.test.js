@@ -40,7 +40,7 @@ describe('Mexico', () => {
       })
     })
 
-    test('[exempt] Income Rate 0 (Drug)', () => {
+    test.skip('[exempt] Income Rate 0 (Drug)', () => {
       const q = {
         country: 'MX',
         txType: 'income',
@@ -118,46 +118,6 @@ describe('Mexico', () => {
     })
   })
 
-  describe('PAYROLL', () => {
-    // test('N.L.', () => {
-    //   const q = {
-    //     country: 'MX',
-    //     region: 'NL',
-    //     txType: 'income',
-    //     category: 'NOMINA',
-    //     taxes: ['PAYROLL']
-    //   }
-
-    //   expect(getTaxes(q)).toEqual({
-    //     taxes: {
-    //       'PAYROLL': {
-    //         rate: { error: null, result: 0.02 },
-    //         factor: { error: null, result: 0.02 }
-    //       }
-    //     }
-    //   })
-    // })
-
-    // test('D.F.', () => {
-    //   const q = {
-    //     country: 'MX',
-    //     region: 'DF',
-    //     txType: 'income',
-    //     category: 'NOMINA',
-    //     taxes: ['PAYROLL']
-    //   }
-
-    //   expect(getTaxes(q)).toEqual({
-    //     taxes: {
-    //       'PAYROLL': {
-    //         rate: { error: null, result: 0.03 },
-    //         factor: { error: null, result: 0.03 }
-    //       }
-    //     }
-    //   })
-    // })
-  })
-
   describe('Multi Taxes', () => {
     // https://www.elcontribuyente.mx/calculadora/honorarios/
     test('With dependant whitholding (RETIVA)', () => {
@@ -165,7 +125,6 @@ describe('Mexico', () => {
         country: 'MX',
         txType: 'sales',
         area: 'e',
-        category: '51000000',
         vars: {
           subTotal: 1000
         },
@@ -174,14 +133,14 @@ describe('Mexico', () => {
 
       expect(getTaxes(q)).toEqual({
         subTotal: 1000,
-        taxTotal: -100,
-        grandTotal: 900,
+        taxTotal: -46.67,
+        grandTotal: 953.33,
         taxes: {
           'IVA': {
-            rate: { error: null, result: 0 },
-            factor: { error: null, result: 0 },
-            amount: { error: null, result: 0 },
-            meta: { exempt: true }
+            rate: { error: null, result: 0.16 },
+            factor: { error: null, result: 0.16 },
+            amount: { error: null, result: 160 }
+            // meta: { exempt: true }
           },
           'RETISR': {
             rate: { error: null, result: -0.10 },
@@ -195,9 +154,9 @@ describe('Mexico', () => {
             },
             factor: {
               error: null,
-              result: Currency(0 * (2 / 3), { precision: FACTOR_PRECISION }).value
+              result: Currency(0.16 * (-2 / 3), { precision: FACTOR_PRECISION }).value
             },
-            amount: { error: null, result: 0 }
+            amount: { error: null, result: -106.67 }
           }
         }
       })

@@ -240,6 +240,37 @@ module.exports = {
       },
       'rate': 'retAll',
       'amount': 'IF(taxable <= 150, 150, taxable)'
+    },
+    {
+      'country': 'ar',
+      'taxName': 'IVA10_5',
+      'validFrom': '2010-01-01T00:00:00.511Z',
+      'validUntil': '2999-04-23T18:25:43.511Z',
+      'rate': '0.105'
+    },
+    {
+      'country': 'ar',
+      'taxName': 'IVA21',
+      'validFrom': '2010-01-01T00:00:00.511Z',
+      'validUntil': '2999-04-23T18:25:43.511Z',
+      'rate': '0.21'
+    },
+    {
+      'country': 'ar',
+      'taxName': 'IVA27',
+      'validFrom': '2010-01-01T00:00:00.511Z',
+      'validUntil': '2999-04-23T18:25:43.511Z',
+      'rate': '0.27'
+    },
+    {
+      'country': 'ar',
+      'taxName': 'IVA_E',
+      'validFrom': '2010-01-01T00:00:00.511Z',
+      'validUntil': '2999-04-23T18:25:43.511Z',
+      'rate': '0',
+      'meta': {
+        'exempt': true
+      }
     }
   ]
 }

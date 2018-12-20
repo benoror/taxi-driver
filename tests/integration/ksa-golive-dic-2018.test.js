@@ -1,6 +1,6 @@
 const { getTaxes } = require('../../lib')
 
-describe('KSA VAT', () => {
+describe('Saudi Arabia - Go-live Dic 2018', () => {
   describe('DRUG', () => {
     test('TAXYES <=2000', () => {
       const q = {

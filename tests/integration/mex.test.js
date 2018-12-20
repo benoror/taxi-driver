@@ -1,6 +1,5 @@
-const Currency = require('currency.js')
+const { Factor } = require('../../lib/decimal_precision')
 const { getTaxes } = require('../../lib')
-const { FACTOR_PRECISION } = require('../../lib/calc')
 
 describe('Mexico', () => {
   describe('IVA', () => {
@@ -133,8 +132,8 @@ describe('Mexico', () => {
 
       expect(getTaxes(q)).toEqual({
         subTotal: 1000,
-        taxTotal: -46.67,
-        grandTotal: 953.33,
+        taxTotal: -46.66667,
+        grandTotal: 953.33333,
         taxes: {
           'IVA': {
             rate: { error: null, result: 0.16 },
@@ -154,9 +153,9 @@ describe('Mexico', () => {
             },
             factor: {
               error: null,
-              result: Currency(0.16 * (-2 / 3), { precision: FACTOR_PRECISION }).value
+              result: Factor(0.16 * (-2 / 3)).value
             },
-            amount: { error: null, result: -106.67 }
+            amount: { error: null, result: -106.66667 }
           }
         }
       })

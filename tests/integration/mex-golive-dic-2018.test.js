@@ -19,13 +19,13 @@ describe('Mexico - Go-live Dic 2018', () => {
 
       expect(getTaxes(q)).toEqual({
         subTotal: 2803.2,
-        taxTotal: 308.35,
-        grandTotal: 3111.55,
+        taxTotal: 308.352,
+        grandTotal: 3111.552,
         taxes: {
           'IVA': {
             rate: { error: null, result: 0.11 },
             factor: { error: null, result: 0.11 },
-            amount: { error: null, result: 308.35 }
+            amount: { error: null, result: 308.352 }
           }
         }
       })
@@ -48,13 +48,13 @@ describe('Mexico - Go-live Dic 2018', () => {
 
       expect(getTaxes(q)).toEqual({
         subTotal: 170.88,
-        taxTotal: 27.34,
-        grandTotal: 198.22,
+        taxTotal: 27.3408,
+        grandTotal: 198.2208,
         taxes: {
           'IVA': {
             rate: { error: null, result: 0.16 },
             factor: { error: null, result: 0.16 },
-            amount: { error: null, result: 27.34 }
+            amount: { error: null, result: 27.3408 }
           }
         }
       })
@@ -77,13 +77,13 @@ describe('Mexico - Go-live Dic 2018', () => {
 
       expect(getTaxes(q)).toEqual({
         subTotal: 3864.63,
-        taxTotal: 425.11,
-        grandTotal: 4289.74,
+        taxTotal: 425.1093,
+        grandTotal: 4289.7393,
         taxes: {
           'IVA11': {
             rate: { error: null, result: 0.11 },
             factor: { error: null, result: 0.11 },
-            amount: { error: null, result: 425.11 }
+            amount: { error: null, result: 425.1093 }
           }
         }
       })
@@ -170,13 +170,13 @@ describe('Mexico - Go-live Dic 2018', () => {
 
       expect(getTaxes(q)).toEqual({
         subTotal: 3622.68,
-        taxTotal: 375.73,
-        grandTotal: 3998.41,
+        taxTotal: 375.7262562,
+        grandTotal: 3998.4062562,
         taxes: {
           'A_SAL': {
             rate: { error: null, result: 0.103715 },
             factor: { error: null, result: 0.103715 },
-            amount: { error: null, result: 375.73 }
+            amount: { error: null, result: 375.7262562 }
           }
         }
       })
@@ -230,13 +230,13 @@ describe('Mexico - Go-live Dic 2018', () => {
 
       expect(getTaxes(q)).toEqual({
         subTotal: 8018.64,
-        taxTotal: 240.56,
-        grandTotal: 8259.20,
+        taxTotal: 240.5592,
+        grandTotal: 8259.1992,
         taxes: {
           'ISH3': {
             rate: { error: null, result: 0.03 },
             factor: { error: null, result: 0.03 },
-            amount: { error: null, result: 240.56 }
+            amount: { error: null, result: 240.5592 }
           }
         }
       })
@@ -260,13 +260,13 @@ describe('Mexico - Go-live Dic 2018', () => {
 
       expect(getTaxes(q)).toEqual({
         subTotal: 11369.6,
-        taxTotal: 341.09,
-        grandTotal: 11710.69,
+        taxTotal: 341.088,
+        grandTotal: 11710.688,
         taxes: {
           'ISN3': {
             rate: { error: null, result: 0.03 },
             factor: { error: null, result: 0.03 },
-            amount: { error: null, result: 341.09 }
+            amount: { error: null, result: 341.088 }
           }
         }
       })
@@ -290,13 +290,13 @@ describe('Mexico - Go-live Dic 2018', () => {
 
       expect(getTaxes(q)).toEqual({
         subTotal: 9028.8,
-        taxTotal: 270.86,
-        grandTotal: 9299.66,
+        taxTotal: 270.864,
+        grandTotal: 9299.664,
         taxes: {
           'ISN': {
             rate: { error: null, result: 0.03 },
             factor: { error: null, result: 0.03 },
-            amount: { error: null, result: 270.86 }
+            amount: { error: null, result: 270.864 }
           }
         }
       })
@@ -320,13 +320,13 @@ describe('Mexico - Go-live Dic 2018', () => {
 
       expect(getTaxes(q)).toEqual({
         subTotal: 126.28,
-        taxTotal: 3.79,
-        grandTotal: 130.07,
+        taxTotal: 3.7884,
+        grandTotal: 130.0684,
         taxes: {
           'RTP3': {
             rate: { error: null, result: 0.03 },
             factor: { error: null, result: 0.03 },
-            amount: { error: null, result: 3.79 }
+            amount: { error: null, result: 3.7884 }
           }
         }
       })
@@ -349,13 +349,13 @@ describe('Mexico - Go-live Dic 2018', () => {
 
       expect(getTaxes(q)).toEqual({
         subTotal: 12052.32,
-        taxTotal: 1205.23,
-        grandTotal: 13257.55,
+        taxTotal: 1205.23079477,
+        grandTotal: 13257.55079477,
         taxes: {
           'DAP': {
             rate: { error: null, result: 0.0999999 },
             factor: { error: null, result: 0.0999999 },
-            amount: { error: null, result: 1205.23 }
+            amount: { error: null, result: 1205.23079477 }
           }
         }
       })
@@ -438,13 +438,13 @@ describe('Mexico - Go-live Dic 2018', () => {
 
       expect(getTaxes(q)).toEqual({
         subTotal: 9827.3,
-        taxTotal: -393.09,
-        grandTotal: 9434.21,
+        taxTotal: -393.092,
+        grandTotal: 9434.208,
         taxes: {
           'RETIVA4': {
             rate: { error: null, result: -0.04 },
             factor: { error: null, result: -0.04 },
-            amount: { error: null, result: -393.09 }
+            amount: { error: null, result: -393.092 }
           }
         }
       })
@@ -470,13 +470,13 @@ describe('Mexico - Go-live Dic 2018', () => {
 
       expect(getTaxes(q)).toEqual({
         subTotal: 102228.48,
-        taxTotal: 8178.28,
-        grandTotal: 110406.76,
+        taxTotal: 8178.2784,
+        grandTotal: 110406.7584,
         taxes: {
           'IEPS': {
             rate: { error: null, result: 0.08 },
             factor: { error: null, result: 0.08 },
-            amount: { error: null, result: 8178.28 }
+            amount: { error: null, result: 8178.2784 }
           }
         }
       })
@@ -500,13 +500,13 @@ describe('Mexico - Go-live Dic 2018', () => {
 
       expect(getTaxes(q)).toEqual({
         subTotal: 5654.88,
-        taxTotal: 169.65,
-        grandTotal: 5824.53,
+        taxTotal: 169.6464,
+        grandTotal: 5824.5264,
         taxes: {
           'IEPS3': {
             rate: { error: null, result: 0.03 },
             factor: { error: null, result: 0.03 },
-            amount: { error: null, result: 169.65 }
+            amount: { error: null, result: 169.6464 }
           }
         }
       })
@@ -530,13 +530,13 @@ describe('Mexico - Go-live Dic 2018', () => {
 
       expect(getTaxes(q)).toEqual({
         subTotal: 10792.32,
-        taxTotal: 863.39,
-        grandTotal: 11655.71,
+        taxTotal: 863.3856,
+        grandTotal: 11655.7056,
         taxes: {
           'IEPS8': {
             rate: { error: null, result: 0.08 },
             factor: { error: null, result: 0.08 },
-            amount: { error: null, result: 863.39 }
+            amount: { error: null, result: 863.3856 }
           }
         }
       })

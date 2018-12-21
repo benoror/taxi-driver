@@ -271,6 +271,16 @@ module.exports = {
       'meta': {
         'exempt': true
       }
+    },
+    {
+      'country': 'ar',
+      'taxName': 'Exento',
+      'validFrom': '2010-01-01T00:00:00.511Z',
+      'validUntil': '2999-04-23T18:25:43.511Z',
+      'rate': '0',
+      'meta': {
+        'exempt': true
+      }
     }
   ]
 }

@@ -101,4 +101,30 @@ describe('Argentina - Go-live Dic 2018', () => {
       }
     })
   })
+
+  test('Exento', () => {
+    const q = {
+      country: 'ar',
+      vars: {
+        unitPrice: '123',
+        quantity: '5',
+        subTotal: '615'
+      },
+      taxes: ['Exento']
+    }
+
+    expect(getTaxes(q)).toEqual({
+      subTotal: 615,
+      taxTotal: 0,
+      grandTotal: 615,
+      taxes: {
+        'Exento': {
+          rate: { error: null, result: 0.0 },
+          factor: { error: null, result: 0.0 },
+          amount: { error: null, result: 0.00 },
+          meta: { exempt: true }
+        }
+      }
+    })
+  })
 })

@@ -127,4 +127,29 @@ describe('Argentina - Go-live Dic 2018', () => {
       }
     })
   })
+
+  test('Monotributo', () => {
+    const q = {
+      country: 'ar',
+      vars: {
+        unitPrice: '123',
+        quantity: '5',
+        subTotal: '615'
+      },
+      taxes: ['Monotributo']
+    }
+
+    expect(getTaxes(q)).toEqual({
+      subTotal: 615,
+      taxTotal: 0,
+      grandTotal: 615,
+      taxes: {
+        'Monotributo': {
+          rate: { error: null, result: 0.0 },
+          factor: { error: null, result: 0.0 },
+          amount: { error: null, result: 0.00 }
+        }
+      }
+    })
+  })
 })

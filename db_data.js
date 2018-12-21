@@ -288,6 +288,13 @@ module.exports = {
       'validFrom': '2010-01-01T00:00:00.511Z',
       'validUntil': '2999-04-23T18:25:43.511Z',
       'rate': '0'
+    },
+    {
+      'country': 'ar',
+      'taxName': 'Standard',
+      'validFrom': '2010-01-01T00:00:00.511Z',
+      'validUntil': '2999-04-23T18:25:43.511Z',
+      'rate': '0.16'
     }
   ]
 }

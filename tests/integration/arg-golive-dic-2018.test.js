@@ -152,4 +152,29 @@ describe('Argentina - Go-live Dic 2018', () => {
       }
     })
   })
+
+  test('Standard', () => {
+    const q = {
+      country: 'ar',
+      vars: {
+        unitPrice: '123',
+        quantity: '5',
+        subTotal: '615'
+      },
+      taxes: ['Standard']
+    }
+
+    expect(getTaxes(q)).toEqual({
+      subTotal: 615,
+      taxTotal: 98.4,
+      grandTotal: 713.4,
+      taxes: {
+        'Standard': {
+          rate: { error: null, result: 0.16 },
+          factor: { error: null, result: 0.16 },
+          amount: { error: null, result: 98.4 }
+        }
+      }
+    })
+  })
 })

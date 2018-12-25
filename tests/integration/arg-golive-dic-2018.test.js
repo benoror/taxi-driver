@@ -26,6 +26,32 @@ describe('Argentina - Go-live Dic 2018', () => {
     })
   })
 
+  test('IVA10_05', () => {
+    const q = {
+      country: 'AR',
+      region: 'Entre Ríos',
+      txType: 'sales',
+      taxes: ['IVA10_5'],
+      vars: {
+        unitPrice: 0,
+        subTotal: 0
+      }
+    }
+
+    expect(getTaxes(q)).toEqual({
+      subTotal: 0,
+      taxTotal: 0,
+      grandTotal: 0,
+      taxes: {
+        'IVA10_5': {
+          rate: { error: null, result: 0.105 },
+          factor: { error: null, result: 0.105 },
+          amount: { error: null, result: 0 }
+        }
+      }
+    })
+  })
+
   test('IVA21', () => {
     const q = {
       country: 'ar',

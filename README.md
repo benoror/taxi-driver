@@ -3,6 +3,8 @@ Taxi Driver - A Flexible International Tax Engine Microservice
 
 Built with [Micro](https://github.com/zeit/micro) & [Lowdb ⚡️](https://github.com/typicode/lowdb)
 
+Slides: https://slides.com/benoror/taxi-driver
+
 [![Build Status](https://travis-ci.org/ecaresoft/taxi-driver.svg?branch=master)](https://travis-ci.org/ecaresoft/taxi-driver) [![Maintainability](https://api.codeclimate.com/v1/badges/9cabf46da635a1db84a8/maintainability)](https://codeclimate.com/github/ecaresoft/taxi-driver/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/9cabf46da635a1db84a8/test_coverage)](https://codeclimate.com/github/ecaresoft/taxi-driver/test_coverage)
 
 ![taxi driver](https://user-images.githubusercontent.com/119117/48316345-df182200-e5a7-11e8-94ff-bab2f79694f0.jpg)

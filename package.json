@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "currency.js": "^1.2.1",
-    "hot-formula-parser": "^3.0.0",
+    "hot-formula-parser": "^3.0.1",
     "lodash": "^4.17.11",
     "lowdb": "^1.0.0",
     "micro": "^9.3.3",
